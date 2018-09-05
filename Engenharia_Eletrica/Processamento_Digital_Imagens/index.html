@@ -494,12 +494,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Antes, entretanto, é necessário remover as regiões que estão na borda da imagem. Para isso, basta percorrer as linhas e colunas da borda e executar o <strong>floodfill</strong> para todos os pixels brancos encontrados.</p>
 </div>
 <div class="paragraph">
-<p>Por fim, para contar o número de objetos que têm buraco, utiliza-se o <strong>floodfill</strong> no primeiro pixel da imagem, preenchendo o funda da imagem com um tom de cinza diferente de 0. Após isso, basta varrer a imagem linha por linha e buscar pixels com tom de cinza 0. Ao encontrar, verifica-se o tom de cinza imediantamente à esquerda deste e, caso este tenha um tom de cinza diferente do fundo, incrementa-se o contador de regiões com buraco. Após esse passo, é importante executar o <strong>floodfill</strong> no pixel de tom de cinza 0 (que representa o buraco na região) e no pixel imediatamente à esquerda deste (pixel que pertence a região que tem um buraco), pois é possível que alguma região tenha dois buracos, e estas devem ser contadas apenas uma vez. Assim, quando o algoritmo continuar a varredura e encontrar o pixel com tom de cinza 0 referente ao outro buraco da figura, ao testar o pixel imadiatamente à esquerda, este será do tom de cinza do fundo e portanto o contador de regiões com buraco não será incrementado.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Você pode baixar o código fonte link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/contador-objetos[aqui]</pre>
-</div>
+<p>Por fim, para contar o número de objetos que têm buraco, utiliza-se o <strong>floodfill</strong> no primeiro pixel da imagem, preenchendo o funda da imagem com um tom de cinza diferente de 0. Após isso, basta varrer a imagem linha por linha e buscar pixels com tom de cinza 0. Ao encontrar, verifica-se o tom de cinza imediantamente à esquerda deste e, caso este tenha um tom de cinza diferente do fundo, incrementa-se o contador de regiões com buraco. Após esse passo, é importante executar o <strong>floodfill</strong> no pixel de tom de cinza 0 (que representa o buraco na região) e no pixel imediatamente à esquerda deste (pixel que pertence a região que tem um buraco), pois é possível que alguma região tenha dois buracos, e estas devem ser contadas apenas uma vez. Assim, quando o algoritmo continuar a varredura e encontrar o pixel com tom de cinza 0 referente ao outro buraco da figura, ao testar o pixel imadiatamente à esquerda, este será do tom de cinza do fundo e portanto o contador de regiões com buraco não será incrementado. Você pode baixar o código fonte <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/contador-objetos">aqui</a></p>
 </div>
 </div>
 </div>
@@ -507,7 +502,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-05 17:50:16 -03
+Last updated 2018-09-05 18:31:55 -03
 </div>
 </div>
 </body>
