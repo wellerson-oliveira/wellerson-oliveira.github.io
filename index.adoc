@@ -8,9 +8,10 @@ Autor: Wellerson
 == Sobre
 
 === Sobre mim
-Natural de Pau dos Ferros, mas residente em Natal - RN. Amante da tecnologia, da ciência, do futebol e, por consequencia, do Fluminense. Graduando no último período de Engenharia Elétrica na UFRN, reclama da falta de tempo pra dormir na semana mas acorda sábado as 8 da manhã pra ver o "meu Liverpool". Acredita que os robôs são a salvação da humanidade. link:\Engenharia_Eletrica\Processamento_Digital_Imagens\index.html[Pagina]
+Natural de Pau dos Ferros, mas residente em Natal - RN. Amante da tecnologia, da ciência, do futebol e, por consequencia, do Fluminense. Graduando no último período de Engenharia Elétrica na UFRN, reclama da falta de tempo pra dormir na semana mas acorda sábado as 8 da manhã pra ver o "meu Liverpool". Acredita que os robôs são a salvação da humanidade.
 
 === Sobre essa página
-Nesse site você encontrará todos os projetos que eu decidir que são interessantes colocar aqui. Desde projetos da faculdade, passando por projetos que faço/farei no meu trabalho até meus projetos pessoais. Aproveitem !
+Nesse site você encontrará todos os projetos que eu decidir que são interessantes colocar aqui. Desde projetos da faculdade, passando por projetos que faço/farei no meu trabalho até meus projetos pessoais. Todos os códigos-fonte (quando houver) estarão disponibilizados no meu git-hub e podem ser baixados à vontade. Aproveitem !
 
-
+== link:\Engenharia_Eletrica\index.html[Projetos Acadêmicos]
+Ao longo do meu curso de Engenharia Elétrica na UFRN, em várias disciplinas eu tive que criar alguns projetos interessantes. Essa seção é dedicada a esses projetos. Como a natureza do curso de Engenharia Elétrica é bem abrangente, por consequência haveria uma variedade de tipos de projetos aqui. Infelizmente, devido ao acidente com meu pc antigo, só me restaram os projeto a partir do sétimo período. 
