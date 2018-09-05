@@ -2,13 +2,15 @@
 
 :toc: left
 
-= Atividade 1 - Negativo de uma imagem
+= Projetos da disciplina Processamento Digital de Imagens
 Autor: Wellerson 
 
-== Objetivo
+== Negativo de Uma Imagem
+
+=== Objetivo
 O objetivo dessa atividade é criar um programa em Python que dada uma imagem, exiba o negativo dessa imagem apenas em uma região retangular delimitada por dois pontos escolhidos pelo usuário.
 
-== Implementação
+=== Implementação
 A implementação dessa atividade foi bastante simples. Dada uma imagem e dois pontos, (x1, y1) e (x2, y2), dentro das dimensões da imagem, basta varrer a imagem do ponto x1 até o ponto x2 e do ponto y1 até o ponto y2, alterando o valor daquele pixel, p_n, para um novo valor dado por 255 - p_n. Você pode baixar o código fonte link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/negativo_imagem[aqui]
 
 
