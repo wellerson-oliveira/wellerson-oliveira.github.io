@@ -1,0 +1,16 @@
+:stylesheet: clean.css
+
+:toc: left
+
+= Bem vindo!
+Autor: Wellerson 
+
+== Sobre
+
+=== Sobre mim
+Natural de Pau dos Ferros, mas residente em Natal - RN. Amante da tecnologia, da ciência, do futebol e, por consequencia, do Fluminense. Graduando no último período de Engenharia Elétrica na UFRN, reclama da falta de tempo pra dormir na semana mas acorda sábado as 8 da manhã pra ver o "meu Liverpool". Acredita que os robôs são a salvação da humanidade. link:\Engenharia_Eletrica\Processamento_Digital_Imagens\index.html[Pagina]
+
+=== Sobre essa página
+Nesse site você encontrará todos os projetos que eu decidir que são interessantes colocar aqui. Desde projetos da faculdade, passando por projetos que faço/farei no meu trabalho até meus projetos pessoais. Aproveitem !
+
+

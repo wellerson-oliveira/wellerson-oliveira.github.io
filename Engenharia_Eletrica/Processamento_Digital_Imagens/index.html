@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
 <meta name="author" content="Autor: Wellerson">
-<title>Bem vindo!</title>
+<title>Atividade 1 - Negativo de uma imagem</title>
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
 /* Remove comment around @import statement below when using as a custom stylesheet */
@@ -420,44 +420,39 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Bem vindo!</h1>
+<h1>Atividade 1 - Negativo de uma imagem</h1>
 <div class="details">
 <span id="author" class="author">Autor: Wellerson</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_sobre">Sobre</a>
-<ul class="sectlevel2">
-<li><a href="#_sobre_mim">Sobre mim</a></li>
-<li><a href="#_sobre_essa_página">Sobre essa página</a></li>
-</ul>
-</li>
+<li><a href="#_objetivo">Objetivo</a></li>
+<li><a href="#_implementação">Implementação</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_sobre">Sobre</h2>
+<h2 id="_objetivo">Objetivo</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_sobre_mim">Sobre mim</h3>
 <div class="paragraph">
-<p>Natural de Pau dos Ferros, mas residente em Natal - RN. Amante da tecnologia, da ciência, do futebol e, por consequencia, do Fluminense. Graduando no último período de Engenharia Elétrica na UFRN, reclama da falta de tempo pra dormir na semana mas acorda sábado as 8 da manhã pra ver o "meu Liverpool". Acredita que os robôs são a salvação da humanidade. <a href="\Engenharia_Eletrica\Processamento_Digital_Imagens\index.html">Pagina</a></p>
+<p>O objetivo dessa atividade é criar um programa em Python que dada uma imagem, exiba o negativo dessa imagem apenas em uma região retangular delimitada por dois pontos escolhidos pelo usuário.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_sobre_essa_página">Sobre essa página</h3>
+</div>
+<div class="sect1">
+<h2 id="_implementação">Implementação</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Nesse site você encontrará todos os projetos que eu decidir que são interessantes colocar aqui. Desde projetos da faculdade, passando por projetos que faço/farei no meu trabalho até meus projetos pessoais. Aproveitem !</p>
-</div>
+<p>A implementação dessa atividade foi bastante simples. Dada uma imagem e dois pontos, (x1, y1) e (x2, y2), dentro das dimensões da imagem, basta varrer a imagem do ponto x1 até o ponto x2 e do ponto y1 até o ponto y2, alterando o valor daquele pixel, p_n, para um novo valor dado por 255 - p_n. Você pode baixar o código fonte <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/negativo_imagem">aqui</a></p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-04 23:46:42 -03
+Last updated 2018-09-04 23:44:09 -03
 </div>
 </div>
 </body>
