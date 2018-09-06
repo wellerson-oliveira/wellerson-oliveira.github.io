@@ -427,22 +427,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_negativo_de_uma_imagem">Negativo de Uma Imagem</a>
+<li><a href="#_negativo_de_uma_imagem">1. Negativo de Uma Imagem</a>
 <ul class="sectlevel2">
-<li><a href="#_objetivo">Objetivo</a></li>
-<li><a href="#_implementação">Implementação</a></li>
+<li><a href="#_objetivo">1.1. Objetivo</a></li>
+<li><a href="#_implementação">1.2. Implementação</a></li>
 </ul>
 </li>
-<li><a href="#_troca_de_regiões">Troca de regiões</a>
+<li><a href="#_troca_de_regiões">2. Troca de regiões</a>
 <ul class="sectlevel2">
-<li><a href="#_objetivo_2">Objetivo</a></li>
-<li><a href="#_implementação_2">Implementação</a></li>
+<li><a href="#_objetivo_2">2.1. Objetivo</a></li>
+<li><a href="#_implementação_2">2.2. Implementação</a></li>
 </ul>
 </li>
-<li><a href="#_contador_de_objetos">Contador de objetos</a>
+<li><a href="#_contador_de_objetos">3. Contador de objetos</a>
 <ul class="sectlevel2">
-<li><a href="#_objetivo_3">Objetivo</a></li>
-<li><a href="#_implementação_3">Implementação</a></li>
+<li><a href="#_objetivo_3">3.1. Objetivo</a></li>
+<li><a href="#_implementação_3">3.2. Implementação</a></li>
 </ul>
 </li>
 </ul>
@@ -450,16 +450,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_negativo_de_uma_imagem">Negativo de Uma Imagem</h2>
+<h2 id="_negativo_de_uma_imagem">1. Negativo de Uma Imagem</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_objetivo">Objetivo</h3>
+<h3 id="_objetivo">1.1. Objetivo</h3>
 <div class="paragraph">
 <p>O objetivo dessa atividade é criar um programa em Python que dada uma imagem, exiba o negativo dessa imagem apenas em uma região retangular delimitada por dois pontos escolhidos pelo usuário.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_implementação">Implementação</h3>
+<h3 id="_implementação">1.2. Implementação</h3>
 <div class="paragraph">
 <p>A implementação dessa atividade foi bastante simples. Dada uma imagem e dois pontos, (x1, y1) e (x2, y2), dentro das dimensões da imagem, basta varrer a imagem do ponto x1 até o ponto x2 e do ponto y1 até o ponto y2, alterando o valor daquele pixel, p_n, para um novo valor dado por 255 - p_n. Você pode baixar o código fonte <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/negativo_imagem">aqui</a></p>
 </div>
@@ -467,16 +467,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_troca_de_regiões">Troca de regiões</h2>
+<h2 id="_troca_de_regiões">2. Troca de regiões</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_objetivo_2">Objetivo</h3>
+<h3 id="_objetivo_2">2.1. Objetivo</h3>
 <div class="paragraph">
 <p>O objetivo dessa atividade é criar um programa em Python que dada uma imagem, divida-a em quatro retangulos e exiba uma imagem com as posições dos retangulos trocadas.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_implementação_2">Implementação</h3>
+<h3 id="_implementação_2">2.2. Implementação</h3>
 <div class="paragraph">
 <p>A implementação dessa atividade foi bastante simples. Dada uma imagem, utilizou-se as dimensões da mesma para obter os pixels que dividem a imagem em quatro. Por fim, criou-se uma cópia da imagem e varrendo a imagem inicial, copiamos os tons de cinza de cada retangulo para o retangulo oposto. Você pode baixar o código fonte <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/troca-de-regioes">aqui</a></p>
 </div>
@@ -484,16 +484,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contador_de_objetos">Contador de objetos</h2>
+<h2 id="_contador_de_objetos">3. Contador de objetos</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_objetivo_3">Objetivo</h3>
+<h3 id="_objetivo_3">3.1. Objetivo</h3>
 <div class="paragraph">
 <p>O objetivo dessa atividade é criar um programa em Python que dada uma imagem-exemplo, conte o número de objetos que estão na imagem, sem contar objetos que tocam na borda. O programa também deverá ser capaz de contar quantos objetos na imagem são "ocos", isto é, possuem buracos dentro dele. A imagem a ser processada tem apenas dois tons: branco (tom de cinza 255) e preto (tom de cinza 0), apenas por simplicidade.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_implementação_3">Implementação</h3>
+<h3 id="_implementação_3">3.2. Implementação</h3>
 <div class="paragraph">
 <p>Para implementação dessa prática, o primeiro passo foi a elaboração da função <strong>floodfill</strong>. A função <strong>floodfill</strong> é uma rotina simples para preenchimento de regiões que possuam um mesmo tom de cinza. Ela tem os seguintes argumentos:</p>
 </div>
@@ -528,7 +528,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-05 18:37:03 -03
+Last updated 2018-09-06 09:31:42 -03
 </div>
 </div>
 </body>

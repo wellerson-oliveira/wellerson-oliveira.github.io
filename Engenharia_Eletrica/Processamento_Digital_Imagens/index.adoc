@@ -5,6 +5,8 @@
 = Projetos da disciplina Processamento Digital de Imagens
 Autor: Wellerson 
 
+:sectnums:
+
 == Negativo de Uma Imagem
 
 === Objetivo
