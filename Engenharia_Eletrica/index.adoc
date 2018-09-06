@@ -5,6 +5,8 @@
 = Bem vindo!
 Autor: Wellerson 
 
+:sectnums:
+
 == Projetos Acadêmicos
 
 Bem-vindo a seção de Projetos Acadêmicos. Abaixo, você encontrará meus projetos separados por disciplina. Possivelmente algum projeto de mini-curso também aparecerão. Fiquem a vontade para sugestões, críticas e etc.

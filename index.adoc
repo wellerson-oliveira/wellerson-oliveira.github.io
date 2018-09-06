@@ -13,5 +13,7 @@ Natural de Pau dos Ferros, mas residente em Natal - RN. Amante da tecnologia, da
 === Sobre essa página
 Nesse site você encontrará todos os projetos que eu decidir que são interessantes colocar aqui. Desde projetos da faculdade, passando por projetos que faço/farei no meu trabalho até meus projetos pessoais. Todos os códigos-fonte (quando houver) estarão disponibilizados no meu git-hub e podem ser baixados à vontade. Aproveitem !
 
+:sectnums:
+
 == link:\Engenharia_Eletrica\index.html[Projetos Acadêmicos]
 Ao longo do meu curso de Engenharia Elétrica na UFRN, em várias disciplinas eu tive que criar alguns projetos interessantes. Essa seção é dedicada a esses projetos. Como a natureza do curso de Engenharia Elétrica é bem abrangente, por consequência haveria uma variedade de tipos de projetos aqui. Infelizmente, devido ao acidente com meu pc antigo, só me restaram os projeto a partir do sétimo período. 
