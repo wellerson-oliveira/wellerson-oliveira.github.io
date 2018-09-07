@@ -13,17 +13,20 @@ Autor: Wellerson
 O objetivo dessa atividade é criar um programa em Python que dada uma imagem, exiba o negativo dessa imagem apenas em uma região retangular delimitada por dois pontos escolhidos pelo usuário.
 
 === Implementação
-A implementação dessa atividade foi bastante simples. Dada uma imagem e dois pontos, (x1, y1) e (x2, y2), dentro das dimensões da imagem, basta varrer a imagem do ponto x1 até o ponto x2 e do ponto y1 até o ponto y2, alterando o valor daquele pixel, p_n, para um novo valor dado por 255 - p_n. Você pode baixar o código fonte link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/negativo_imagem[aqui]
+Dada uma imagem e dois pontos, (x1, y1) e (x2, y2), dentro das dimensões da imagem, basta varrer a imagem do ponto x1 até o ponto x2 e do ponto y1 até o ponto y2, alterando o valor daquele pixel, p_n, para um novo valor dado por 255 - p_n. Você pode baixar o código fonte link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/negativo_imagem[aqui]
 
 
 == Troca de regiões
 
 === Objetivo
-O objetivo dessa atividade é criar um programa em Python que dada uma imagem, divida-a em quatro retangulos e exiba uma imagem com as posições dos retangulos trocadas.
+O objetivo dessa atividade é criar um programa em Python que dada uma imagem, divida-a em quatro retangulos e exiba uma imagem com as posições dos retangulos trocadas.Vamos usar a imagem fornecida pelo professor como exemplo.
+
+image::gabriel.png[Imagem a ser processada]
 
 === Implementação
-A implementação dessa atividade foi bastante simples. Dada uma imagem, utilizou-se as dimensões da mesma para obter os pixels que dividem a imagem em quatro. Por fim, criou-se uma cópia da imagem e varrendo a imagem inicial, copiamos os tons de cinza de cada retangulo para o retangulo oposto. Você pode baixar o código fonte link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/troca-de-regioes[aqui]
+A implementação dessa atividade foi bastante simples. Dada uma imagem, utilizou-se as dimensões da mesma para obter os pixels que dividem a imagem em quatro. Por fim, criou-se uma cópia da imagem e varrendo a imagem inicial, copiamos os tons de cinza de cada retangulo para o retangulo oposto. Você pode baixar o código fonte link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/troca-de-regioes[aqui].
 
+image::troca_regiao.png[Imagem com as regiões trocadas]
 
 == Contador de objetos
 
