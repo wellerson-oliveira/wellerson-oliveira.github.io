@@ -78,7 +78,7 @@ Para criar o efeito de borramento na imagem utilizando a função *filter2d*, é
 
 asciimath:[g(x, y) = \sum_{s=-a}^a \sum_{t=-b}^b w(s, t) * f(x + s, y + t)]
 
-Para implementação do filtro de borramento, criaremos um *kernel* que consiste em uma matriz quadrada NxN, cujo valor de cada elemento da matriz será (stem:[\frac{1}{NxN}]). Para essa prática, como dito anteriormente, criaremos uma barra onde o usuário pode alterar o nível de borramento da imagem. Na prática, ele estará alterando o valor de N. Abaixo, temos a saída do programa com dois níveis de borramento. Como sempre, o código-fonte pode ser baixado link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtro-borramento[aqui].
+Para implementação do filtro de borramento, criaremos um *kernel* que consiste em uma matriz quadrada NxN, cujo valor de cada elemento da matriz será stem:[\frac{1}{NxN}]. Para essa prática, como dito anteriormente, criaremos uma barra onde o usuário pode alterar o nível de borramento da imagem. Na prática, ele estará alterando o valor de N. Abaixo, temos a saída do programa com dois níveis de borramento. Como sempre, o código-fonte pode ser baixado link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtro-borramento[aqui].
 
 [#img-gabriel-borrada-5]
 .Imagem com filtro borramento 5x5
@@ -88,6 +88,34 @@ image::images/borrada_5.png[Imagem rotulada]
 .Imagem com filtro borramento 18x18
 image::images/borrada_18.png[Imagem rotulada]
 
+== Normalização de histograma
+
+=== Objetivo
+O objetivo dessa prática é utilizar a função *normalize* para normalizar o histograma de uma imagem. A normalização de um histograma, serve para aumentar o contraste em uma imagem. A operação de normalização, pega uma imagem e recalcula seus pixels de maneira que eles fiquem distribuídos em todos os níveis de tons (de 0 a 255), aumentando assim o contraste entre tons diferentes. Para essa prática, usaremos uma foto cedida por uma amiga. A imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/rapha.png[rapha.png] foi autorizada por Raphaella para ser usada. 
+
+[#img-rapha]
+.Imagem original
+image::images/rapha.png[Imagem rotulada]
+
+=== Implementação
+A normalização de histograma é feita utilizando a função *normalize* da opencv. Essa função recebe uma imagem, normaliza-a e armazena-a em uma nova imagem de mesmo tamanho. A imagem normalizada apresenta um histograma mais distribuído, aumentando o contraste entre tons. A seguinte Figura mostra o histograma da imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/rapha.png[rapha.png] original. 
+Para plotagem dos histogramas, utilizou-se a biblioteca *matplotlib*. 
+
+[#img-hist-rapha]
+.Histograma da imagem original	
+image::images/hist_original.png[Imagem rotulada]
+
+É possível ver que os tons das cores RGB estão todos concentrados à esquerda do histograma (Não há nenhum tom acima do nível 100, por exemplo) o que caracteriza uma imagem escura. Abaixo, temos a imagem normalizada e seu histograma. 
+
+[#img-new-rapha]
+.Imagem normalizada
+image::images/new_rapha.png[Imagem rotulada]
+
+[#img-hist-new]
+.Histograma da imagem normalizada
+image::images/hist_new.png[Imagem rotulada]
+
+É possível ver um contraste maior entre as cores da nova imagem, confirmada pelo seu histograma. Seus tons agora estão mais espaçados no histograma, que ocupa agora praticamente todos os níveis. O lado negativo é que pode-se ver que essa operação aumenta o ruído já presente na imagem original. O código-fonte está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/normalizacao-histograma[aqui]
 
 
 

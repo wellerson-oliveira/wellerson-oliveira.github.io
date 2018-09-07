@@ -451,6 +451,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_implementação_4">4.2. Implementação</a></li>
 </ul>
 </li>
+<li><a href="#_normalização_de_histograma">5. Normalização de histograma</a>
+<ul class="sectlevel2">
+<li><a href="#_objetivo_5">5.1. Objetivo</a></li>
+<li><a href="#_implementação_5">5.2. Implementação</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -582,7 +588,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>\$g(x, y) = \sum_{s=-a}^a \sum_{t=-b}^b w(s, t) * f(x + s, y + t)\$</p>
 </div>
 <div class="paragraph">
-<p>Para implementação do filtro de borramento, criaremos um <strong>kernel</strong> que consiste em uma matriz quadrada NxN, cujo valor de cada elemento da matriz será (\(\frac{1}{NxN}\)). Para essa prática, como dito anteriormente, criaremos uma barra onde o usuário pode alterar o nível de borramento da imagem. Na prática, ele estará alterando o valor de N. Abaixo, temos a saída do programa com dois níveis de borramento. Como sempre, o código-fonte pode ser baixado <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtro-borramento">aqui</a>.</p>
+<p>Para implementação do filtro de borramento, criaremos um <strong>kernel</strong> que consiste em uma matriz quadrada NxN, cujo valor de cada elemento da matriz será \(\frac{1}{NxN}\). Para essa prática, como dito anteriormente, criaremos uma barra onde o usuário pode alterar o nível de borramento da imagem. Na prática, ele estará alterando o valor de N. Abaixo, temos a saída do programa com dois níveis de borramento. Como sempre, o código-fonte pode ser baixado <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtro-borramento">aqui</a>.</p>
 </div>
 <div id="img-gabriel-borrada-5" class="imageblock">
 <div class="content">
@@ -599,10 +605,58 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_normalização_de_histograma">5. Normalização de histograma</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_objetivo_5">5.1. Objetivo</h3>
+<div class="paragraph">
+<p>O objetivo dessa prática é utilizar a função <strong>normalize</strong> para normalizar o histograma de uma imagem. A normalização de um histograma, serve para aumentar o contraste em uma imagem. A operação de normalização, pega uma imagem e recalcula seus pixels de maneira que eles fiquem distribuídos em todos os níveis de tons (de 0 a 255), aumentando assim o contraste entre tons diferentes. Para essa prática, usaremos uma foto cedida por uma amiga. A imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/rapha.png">rapha.png</a> foi autorizada por Raphaella para ser usada.</p>
+</div>
+<div id="img-rapha" class="imageblock">
+<div class="content">
+<img src="images/rapha.png" alt="Imagem rotulada">
+</div>
+<div class="title">Figure 9. Imagem original</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implementação_5">5.2. Implementação</h3>
+<div class="paragraph">
+<p>A normalização de histograma é feita utilizando a função <strong>normalize</strong> da opencv. Essa função recebe uma imagem, normaliza-a e armazena-a em uma nova imagem de mesmo tamanho. A imagem normalizada apresenta um histograma mais distribuído, aumentando o contraste entre tons. A seguinte Figura mostra o histograma da imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/rapha.png">rapha.png</a> original.
+Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</strong>.</p>
+</div>
+<div id="img-hist-rapha" class="imageblock">
+<div class="content">
+<img src="images/hist_original.png" alt="Imagem rotulada">
+</div>
+<div class="title">Figure 10. Histograma da imagem original</div>
+</div>
+<div class="paragraph">
+<p>É possível ver que os tons das cores RGB estão todos concentrados à esquerda do histograma (Não há nenhum tom acima do nível 100, por exemplo) o que caracteriza uma imagem escura. Abaixo, temos a imagem normalizada e seu histograma.</p>
+</div>
+<div id="img-new-rapha" class="imageblock">
+<div class="content">
+<img src="images/new_rapha.png" alt="Imagem rotulada">
+</div>
+<div class="title">Figure 11. Imagem normalizada</div>
+</div>
+<div id="img-hist-new" class="imageblock">
+<div class="content">
+<img src="images/hist_new.png" alt="Imagem rotulada">
+</div>
+<div class="title">Figure 12. Histograma da imagem normalizada</div>
+</div>
+<div class="paragraph">
+<p>É possível ver um contraste maior entre as cores da nova imagem, confirmada pelo seu histograma. Seus tons agora estão mais espaçados no histograma, que ocupa agora praticamente todos os níveis. O lado negativo é que pode-se ver que essa operação aumenta o ruído já presente na imagem original. O código-fonte está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/normalizacao-histograma">aqui</a></p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-07 18:14:00 -03
+Last updated 2018-09-07 19:53:26 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">
