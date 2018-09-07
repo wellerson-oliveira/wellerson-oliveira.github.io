@@ -66,8 +66,15 @@ image::images/bolhas_rotulada.png[Imagem rotulada]
 
 Por fim, para contar o número de objetos que têm buraco, utiliza-se o *floodfill* no primeiro pixel da imagem, preenchendo o funda da imagem com um tom de cinza diferente de 0. Após isso, basta varrer a imagem linha por linha e buscar pixels com tom de cinza 0. Ao encontrar, verifica-se o tom de cinza imediantamente à esquerda deste e, caso este tenha um tom de cinza diferente do fundo, incrementa-se o contador de regiões com buraco. Após esse passo, é importante executar o *floodfill* no pixel de tom de cinza 0 (que representa o buraco na região) e no pixel imediatamente à esquerda deste (pixel que pertence a região que tem um buraco), pois é possível que alguma região tenha dois buracos, e estas devem ser contadas apenas uma vez. Assim, quando o algoritmo continuar a varredura e encontrar o pixel com tom de cinza 0 referente ao outro buraco da figura, ao testar o pixel imadiatamente à esquerda, este será do tom de cinza do fundo e portanto o contador de regiões com buraco não será incrementado. Você pode baixar o código fonte link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/contador-objetos[aqui]
 
-== 
+== Filtro borramento
 
+=== Objetivo
+O objetivo dessa prática é utilizar a função *filter2d* da opencv para criar um filtro que borre uma dada imagem. Usaremos a imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/gabriel.png[gabriel.png] mais uma vez como exemplo. Nessa prática, incluiremos também uma barra para que o usuário possa, interativamente, alterar o nível de borramento da imagem. 
+
+=== Implementação
+Para criar o efeito de borramento na imagem utilizando a função *filter2d*, é necessário a criação de uma matriz secundária chamada *kernel*. A matriz *kernel* é passada como argumento para a *filter2d* e será convoluída pela imagem original para formar a imagem de saída. A operação de convolução para imagens digitais é uma operação matemática onde o *kernel* é posicionado em cada pixel da imagem original, e o valor desse pixel na imagem final é definido como sendoa soma do produto, pixel a pixel, da imagem original pelo *kernel*. Matematicamente:
+
+asciimath:[g(x, y) = \sum_{s=-a}^a \sum_{t=-b}^b w(s, t) * f(x + s, y + t)]
 
 
 
