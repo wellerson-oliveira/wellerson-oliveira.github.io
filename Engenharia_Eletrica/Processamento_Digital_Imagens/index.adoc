@@ -42,7 +42,7 @@ O objetivo dessa atividade é criar um programa em Python que dada uma imagem-ex
 
 [#img-bolhas]
 .Imagem a ser processada 
-image::images/bolhas.png
+image::images/bolhas.png[Imagem inicial]
 
 === Implementação
 Para implementação dessa prática, o primeiro passo foi a elaboração da função *floodfill*. A função *floodfill* é uma rotina simples para preenchimento de regiões que possuam um mesmo tom de cinza. Ela tem os seguintes argumentos:
@@ -56,13 +56,13 @@ Inicialmente, é necessário remover as regiões que estão na borda da imagem. 
 
 [#img-bolhas-sem-borda]
 .Imagem sem os obejtos que tocam a borda 
-image::images/bolhas_sem_borda.png
+image::images/bolhas_sem_borda.png[Imagem sem borda]
 
 Para contar regiões, utilizamos a função floodfill para preencher cada objeto com um rotulo diferente. O processo consiste em varrer a imagem até encontrar um pixel branco. Ao encontrar, executa-se o *floodfill* utilizando esse pixel como semente. Ao preencher, incrementa-se o rótulo e volta-se a varrer a imagem até que todas as regiões estejam rotuladas. Conta-se o número de regiões, utilizando o valor do último rotulo. 
 
 [#img-bolhas-rotulada]
 .Imagem rotulada 
-image::images/bolhas_rotulada.png
+image::images/bolhas_rotulada.png[Imagem rotulada]
 
 Por fim, para contar o número de objetos que têm buraco, utiliza-se o *floodfill* no primeiro pixel da imagem, preenchendo o funda da imagem com um tom de cinza diferente de 0. Após isso, basta varrer a imagem linha por linha e buscar pixels com tom de cinza 0. Ao encontrar, verifica-se o tom de cinza imediantamente à esquerda deste e, caso este tenha um tom de cinza diferente do fundo, incrementa-se o contador de regiões com buraco. Após esse passo, é importante executar o *floodfill* no pixel de tom de cinza 0 (que representa o buraco na região) e no pixel imediatamente à esquerda deste (pixel que pertence a região que tem um buraco), pois é possível que alguma região tenha dois buracos, e estas devem ser contadas apenas uma vez. Assim, quando o algoritmo continuar a varredura e encontrar o pixel com tom de cinza 0 referente ao outro buraco da figura, ao testar o pixel imadiatamente à esquerda, este será do tom de cinza do fundo e portanto o contador de regiões com buraco não será incrementado. Você pode baixar o código fonte link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/contador-objetos[aqui]
 
