@@ -455,13 +455,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_objetivo">1.1. Objetivo</h3>
 <div class="paragraph">
-<p>O objetivo dessa atividade é criar um programa em Python que dada uma imagem, exiba o negativo dessa imagem apenas em uma região retangular delimitada por dois pontos escolhidos pelo usuário.</p>
+<p>O objetivo dessa atividade é criar um programa em Python que dada uma imagem, exiba o negativo dessa imagem apenas em uma região retangular delimitada por dois pontos escolhidos pelo usuário. Usaremos a imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/gabriel.png">gabriel.png</a> fornecida pelo professor como exemplo nessa prática e em algumas outras.</p>
+</div>
+<div id="img-gabriel" class="imageblock">
+<div class="content">
+<img src="gabriel.png" alt="Imagem a ser processada">
+</div>
+<div class="title">Figure 1. Imagem a ser processada</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_implementação">1.2. Implementação</h3>
 <div class="paragraph">
-<p>Dada uma imagem e dois pontos, (x1, y1) e (x2, y2), dentro das dimensões da imagem, basta varrer a imagem do ponto x1 até o ponto x2 e do ponto y1 até o ponto y2, alterando o valor daquele pixel, p_n, para um novo valor dado por 255 - p_n. Você pode baixar o código fonte <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/negativo_imagem">aqui</a></p>
+<p>Dada uma imagem e dois pontos, (x1, y1) e (x2, y2), dentro das dimensões da imagem, basta varrer a imagem do ponto x1 até o ponto x2 e do ponto y1 até o ponto y2, alterando o valor daquele pixel, p_n, para um novo valor dado por 255 - p_n. Você pode baixar o código fonte <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/negativo_imagem">aqui</a>.</p>
+</div>
+<div id="img-negativo" class="imageblock">
+<div class="content">
+<img src="images/negativo_imagem.png" alt="Imagem negativa">
+</div>
+<div class="title">Figure 2. Imagem com retangulo negativo</div>
 </div>
 </div>
 </div>
@@ -472,12 +484,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_objetivo_2">2.1. Objetivo</h3>
 <div class="paragraph">
-<p>O objetivo dessa atividade é criar um programa em Python que dada uma imagem, divida-a em quatro retangulos e exiba uma imagem com as posições dos retangulos trocadas.Vamos usar a imagem fornecida pelo professor como exemplo.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="gabriel.png" alt="Imagem a ser processada">
-</div>
+<p>O objetivo dessa atividade é criar um programa em Python que dada uma imagem, divida-a em quatro retangulos e exiba uma imagem com as posições dos retangulos trocadas.Vamos usar novamente a imagem fornecida pelo professor como exemplo.</p>
 </div>
 </div>
 <div class="sect2">
@@ -485,10 +492,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>A implementação dessa atividade foi bastante simples. Dada uma imagem, utilizou-se as dimensões da mesma para obter os pixels que dividem a imagem em quatro. Por fim, criou-se uma cópia da imagem e varrendo a imagem inicial, copiamos os tons de cinza de cada retangulo para o retangulo oposto. Você pode baixar o código fonte <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/troca-de-regioes">aqui</a>.</p>
 </div>
-<div class="imageblock">
+<div id="img-troca" class="imageblock">
 <div class="content">
-<img src="troca_regiao.png" alt="Imagem com as regiões trocadas">
+<img src="troca_regiao.png" alt="Imagem trocada">
 </div>
+<div class="title">Figure 3. Imagem com regiões trocadas</div>
 </div>
 </div>
 </div>
@@ -538,7 +546,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-07 16:39:36 -03
+Last updated 2018-09-07 16:51:13 -03
 </div>
 </div>
 </body>
