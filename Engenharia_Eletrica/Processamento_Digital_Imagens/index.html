@@ -459,7 +459,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="img-gabriel" class="imageblock">
 <div class="content">
-<img src="gabriel.png" alt="Imagem a ser processada">
+<img src="images/gabriel.png" alt="Imagem a ser processada">
 </div>
 <div class="title">Figure 1. Imagem a ser processada</div>
 </div>
@@ -494,7 +494,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="img-troca" class="imageblock">
 <div class="content">
-<img src="troca_regiao.png" alt="Imagem trocada">
+<img src="images/troca_regiao.png" alt="Imagem trocada">
 </div>
 <div class="title">Figure 3. Imagem com regiões trocadas</div>
 </div>
@@ -507,7 +507,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_objetivo_3">3.1. Objetivo</h3>
 <div class="paragraph">
-<p>O objetivo dessa atividade é criar um programa em Python que dada uma imagem-exemplo, conte o número de objetos que estão na imagem, sem contar objetos que tocam na borda. O programa também deverá ser capaz de contar quantos objetos na imagem são "ocos", isto é, possuem buracos dentro dele. A imagem a ser processada tem apenas dois tons: branco (tom de cinza 255) e preto (tom de cinza 0), apenas por simplicidade.</p>
+<p>O objetivo dessa atividade é criar um programa em Python que dada uma imagem-exemplo, conte o número de objetos que estão na imagem, sem contar objetos que tocam na borda. O programa também deverá ser capaz de contar quantos objetos na imagem são "ocos", isto é, possuem buracos dentro dele. A imagem a ser processada tem apenas dois tons: branco (tom de cinza 255) e preto (tom de cinza 0), apenas por simplicidade. A Figura 4 é a imagem fornecida pelo professor para realização dessa prática. Ela pode ser baixada <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/bolhas.png">aqui</a>.</p>
+</div>
+<div id="img-bolhas" class="paragraph">
+<div class="title">Imagem a ser processada</div>
+<p>image::images/bolhas.png</p>
 </div>
 </div>
 <div class="sect2">
@@ -529,10 +533,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Na função <strong>floodfill</strong> pode-se usar o conceito de 8-vizinhos ou 4-vizinhos. Nessa prática, utilizou-se o 4-vizinhos. A função inicia a partir da semente e verifica quais vizinhos têm o mesmo tom de cinza da semente e, ao encontrar, adiciona o pixel em uma lista. Após testar todos os vizinhos, pega-se o primeiro elemento da lista e atribui o valor do rotulo para esse pixel. Esses passos são repetidos até que a lista esteja vazia.</p>
 </div>
 <div class="paragraph">
-<p>Para contar regiões, utilizamos a função floodfill para preencher cada objeto com um rotulo diferente. O processo consiste em varrer a imagem até encontrar um pixel branco. Ao encontrar, executa-se o <strong>floodfill</strong> utilizando esse pixel como semente. Ao preencher, incrementa-se o rótulo e volta-se a varrer a imagem até que todas as regiões estejam rotuladas. Conta-se o número de regiões, utilizando o valor do último rotulo.</p>
+<p>Inicialmente, é necessário remover as regiões que estão na borda da imagem. Para isso, basta percorrer as linhas e colunas da borda e executar o <strong>floodfill</strong> para todos os pixels brancos encontrados. A imagem abaixo mostra a imagem sem os objetos que tocam as bordas.</p>
+</div>
+<div id="img-bolhas-sem-borda" class="paragraph">
+<div class="title">Imagem sem os obejtos que tocam a borda</div>
+<p>image::images/bolhas_sem_borda.png</p>
 </div>
 <div class="paragraph">
-<p>Antes, entretanto, é necessário remover as regiões que estão na borda da imagem. Para isso, basta percorrer as linhas e colunas da borda e executar o <strong>floodfill</strong> para todos os pixels brancos encontrados.</p>
+<p>Para contar regiões, utilizamos a função floodfill para preencher cada objeto com um rotulo diferente. O processo consiste em varrer a imagem até encontrar um pixel branco. Ao encontrar, executa-se o <strong>floodfill</strong> utilizando esse pixel como semente. Ao preencher, incrementa-se o rótulo e volta-se a varrer a imagem até que todas as regiões estejam rotuladas. Conta-se o número de regiões, utilizando o valor do último rotulo.</p>
+</div>
+<div id="img-bolhas-rotulada" class="paragraph">
+<div class="title">Imagem rotulada</div>
+<p>image::images/bolhas_rotulada.png</p>
 </div>
 <div class="paragraph">
 <p>Por fim, para contar o número de objetos que têm buraco, utiliza-se o <strong>floodfill</strong> no primeiro pixel da imagem, preenchendo o funda da imagem com um tom de cinza diferente de 0. Após isso, basta varrer a imagem linha por linha e buscar pixels com tom de cinza 0. Ao encontrar, verifica-se o tom de cinza imediantamente à esquerda deste e, caso este tenha um tom de cinza diferente do fundo, incrementa-se o contador de regiões com buraco. Após esse passo, é importante executar o <strong>floodfill</strong> no pixel de tom de cinza 0 (que representa o buraco na região) e no pixel imediatamente à esquerda deste (pixel que pertence a região que tem um buraco), pois é possível que alguma região tenha dois buracos, e estas devem ser contadas apenas uma vez. Assim, quando o algoritmo continuar a varredura e encontrar o pixel com tom de cinza 0 referente ao outro buraco da figura, ao testar o pixel imadiatamente à esquerda, este será do tom de cinza do fundo e portanto o contador de regiões com buraco não será incrementado. Você pode baixar o código fonte <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/contador-objetos">aqui</a></p>
@@ -546,7 +558,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-07 16:51:13 -03
+Last updated 2018-09-07 17:09:22 -03
 </div>
 </div>
 </body>

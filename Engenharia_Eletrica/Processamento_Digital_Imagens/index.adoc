@@ -14,7 +14,7 @@ O objetivo dessa atividade é criar um programa em Python que dada uma imagem, e
 
 [#img-gabriel]
 .Imagem a ser processada
-image::gabriel.png[Imagem a ser processada]
+image::images/gabriel.png[Imagem a ser processada]
 
 === Implementação
 Dada uma imagem e dois pontos, (x1, y1) e (x2, y2), dentro das dimensões da imagem, basta varrer a imagem do ponto x1 até o ponto x2 e do ponto y1 até o ponto y2, alterando o valor daquele pixel, p_n, para um novo valor dado por 255 - p_n. Você pode baixar o código fonte link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/negativo_imagem[aqui].
@@ -33,12 +33,16 @@ A implementação dessa atividade foi bastante simples. Dada uma imagem, utilizo
 
 [#img-troca]
 .Imagem com regiões trocadas
-image::troca_regiao.png[Imagem trocada]
+image::images/troca_regiao.png[Imagem trocada]
 
 == Contador de objetos
 
 === Objetivo
-O objetivo dessa atividade é criar um programa em Python que dada uma imagem-exemplo, conte o número de objetos que estão na imagem, sem contar objetos que tocam na borda. O programa também deverá ser capaz de contar quantos objetos na imagem são "ocos", isto é, possuem buracos dentro dele. A imagem a ser processada tem apenas dois tons: branco (tom de cinza 255) e preto (tom de cinza 0), apenas por simplicidade.
+O objetivo dessa atividade é criar um programa em Python que dada uma imagem-exemplo, conte o número de objetos que estão na imagem, sem contar objetos que tocam na borda. O programa também deverá ser capaz de contar quantos objetos na imagem são "ocos", isto é, possuem buracos dentro dele. A imagem a ser processada tem apenas dois tons: branco (tom de cinza 255) e preto (tom de cinza 0), apenas por simplicidade. A Figura 4 é a imagem fornecida pelo professor para realização dessa prática. Ela pode ser baixada link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/bolhas.png[aqui].
+
+[#img-bolhas]
+.Imagem a ser processada 
+image::images/bolhas.png
 
 === Implementação
 Para implementação dessa prática, o primeiro passo foi a elaboração da função *floodfill*. A função *floodfill* é uma rotina simples para preenchimento de regiões que possuam um mesmo tom de cinza. Ela tem os seguintes argumentos:
@@ -48,9 +52,17 @@ Para implementação dessa prática, o primeiro passo foi a elaboração da fun�
 
 Na função *floodfill* pode-se usar o conceito de 8-vizinhos ou 4-vizinhos. Nessa prática, utilizou-se o 4-vizinhos. A função inicia a partir da semente e verifica quais vizinhos têm o mesmo tom de cinza da semente e, ao encontrar, adiciona o pixel em uma lista. Após testar todos os vizinhos, pega-se o primeiro elemento da lista e atribui o valor do rotulo para esse pixel. Esses passos são repetidos até que a lista esteja vazia. 
 
+Inicialmente, é necessário remover as regiões que estão na borda da imagem. Para isso, basta percorrer as linhas e colunas da borda e executar o *floodfill* para todos os pixels brancos encontrados. A imagem abaixo mostra a imagem sem os objetos que tocam as bordas.
+
+[#img-bolhas-sem-borda]
+.Imagem sem os obejtos que tocam a borda 
+image::images/bolhas_sem_borda.png
+
 Para contar regiões, utilizamos a função floodfill para preencher cada objeto com um rotulo diferente. O processo consiste em varrer a imagem até encontrar um pixel branco. Ao encontrar, executa-se o *floodfill* utilizando esse pixel como semente. Ao preencher, incrementa-se o rótulo e volta-se a varrer a imagem até que todas as regiões estejam rotuladas. Conta-se o número de regiões, utilizando o valor do último rotulo. 
 
-Antes, entretanto, é necessário remover as regiões que estão na borda da imagem. Para isso, basta percorrer as linhas e colunas da borda e executar o *floodfill* para todos os pixels brancos encontrados. 
+[#img-bolhas-rotulada]
+.Imagem rotulada 
+image::images/bolhas_rotulada.png
 
 Por fim, para contar o número de objetos que têm buraco, utiliza-se o *floodfill* no primeiro pixel da imagem, preenchendo o funda da imagem com um tom de cinza diferente de 0. Após isso, basta varrer a imagem linha por linha e buscar pixels com tom de cinza 0. Ao encontrar, verifica-se o tom de cinza imediantamente à esquerda deste e, caso este tenha um tom de cinza diferente do fundo, incrementa-se o contador de regiões com buraco. Após esse passo, é importante executar o *floodfill* no pixel de tom de cinza 0 (que representa o buraco na região) e no pixel imediatamente à esquerda deste (pixel que pertence a região que tem um buraco), pois é possível que alguma região tenha dois buracos, e estas devem ser contadas apenas uma vez. Assim, quando o algoritmo continuar a varredura e encontrar o pixel com tom de cinza 0 referente ao outro buraco da figura, ao testar o pixel imadiatamente à esquerda, este será do tom de cinza do fundo e portanto o contador de regiões com buraco não será incrementado. Você pode baixar o código fonte link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/contador-objetos[aqui]
 
