@@ -91,7 +91,7 @@ image::images/borrada_18.png[Imagem rotulada]
 == Normalização de histograma
 
 === Objetivo
-O objetivo dessa prática é utilizar a função *normalize* para normalizar o histograma de uma imagem. A normalização de um histograma, serve para aumentar o contraste em uma imagem. A operação de normalização, pega uma imagem e recalcula seus pixels de maneira que eles fiquem distribuídos em todos os níveis de tons (de 0 a 255), aumentando assim o contraste entre tons diferentes. Para essa prática, usaremos uma foto cedida por uma amiga. A imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/rapha.png[rapha.png] foi autorizada por Raphaella para ser usada. 
+O objetivo dessa prática é utilizar a função *normalize* para normalizar o histograma de uma imagem. A normalização de um histograma, serve para aumentar o contraste em uma imagem. A operação de normalização, pega uma imagem e recalcula seus pixels de maneira que eles fiquem distribuídos em todos os níveis de tons (de 0 a 255), aumentando assim o contraste entre tons diferentes. Para essa prática, usaremos uma foto cedida por uma amiga. A imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/rapha.png[rapha.png] foi autorizada por Raphaela para ser usada. 
 
 [#img-rapha]
 .Imagem original
