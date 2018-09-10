@@ -133,9 +133,9 @@ asciimath:[\alpha = \frac{tanh(\frac{x - L1}{d}) - tanh(\frac{x - L2}{d}) }{2}]
 
 Onde *L1* e *L2* definem o limite superior e inferior fora dos quais a imagem estará fora de foco e *d* o quão suave é a transição da imagem fora de foco para a imagem em foco. O peso stem:[\alpha] será dado para a imagem original e o peso stem:[1 - \alpha] para a imagem borrada. Dessa maneira, a imagem final será dada por:
 
-asciimath:[g = (\alpha * f) + (1 - \alpha) * f_borrada]
+asciimath:[g = (\alpha * f) + (1 - \alpha) * f']
 
-Serão acrescentadas barras para que o usuário controle interativamente os valores de L1, L2 e d. Ao final, o usuário deve usar a letra *Q* para fechar o programa e e será salva a imagem final. Segue a saída do programa:
+Onde f' é a imagem borrada. Serão acrescentadas barras para que o usuário controle interativamente os valores de L1, L2 e d. Ao final, o usuário deve usar a letra *Q* para fechar o programa e e será salva a imagem final. Segue a saída do programa:
 
 [#img-emirates-ts]
 .Imagem com efeito tilt-shift

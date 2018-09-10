@@ -686,10 +686,10 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 <p>Onde <strong>L1</strong> e <strong>L2</strong> definem o limite superior e inferior fora dos quais a imagem estará fora de foco e <strong>d</strong> o quão suave é a transição da imagem fora de foco para a imagem em foco. O peso \(\alpha\) será dado para a imagem original e o peso \(1 - \alpha\) para a imagem borrada. Dessa maneira, a imagem final será dada por:</p>
 </div>
 <div class="paragraph">
-<p>\$g = (\alpha * f) + (1 - \alpha) * f_borrada\$</p>
+<p>\$g = (\alpha * f) + (1 - \alpha) * f'\$</p>
 </div>
 <div class="paragraph">
-<p>Serão acrescentadas barras para que o usuário controle interativamente os valores de L1, L2 e d. Ao final, o usuário deve usar a letra <strong>Q</strong> para fechar o programa e e será salva a imagem final. Segue a saída do programa:</p>
+<p>Onde f' é a imagem borrada. Serão acrescentadas barras para que o usuário controle interativamente os valores de L1, L2 e d. Ao final, o usuário deve usar a letra <strong>Q</strong> para fechar o programa e e será salva a imagem final. Segue a saída do programa:</p>
 </div>
 <div id="img-emirates-ts" class="imageblock">
 <div class="content">
@@ -703,7 +703,7 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-09 23:10:58 -03
+Last updated 2018-09-09 23:14:00 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">
