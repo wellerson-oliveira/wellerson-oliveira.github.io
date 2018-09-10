@@ -667,6 +667,12 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 <div class="paragraph">
 <p>o objetivo dessa prática é criar, utilizando a biblioteca OpenCV, o efeito conhecido como <strong>tilt-shift</strong>. O efeito <strong>tilt-shift</strong> é criado mecanicamente inclinando a lente da câmera. Essa inclinação faz com que um objeto fique em foco enquanto outros que estão no mesmo plano sejam fotografados sem foco. É possível criar um efeito de miniatura em imagens através desse efeito. A imagem utilizada nessa prática está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/emirates.png">aqui</a>. A imagem foi baixada originalmente no ótimo site <a href="https://www.desktopbackground.org/wallpaper/fonds-decran-emirates-stadium-tous-les-wallpapers-emirates-stadium-557833/">desktopbackground.org</a></p>
 </div>
+<div id="img-emirates" class="imageblock">
+<div class="content">
+<img src="images/emirates.png" alt="Imagem rotulada">
+</div>
+<div class="title">Figure 13. Imagem original. Créditos: <a href="https://www.desktopbackground.or/">Desktop Background</a></div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_implementação_6">6.2. Implementação</h3>
@@ -676,13 +682,28 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 <div class="paragraph">
 <p>\$\alpha = \frac{tanh(\frac{x - L1}{d}) - tanh(\frac{x - L2}{d}) }{2}\$</p>
 </div>
+<div class="paragraph">
+<p>Onde <strong>L1</strong> e <strong>L2</strong> definem o limite superior e inferior fora dos quais a imagem estará fora de foco e <strong>d</strong> o quão suave é a transição da imagem fora de foco para a imagem em foco. O peso \(\alpha\) será dado para a imagem original e o peso \(1 - \alpha\) para a imagem borrada. Dessa maneira, a imagem final será dada por:</p>
+</div>
+<div class="paragraph">
+<p>\$g = (\alpha * f) + (1 - \alpha) * f_borrada\$</p>
+</div>
+<div class="paragraph">
+<p>Serão acrescentadas barras para que o usuário controle interativamente os valores de L1, L2 e d. Ao final, o usuário deve usar a letra <strong>Q</strong> para fechar o programa e e será salva a imagem final. Segue a saída do programa:</p>
+</div>
+<div id="img-emirates-ts" class="imageblock">
+<div class="content">
+<img src="images/resultado.png" alt="Imagem rotulada">
+</div>
+<div class="title">Figure 14. Imagem com efeito tilt-shift</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-09 23:02:04 -03
+Last updated 2018-09-09 23:10:58 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">
