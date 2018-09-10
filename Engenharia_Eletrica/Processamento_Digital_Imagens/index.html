@@ -457,6 +457,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_implementação_5">5.2. Implementação</a></li>
 </ul>
 </li>
+<li><a href="#_tilt_shift">6. Tilt-shift</a>
+<ul class="sectlevel2">
+<li><a href="#_objetivo_6">6.1. Objetivo</a></li>
+<li><a href="#_implementação_6">6.2. Implementação</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -653,10 +659,30 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_tilt_shift">6. Tilt-shift</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_objetivo_6">6.1. Objetivo</h3>
+<div class="paragraph">
+<p>o objetivo dessa prática é criar, utilizando a biblioteca OpenCV, o efeito conhecido como <strong>tilt-shift</strong>. O efeito <strong>tilt-shift</strong> é criado mecanicamente inclinando a lente da câmera. Essa inclinação faz com que um objeto fique em foco enquanto outros que estão no mesmo plano sejam fotografados sem foco. É possível criar um efeito de miniatura em imagens através desse efeito. A imagem utilizada nessa prática está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/emirates.png">aqui</a>. A imagem foi baixada originalmente link:https://www.desktopbackground.org/wallpaper/fonds-decran-emirates-stadium-tous-les-wallpapers-emirates-stadium-557833 [aqui], no ótimo site <a href="https://www.desktopbackground.org/">desktopbackground.org</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implementação_6">6.2. Implementação</h3>
+<div class="paragraph">
+<p>Para criar o efeito <strong>tilt-shift</strong>, vamos nos utilizar do efeito link:https://wellerson-oliveira.github.io/Engenharia_Eletrica/Processamento_Digital_Imagens/index.html#_filtro_borramento [borramento], já apresentado nesse site, para criar o efeito de uma imagem fora de foco. Assim, com a imagem original e uma cópia borrada, pode-se combinar as duas utilizando uma soma ponderada para criar o <strong>tilt-shift</strong>. O peso da soma ponderada será feito utilizando a seguinte equação:</p>
+</div>
+<div class="paragraph">
+<p>\$\alpha = \frac{tanh(\frac{x - L1}{d} - tanh(\frac{x - L2}{d} }{2}\$</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-07 19:59:42 -03
+Last updated 2018-09-09 22:56:56 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">
