@@ -120,12 +120,12 @@ image::images/hist_new.png[Imagem rotulada]
 == Tilt-shift
 
 === Objetivo
-o objetivo dessa prática é criar, utilizando a biblioteca OpenCV, o efeito conhecido como *tilt-shift*. O efeito *tilt-shift* é criado mecanicamente inclinando a lente da câmera. Essa inclinação faz com que um objeto fique em foco enquanto outros que estão no mesmo plano sejam fotografados sem foco. É possível criar um efeito de miniatura em imagens através desse efeito. A imagem utilizada nessa prática está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/emirates.png[aqui]. A imagem foi baixada originalmente link:https://www.desktopbackground.org/wallpaper/fonds-decran-emirates-stadium-tous-les-wallpapers-emirates-stadium-557833 [aqui], no ótimo site link:https://www.desktopbackground.org/[desktopbackground.org]
+o objetivo dessa prática é criar, utilizando a biblioteca OpenCV, o efeito conhecido como *tilt-shift*. O efeito *tilt-shift* é criado mecanicamente inclinando a lente da câmera. Essa inclinação faz com que um objeto fique em foco enquanto outros que estão no mesmo plano sejam fotografados sem foco. É possível criar um efeito de miniatura em imagens através desse efeito. A imagem utilizada nessa prática está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/emirates.png[aqui]. A imagem foi baixada originalmente no ótimo site link:https://www.desktopbackground.org/wallpaper/fonds-decran-emirates-stadium-tous-les-wallpapers-emirates-stadium-557833/[desktopbackground.org]
 
 === Implementação
-Para criar o efeito *tilt-shift*, vamos nos utilizar do efeito link:https://wellerson-oliveira.github.io/Engenharia_Eletrica/Processamento_Digital_Imagens/index.html#_filtro_borramento [borramento], já apresentado nesse site, para criar o efeito de uma imagem fora de foco. Assim, com a imagem original e uma cópia borrada, pode-se combinar as duas utilizando uma soma ponderada para criar o *tilt-shift*. O peso da soma ponderada será feito utilizando a seguinte equação:
+Para criar o efeito *tilt-shift*, vamos nos utilizar do efeito link:https://wellerson-oliveira.github.io/Engenharia_Eletrica/Processamento_Digital_Imagens/index.html#_filtro_borramento[borramento], já apresentado nesse site, para criar o efeito de uma imagem fora de foco. Assim, com a imagem original e uma cópia borrada, pode-se combinar as duas utilizando uma soma ponderada para criar o *tilt-shift*. O peso da soma ponderada será feito utilizando a seguinte equação:
 
-asciimath:[\alpha = \frac{tanh(\frac{x - L1}{d} - tanh(\frac{x - L2}{d} }{2}]
+asciimath:[\alpha = \frac{tanh(\frac{x - L1}{d}) - tanh(\frac{x - L2}{d}) }{2}]
 
 
 
