@@ -457,16 +457,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_implementação_5">5.2. Implementação</a></li>
 </ul>
 </li>
-<li><a href="#_tilt_shift">6. Tilt-shift</a>
+<li><a href="#_detector_de_movimento">6. Detector de Movimento</a>
 <ul class="sectlevel2">
-<li><a href="#_objetivo_6">6.1. Objetivo</a></li>
+<li><a href="#_objetivos">6.1. Objetivos</a></li>
 <li><a href="#_implementação_6">6.2. Implementação</a></li>
 </ul>
 </li>
-<li><a href="#_filtro_laplaciano_e_gaussiano">7. Filtro laplaciano e gaussiano</a>
+<li><a href="#_tilt_shift">7. Tilt-shift</a>
 <ul class="sectlevel2">
-<li><a href="#_objetivo_7">7.1. Objetivo</a></li>
+<li><a href="#_objetivo_6">7.1. Objetivo</a></li>
 <li><a href="#_implementação_7">7.2. Implementação</a></li>
+</ul>
+</li>
+<li><a href="#_filtro_laplaciano_e_gaussiano">8. Filtro laplaciano e gaussiano</a>
+<ul class="sectlevel2">
+<li><a href="#_objetivo_7">8.1. Objetivo</a></li>
+<li><a href="#_implementação_8">8.2. Implementação</a></li>
 </ul>
 </li>
 </ul>
@@ -666,10 +672,27 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 </div>
 </div>
 <div class="sect1">
-<h2 id="_tilt_shift">6. Tilt-shift</h2>
+<h2 id="_detector_de_movimento">6. Detector de Movimento</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_objetivo_6">6.1. Objetivo</h3>
+<h3 id="_objetivos">6.1. Objetivos</h3>
+<div class="paragraph">
+<p>O objetivo dessa prática é criar um detector de movimento simples que use a variação no histograma para detectar os movimentos. Ao detectar o movimento na webcam, a tela fica avermelhada, indicando que o detector ativou.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implementação_6">6.2. Implementação</h3>
+<div class="paragraph">
+<p>Utilizando a imagem capturada pela webcam, calcula-se o histograma da imagem. Após isso, captura-se a próxima imagem, calcula o histograma e utiliza-se a média dos valores absolutos das diferenças de cada nivel do histograma. Após isso, basta comparar esse valor a um limiar escolhido. Caso o valor seja maior, ativa-se o alarme. Nesse caso o alarme é uma imagem apenas com tons de vermelho. Basta-se apenas zerar as outras duas componentes de cor. Repete-se então o processo para cada frame capturado. O código-fonte está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtros-espaciais">aqui</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tilt_shift">7. Tilt-shift</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_objetivo_6">7.1. Objetivo</h3>
 <div class="paragraph">
 <p>o objetivo dessa prática é criar, utilizando a biblioteca OpenCV, o efeito conhecido como <strong>tilt-shift</strong>. O efeito <strong>tilt-shift</strong> é criado mecanicamente inclinando a lente da câmera. Essa inclinação faz com que um objeto fique em foco enquanto outros que estão no mesmo plano sejam fotografados sem foco. É possível criar um efeito de miniatura em imagens através desse efeito. A imagem utilizada nessa prática está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/emirates.png">aqui</a>. A imagem foi baixada originalmente no ótimo site <a href="https://www.desktopbackground.org/wallpaper/fonds-decran-emirates-stadium-tous-les-wallpapers-emirates-stadium-557833/">desktopbackground.org</a></p>
 </div>
@@ -681,7 +704,7 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 </div>
 </div>
 <div class="sect2">
-<h3 id="_implementação_6">6.2. Implementação</h3>
+<h3 id="_implementação_7">7.2. Implementação</h3>
 <div class="paragraph">
 <p>Para criar o efeito <strong>tilt-shift</strong>, vamos nos utilizar do efeito <a href="https://wellerson-oliveira.github.io/Engenharia_Eletrica/Processamento_Digital_Imagens/index.html#_filtro_borramento">borramento</a>, já apresentado nesse site, para criar o efeito de uma imagem fora de foco. Assim, com a imagem original e uma cópia borrada, pode-se combinar as duas utilizando uma soma ponderada para criar o <strong>tilt-shift</strong>. O peso da soma ponderada será feito utilizando a seguinte equação:</p>
 </div>
@@ -707,16 +730,16 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 </div>
 </div>
 <div class="sect1">
-<h2 id="_filtro_laplaciano_e_gaussiano">7. Filtro laplaciano e gaussiano</h2>
+<h2 id="_filtro_laplaciano_e_gaussiano">8. Filtro laplaciano e gaussiano</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_objetivo_7">7.1. Objetivo</h3>
+<h3 id="_objetivo_7">8.1. Objetivo</h3>
 <div class="paragraph">
 <p>O objetivo dessa prática é mostrar o efeitos de dois tipos de filtros espaciais: O filtro suavizador gaussiano e o filtro aguçante laplaciano. usaremos novamente a imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/gabriel.png">gabriel.png</a> para analisar os efeitos dos dois filtros.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_implementação_7">7.2. Implementação</h3>
+<h3 id="_implementação_8">8.2. Implementação</h3>
 <div class="paragraph">
 <p>A implementação dessa prática é bastante similar à do <a href="https://wellerson-oliveira.github.io/Engenharia_Eletrica/Processamento_Digital_Imagens/index.html#_filtro_borramento">filtro de borramento</a>. Na verdade, vamos apenas alterar o kernel que será passado para a função <strong>filter2D</strong>. Para o filtro gaussiano, o kernel 3x3 foi criado assim: np.array([[1, 2, 1], [2, 4, 2], [1, 2, 1]], np.float32) e o kernel do filtro laplaciano foi: np.array([[0, -1, 0], [-1, 4, -1], [0, -1, 0]], np.float32).</p>
 </div>
@@ -736,7 +759,7 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 <div class="title">Figure 16. Imagem processada pelo filtro laplaciano</div>
 </div>
 <div class="paragraph">
-<p>Uma operação que pode ser utilizada para alterar o efeito do filtro no realce da imagem é aplicar o filtro laplaciano na imagem de saída do filtro gaussiano. O filtro gaussiano diminui o efeito de bordas, deixando-as mais suaves, e então o filtro laplaciano aguça apenas as bordas principais da imagem. Para obter o efeito, basta somar o resultado desse filtro com a imagem original. Abaixo segue um exemplo.</p>
+<p>Uma operação que pode ser utilizada para alterar o efeito do filtro no realce da imagem é aplicar o filtro laplaciano na imagem de saída do filtro gaussiano. O filtro gaussiano diminui o efeito de bordas, deixando-as mais suaves, e então o filtro laplaciano aguça apenas as bordas principais da imagem. Para obter o efeito, basta somar o resultado desse filtro com a imagem original. Abaixo segue um exemplo.  O código-fonte está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/detector-movimento">aqui</a>.</p>
 </div>
 <div id="img-gaussiano-laplaciano" class="imageblock">
 <div class="content">
@@ -756,7 +779,7 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-11 19:39:14 -03
+Last updated 2018-09-11 20:09:01 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">
