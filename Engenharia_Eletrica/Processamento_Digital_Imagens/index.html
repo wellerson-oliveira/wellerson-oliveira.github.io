@@ -683,7 +683,7 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 <div class="sect2">
 <h3 id="_implementação_6">6.2. Implementação</h3>
 <div class="paragraph">
-<p>Utilizando a imagem capturada pela webcam, calcula-se o histograma da imagem. Após isso, captura-se a próxima imagem, calcula o histograma e utiliza-se a média dos valores absolutos das diferenças de cada nivel do histograma. Após isso, basta comparar esse valor a um limiar escolhido. Caso o valor seja maior, ativa-se o alarme. Nesse caso o alarme é uma imagem apenas com tons de vermelho. Basta-se apenas zerar as outras duas componentes de cor. Repete-se então o processo para cada frame capturado. O código-fonte está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtros-espaciais">aqui</a>.</p>
+<p>Utilizando a imagem capturada pela webcam, calcula-se o histograma da imagem. Após isso, captura-se a próxima imagem, calcula o histograma e utiliza-se a média dos valores absolutos das diferenças de cada nivel do histograma. Após isso, basta comparar esse valor a um limiar escolhido. Caso o valor seja maior, ativa-se o alarme. Nesse caso o alarme é uma imagem apenas com tons de vermelho. Basta-se apenas zerar as outras duas componentes de cor. Repete-se então o processo para cada frame capturado. O código-fonte está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/detector-movimento">aqui</a>.</p>
 </div>
 </div>
 </div>
@@ -759,7 +759,7 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 <div class="title">Figure 16. Imagem processada pelo filtro laplaciano</div>
 </div>
 <div class="paragraph">
-<p>Uma operação que pode ser utilizada para alterar o efeito do filtro no realce da imagem é aplicar o filtro laplaciano na imagem de saída do filtro gaussiano. O filtro gaussiano diminui o efeito de bordas, deixando-as mais suaves, e então o filtro laplaciano aguça apenas as bordas principais da imagem. Para obter o efeito, basta somar o resultado desse filtro com a imagem original. Abaixo segue um exemplo.  O código-fonte está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/detector-movimento">aqui</a>.</p>
+<p>Uma operação que pode ser utilizada para alterar o efeito do filtro no realce da imagem é aplicar o filtro laplaciano na imagem de saída do filtro gaussiano. O filtro gaussiano diminui o efeito de bordas, deixando-as mais suaves, e então o filtro laplaciano aguça apenas as bordas principais da imagem. Para obter o efeito, basta somar o resultado desse filtro com a imagem original. Abaixo segue um exemplo.  O código-fonte está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtros-espaciais">aqui</a>.</p>
 </div>
 <div id="img-gaussiano-laplaciano" class="imageblock">
 <div class="content">
@@ -779,7 +779,7 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-11 20:09:01 -03
+Last updated 2018-09-11 20:13:58 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -123,7 +123,7 @@ image::images/hist_new.png[Imagem rotulada]
 O objetivo dessa prática é criar um detector de movimento simples que use a variação no histograma para detectar os movimentos. Ao detectar o movimento na webcam, a tela fica avermelhada, indicando que o detector ativou.
 
 === Implementação
-Utilizando a imagem capturada pela webcam, calcula-se o histograma da imagem. Após isso, captura-se a próxima imagem, calcula o histograma e utiliza-se a média dos valores absolutos das diferenças de cada nivel do histograma. Após isso, basta comparar esse valor a um limiar escolhido. Caso o valor seja maior, ativa-se o alarme. Nesse caso o alarme é uma imagem apenas com tons de vermelho. Basta-se apenas zerar as outras duas componentes de cor. Repete-se então o processo para cada frame capturado. O código-fonte está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtros-espaciais[aqui].
+Utilizando a imagem capturada pela webcam, calcula-se o histograma da imagem. Após isso, captura-se a próxima imagem, calcula o histograma e utiliza-se a média dos valores absolutos das diferenças de cada nivel do histograma. Após isso, basta comparar esse valor a um limiar escolhido. Caso o valor seja maior, ativa-se o alarme. Nesse caso o alarme é uma imagem apenas com tons de vermelho. Basta-se apenas zerar as outras duas componentes de cor. Repete-se então o processo para cada frame capturado. O código-fonte está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/detector-movimento[aqui].
 
 == Tilt-shift
 
@@ -168,7 +168,7 @@ image::images/gaussiano.png[Imagem rotulada]
 .Imagem processada pelo filtro laplaciano
 image::images/laplaciano.png[Imagem rotulada]
 
-Uma operação que pode ser utilizada para alterar o efeito do filtro no realce da imagem é aplicar o filtro laplaciano na imagem de saída do filtro gaussiano. O filtro gaussiano diminui o efeito de bordas, deixando-as mais suaves, e então o filtro laplaciano aguça apenas as bordas principais da imagem. Para obter o efeito, basta somar o resultado desse filtro com a imagem original. Abaixo segue um exemplo.  O código-fonte está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/detector-movimento[aqui].
+Uma operação que pode ser utilizada para alterar o efeito do filtro no realce da imagem é aplicar o filtro laplaciano na imagem de saída do filtro gaussiano. O filtro gaussiano diminui o efeito de bordas, deixando-as mais suaves, e então o filtro laplaciano aguça apenas as bordas principais da imagem. Para obter o efeito, basta somar o resultado desse filtro com a imagem original. Abaixo segue um exemplo.  O código-fonte está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtros-espaciais[aqui].
 
 [#img-gaussiano-laplaciano]
 .Imagem processada pelo filtro gaussiano e laplaciano
