@@ -141,6 +141,47 @@ Onde f' é a imagem borrada. Serão acrescentadas barras para que o usuário con
 .Imagem com efeito tilt-shift
 image::images/resultado.png[Imagem rotulada]
 
+== Filtro laplaciano e gaussiano
+
+=== Objetivo
+O objetivo dessa prática é mostrar o efeitos de dois tipos de filtros espaciais: O filtro suavizador gaussiano e o filtro aguçante laplaciano. usaremos novamente a imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/gabriel.png[gabriel.png] para analisar os efeitos dos dois filtros. 
+
+=== Implementação
+
+A implementação dessa prática é bastante similar à do link:https://wellerson-oliveira.github.io/Engenharia_Eletrica/Processamento_Digital_Imagens/index.html#_filtro_borramento[filtro de borramento]. Na verdade, vamos apenas alterar o kernel que será passado para a função *filter2D*. Para o filtro gaussiano, o kernel 3x3 foi criado assim: np.array([[1, 2, 1], [2, 4, 2], [1, 2, 1]], np.float32) e o kernel do filtro laplaciano foi: np.array([[0, -1, 0], [-1, 4, -1], [0, -1, 0]], np.float32). 
+
+O objetivo do filtro gaussiano é borrar a imagem, entretanto dando um peso maior ao pixel central, diferentemente do filtro de borramento visto anteriormente. Por sua vez, o filtro laplaciano aproxima uma operação de derivada de segunda grau por um conjunto de diferenças. Dessa maneira, o filtro laplaciano aguça as bordas da imagem. Abaixo vemos os resultados para o filtro gaussiano e laplaciano. 
+
+[#img-gaussiano]
+.Imagem processada pelo filtro gaussiano
+image::images/gaussiano.png[Imagem rotulada]
+
+[#img-laplaciano]
+.Imagem processada pelo filtro laplaciano
+image::images/laplaciano.png[Imagem rotulada]
+
+Uma operação que pode ser utilizada para alterar o efeito do filtro no realce da imagem é aplicar o filtro laplaciano na imagem de saída do filtro gaussiano. O filtro gaussiano diminui o efeito de bordas, deixando-as mais suaves, e então o filtro laplaciano aguça apenas as bordas principais da imagem. Para obter o efeito, basta somar o resultado desse filtro com a imagem original. Abaixo segue um exemplo. 
+
+[#img-gaussiano-laplaciano]
+.Imagem processada pelo filtro gaussiano e laplaciano
+image::images/laplaciano_gauss.png[Imagem rotulada]
+
+[#img-aguçada]
+.Imagem original aguçada pelo filtro laplaciano-gaussiano
+image::images/final.png[Imagem rotulada]
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

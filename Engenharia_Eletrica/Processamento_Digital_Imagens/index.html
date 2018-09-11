@@ -463,6 +463,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_implementação_6">6.2. Implementação</a></li>
 </ul>
 </li>
+<li><a href="#_filtro_laplaciano_e_gaussiano">7. Filtro laplaciano e gaussiano</a>
+<ul class="sectlevel2">
+<li><a href="#_objetivo_7">7.1. Objetivo</a></li>
+<li><a href="#_implementação_7">7.2. Implementação</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -700,10 +706,57 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_filtro_laplaciano_e_gaussiano">7. Filtro laplaciano e gaussiano</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_objetivo_7">7.1. Objetivo</h3>
+<div class="paragraph">
+<p>O objetivo dessa prática é mostrar o efeitos de dois tipos de filtros espaciais: O filtro suavizador gaussiano e o filtro aguçante laplaciano. usaremos novamente a imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/images/gabriel.png">gabriel.png</a> para analisar os efeitos dos dois filtros.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implementação_7">7.2. Implementação</h3>
+<div class="paragraph">
+<p>A implementação dessa prática é bastante similar à do <a href="https://wellerson-oliveira.github.io/Engenharia_Eletrica/Processamento_Digital_Imagens/index.html#_filtro_borramento">filtro de borramento</a>. Na verdade, vamos apenas alterar o kernel que será passado para a função <strong>filter2D</strong>. Para o filtro gaussiano, o kernel 3x3 foi criado assim: np.array([[1, 2, 1], [2, 4, 2], [1, 2, 1]], np.float32) e o kernel do filtro laplaciano foi: np.array([[0, -1, 0], [-1, 4, -1], [0, -1, 0]], np.float32).</p>
+</div>
+<div class="paragraph">
+<p>O objetivo do filtro gaussiano é borrar a imagem, entretanto dando um peso maior ao pixel central, diferentemente do filtro de borramento visto anteriormente. Por sua vez, o filtro laplaciano aproxima uma operação de derivada de segunda grau por um conjunto de diferenças. Dessa maneira, o filtro laplaciano aguça as bordas da imagem. Abaixo vemos os resultados para o filtro gaussiano e laplaciano.</p>
+</div>
+<div id="img-gaussiano" class="imageblock">
+<div class="content">
+<img src="images/gaussiano.png" alt="Imagem rotulada">
+</div>
+<div class="title">Figure 15. Imagem processada pelo filtro gaussiano</div>
+</div>
+<div id="img-laplaciano" class="imageblock">
+<div class="content">
+<img src="images/laplaciano.png" alt="Imagem rotulada">
+</div>
+<div class="title">Figure 16. Imagem processada pelo filtro laplaciano</div>
+</div>
+<div class="paragraph">
+<p>Uma operação que pode ser utilizada para alterar o efeito do filtro no realce da imagem é aplicar o filtro laplaciano na imagem de saída do filtro gaussiano. O filtro gaussiano diminui o efeito de bordas, deixando-as mais suaves, e então o filtro laplaciano aguça apenas as bordas principais da imagem. Para obter o efeito, basta somar o resultado desse filtro com a imagem original. Abaixo segue um exemplo.</p>
+</div>
+<div id="img-gaussiano-laplaciano" class="imageblock">
+<div class="content">
+<img src="images/laplaciano_gauss.png" alt="Imagem rotulada">
+</div>
+<div class="title">Figure 17. Imagem processada pelo filtro gaussiano e laplaciano</div>
+</div>
+<div id="img-aguçada" class="imageblock">
+<div class="content">
+<img src="images/final.png" alt="Imagem rotulada">
+</div>
+<div class="title">Figure 18. Imagem original aguçada pelo filtro laplaciano-gaussiano</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-09 23:14:00 -03
+Last updated 2018-09-11 19:39:14 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">
