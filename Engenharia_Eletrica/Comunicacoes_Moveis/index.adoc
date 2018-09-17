@@ -1,0 +1,73 @@
+:stylesheet: clean.css
+
+:toc: left
+
+:stem: latexmath
+
+= Projetos da disciplina Comunicações Móveis
+Autor: Wellerson 
+
+:sectnums:
+
+== Mapa de Potência
+
+=== Introdução
+O objetivo dessa prática foi criar uma simulação no MATLAB de um sistema com sete antenas e mostrar o efeito da perda de percurso e do shadowing na potencia recebida pelos dispositivos móveis. A descrição completa da simualação e minhas análises podem ser encontradas link:https://github.com/wellerson-oliveira/Projetos-comunicoes-moveis/blob/master/Unidade%202/relatorio_prova_1.pdf[aqui]. O código-fonte pode ser baixado link:https://github.com/wellerson-oliveira/Projetos-comunicoes-moveis/tree/master/Unidade%202/codes/Exp%201[aqui]
+
+=== Simulação 
+O sistema a ser simulado tem as seguintes especificações:
+
+* Número de antenas: Sete. Dispostas em um hexágono com uma central;
+* Altura das torres: 30 metros;
+* Altura do dispositivo móvel: 1.5 metro;
+* Potência de Transmissão: 20W;
+* Frequência: 1900 Mhz;
+* Potência mínima de recepção: -90 dBW
+
+As especificações de raio da célula são um parâmtetro da simulação, definido pelo usuário. Considerou-se que a potência recebida em determinado ponto é a maior potência que chega nesse ponto, vinda de cada uma das sete antenas do sistema. 
+
+Inicilamente simulou-se o sistema apenas com o efeito da perda de percurso. A Figura abaixo mostra a simulação do sistema para dois raios de célula: 500 metros e 2000 metros. 
+
+[#img-comparativo-pot]
+.Sistema com perda de percurso para raio a) 2000 metros b) 500 metros
+image::images/path_loss_2km.jpg[Sistema com perda de percurso para raio a) 2000 metros b) 500 metros]
+
+Podemos ver que, devido a consideração apenas da perda de percurso, o gráfico fica suave, já que o único parametro que varia é a distância. Também fica bem claro que, quanto menor o raio das células (isto é, a metade da distância entre uma torre e sua vizinha) melhor a cobertura. 
+
+Agora, inseriu-se o efeito de shadowing no sistema. Esse efeito é modelado somando-se uma variável aleatória gaussiana com media zero e desvio padrão 10dB. O efeito do shadowing é aleatório e por isso, dependendo do raio da célula ele pode alterar consideravelmente a taxa de outage do sistema. Pode-se ver o efeito do shadowing na Figura abaixo.
+
+[#img-mapa_perda_shad]
+.Sistema com perda de percurso e shadowing para raio a) 2000 metros b) 500 metros
+image::images/mapa_com_shadow_500.jpg[Sistema com perda de percurso e shadowing para raio a) 2000 metros b) 500 metros]
+
+Na Figura abaixo é mostrado numericamente o efeito do shadowing no sistema com diferentes raios. Podemos ver que o shadowing é bastante agressivo para sistemas com raio de célula menores. Isso se deve ao efeito aleatório do shadowing e está explicado no fim da página 2 do link:https://github.com/wellerson-oliveira/Projetos-comunicoes-moveis/blob/master/Unidade%202/relatorio_prova_1.pdf[relatório].
+
+[#img-outage-1]
+.Taxas de outage para o sistema apenas com perda de percurso para diferentes raios
+image::images/tabela_outage_mc.jpg[Taxas de outage para o sistema apenas com perda de percurso para diferentes raios]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

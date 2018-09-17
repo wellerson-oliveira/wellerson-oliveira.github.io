@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
 <meta name="author" content="Autor: Wellerson">
-<title>Bem vindo!</title>
+<title>Projetos da disciplina Comunicações Móveis</title>
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
 /* Remove comment around @import statement below when using as a custom stylesheet */
@@ -420,17 +420,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Bem vindo!</h1>
+<h1>Projetos da disciplina Comunicações Móveis</h1>
 <div class="details">
 <span id="author" class="author">Autor: Wellerson</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_projetos_acadêmicos">1. Projetos Acadêmicos</a>
+<li><a href="#_mapa_de_potência">1. Mapa de Potência</a>
 <ul class="sectlevel2">
-<li><a href="#_processamento_digital_de_imagens">1.1. Processamento Digital de Imagens</a></li>
-<li><a href="#_comunicações_móveis">1.2. Comunicações Móveis</a></li>
+<li><a href="#_introdução">1.1. Introdução</a></li>
+<li><a href="#_simulação">1.2. Simulação</a></li>
 </ul>
 </li>
 </ul>
@@ -438,21 +438,73 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_projetos_acadêmicos">1. Projetos Acadêmicos</h2>
+<h2 id="_mapa_de_potência">1. Mapa de Potência</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Bem-vindo a seção de Projetos Acadêmicos. Abaixo, você encontrará meus projetos separados por disciplina. Possivelmente algum projeto de mini-curso também aparecerão. Fiquem a vontade para sugestões, críticas e etc.</p>
-</div>
 <div class="sect2">
-<h3 id="_processamento_digital_de_imagens">1.1. <a href="\Engenharia_Eletrica\Processamento_Digital_Imagens\index.html">Processamento Digital de Imagens</a></h3>
+<h3 id="_introdução">1.1. Introdução</h3>
 <div class="paragraph">
-<p>Projetos relacionados à disciplina Processamento Digital de Imagens, ministrada pelo professor Agostinho. Nessa disciplina, foram criados vários projetos bem divertidos de fazer envolvendo imagem e vídeo.</p>
+<p>O objetivo dessa prática foi criar uma simulação no MATLAB de um sistema com sete antenas e mostrar o efeito da perda de percurso e do shadowing na potencia recebida pelos dispositivos móveis. A descrição completa da simualação e minhas análises podem ser encontradas <a href="https://github.com/wellerson-oliveira/Projetos-comunicoes-moveis/blob/master/Unidade%202/relatorio_prova_1.pdf">aqui</a>. O código-fonte pode ser baixado <a href="https://github.com/wellerson-oliveira/Projetos-comunicoes-moveis/tree/master/Unidade%202/codes/Exp%201">aqui</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_comunicações_móveis">1.2. <a href="\Engenharia_Eletrica\Comunicacoes_Moveis\index.html">Comunicações Móveis</a></h3>
+<h3 id="_simulação">1.2. Simulação</h3>
 <div class="paragraph">
-<p>Projetos desenvolvidos na disciplina de Comunicações Móveis, ministrada pelo professor Vicente Sousa. Nessa disciplina foram desenvolvidas algumas simulações e análises de sistemas de comunicações.</p>
+<p>O sistema a ser simulado tem as seguintes especificações:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Número de antenas: Sete. Dispostas em um hexágono com uma central;</p>
+</li>
+<li>
+<p>Altura das torres: 30 metros;</p>
+</li>
+<li>
+<p>Altura do dispositivo móvel: 1.5 metro;</p>
+</li>
+<li>
+<p>Potência de Transmissão: 20W;</p>
+</li>
+<li>
+<p>Frequência: 1900 Mhz;</p>
+</li>
+<li>
+<p>Potência mínima de recepção: -90 dBW</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As especificações de raio da célula são um parâmtetro da simulação, definido pelo usuário. Considerou-se que a potência recebida em determinado ponto é a maior potência que chega nesse ponto, vinda de cada uma das sete antenas do sistema.</p>
+</div>
+<div class="paragraph">
+<p>Inicilamente simulou-se o sistema apenas com o efeito da perda de percurso. A Figura abaixo mostra a simulação do sistema para dois raios de célula: 500 metros e 2000 metros.</p>
+</div>
+<div id="img-comparativo-pot" class="imageblock">
+<div class="content">
+<img src="images/path_loss_2km.jpg" alt="Sistema com perda de percurso para raio a) 2000 metros b) 500 metros">
+</div>
+<div class="title">Figure 1. Sistema com perda de percurso para raio a) 2000 metros b) 500 metros</div>
+</div>
+<div class="paragraph">
+<p>Podemos ver que, devido a consideração apenas da perda de percurso, o gráfico fica suave, já que o único parametro que varia é a distância. Também fica bem claro que, quanto menor o raio das células (isto é, a metade da distância entre uma torre e sua vizinha) melhor a cobertura.</p>
+</div>
+<div class="paragraph">
+<p>Agora, inseriu-se o efeito de shadowing no sistema. Esse efeito é modelado somando-se uma variável aleatória gaussiana com media zero e desvio padrão 10dB. O efeito do shadowing é aleatório e por isso, dependendo do raio da célula ele pode alterar consideravelmente a taxa de outage do sistema. Pode-se ver o efeito do shadowing na Figura abaixo.</p>
+</div>
+<div id="img-mapa_perda_shad" class="imageblock">
+<div class="content">
+<img src="images/mapa_com_shadow_500.jpg" alt="Sistema com perda de percurso e shadowing para raio a) 2000 metros b) 500 metros">
+</div>
+<div class="title">Figure 2. Sistema com perda de percurso e shadowing para raio a) 2000 metros b) 500 metros</div>
+</div>
+<div class="paragraph">
+<p>Na Figura abaixo é mostrado numericamente o efeito do shadowing no sistema com diferentes raios. Podemos ver que o shadowing é bastante agressivo para sistemas com raio de célula menores. Isso se deve ao efeito aleatório do shadowing e está explicado no fim da página 2 do <a href="https://github.com/wellerson-oliveira/Projetos-comunicoes-moveis/blob/master/Unidade%202/relatorio_prova_1.pdf">relatório</a>.</p>
+</div>
+<div id="img-outage-1" class="imageblock">
+<div class="content">
+<img src="images/tabela_outage_mc.jpg" alt="Taxas de outage para o sistema apenas com perda de percurso para diferentes raios">
+</div>
+<div class="title">Figure 3. Taxas de outage para o sistema apenas com perda de percurso para diferentes raios</div>
 </div>
 </div>
 </div>
@@ -460,8 +512,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-16 22:46:50 -03
+Last updated 2018-09-16 23:35:28 -03
 </div>
 </div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>

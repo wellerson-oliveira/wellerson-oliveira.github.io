@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.7.1">
-<meta name="author" content="Autor: Wellerson">
-<title>Bem vindo!</title>
-<style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
 /* Remove comment around @import statement below when using as a custom stylesheet */
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
@@ -415,53 +405,3 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .print-only{display:block!important}
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
-
-</style>
-</head>
-<body class="article toc2 toc-left">
-<div id="header">
-<h1>Bem vindo!</h1>
-<div class="details">
-<span id="author" class="author">Autor: Wellerson</span><br>
-</div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_projetos_acadêmicos">1. Projetos Acadêmicos</a>
-<ul class="sectlevel2">
-<li><a href="#_processamento_digital_de_imagens">1.1. Processamento Digital de Imagens</a></li>
-<li><a href="#_comunicações_móveis">1.2. Comunicações Móveis</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div id="content">
-<div class="sect1">
-<h2 id="_projetos_acadêmicos">1. Projetos Acadêmicos</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Bem-vindo a seção de Projetos Acadêmicos. Abaixo, você encontrará meus projetos separados por disciplina. Possivelmente algum projeto de mini-curso também aparecerão. Fiquem a vontade para sugestões, críticas e etc.</p>
-</div>
-<div class="sect2">
-<h3 id="_processamento_digital_de_imagens">1.1. <a href="\Engenharia_Eletrica\Processamento_Digital_Imagens\index.html">Processamento Digital de Imagens</a></h3>
-<div class="paragraph">
-<p>Projetos relacionados à disciplina Processamento Digital de Imagens, ministrada pelo professor Agostinho. Nessa disciplina, foram criados vários projetos bem divertidos de fazer envolvendo imagem e vídeo.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_comunicações_móveis">1.2. <a href="\Engenharia_Eletrica\Comunicacoes_Moveis\index.html">Comunicações Móveis</a></h3>
-<div class="paragraph">
-<p>Projetos desenvolvidos na disciplina de Comunicações Móveis, ministrada pelo professor Vicente Sousa. Nessa disciplina foram desenvolvidas algumas simulações e análises de sistemas de comunicações.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2018-09-16 22:46:50 -03
-</div>
-</div>
-</body>
-</html>

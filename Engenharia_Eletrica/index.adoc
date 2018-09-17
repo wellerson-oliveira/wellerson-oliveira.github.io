@@ -12,4 +12,7 @@ Autor: Wellerson
 Bem-vindo a seção de Projetos Acadêmicos. Abaixo, você encontrará meus projetos separados por disciplina. Possivelmente algum projeto de mini-curso também aparecerão. Fiquem a vontade para sugestões, críticas e etc.
 
 === link:\Engenharia_Eletrica\Processamento_Digital_Imagens\index.html[Processamento Digital de Imagens]
-Projetos relacionados à disciplina Processamento Digital de Imagens, ministrada pelo professor Agostinho do DCA. Nessa disciplina, foram criados vários projetos bem divertidos de fazer envolvendo imagem e vídeo. 
+Projetos relacionados à disciplina Processamento Digital de Imagens, ministrada pelo professor Agostinho. Nessa disciplina, foram criados vários projetos bem divertidos de fazer envolvendo imagem e vídeo. 
+
+=== link:\Engenharia_Eletrica\Comunicacoes_Moveis\index.html[Comunicações Móveis]
+Projetos desenvolvidos na disciplina de Comunicações Móveis, ministrada pelo professor Vicente Sousa. Nessa disciplina foram desenvolvidas algumas simulações e análises de sistemas de comunicações. 
