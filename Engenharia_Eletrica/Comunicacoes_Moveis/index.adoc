@@ -44,7 +44,7 @@ Na Figura abaixo é mostrado numericamente o efeito do shadowing no sistema com 
 
 [#img-outage-1]
 .Taxas de outage para o sistema apenas com perda de percurso para diferentes raios
-image::images/tabela_outage_shad.jpg.jpg[Taxas de outage para o sistema apenas com perda de percurso para diferentes raios]
+image::images/tabela_outage_shad.jpg[Taxas de outage para o sistema apenas com perda de percurso para diferentes raios]
 
 
 
