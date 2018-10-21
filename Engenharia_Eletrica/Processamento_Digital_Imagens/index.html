@@ -487,6 +487,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_implementação_10">10.2. Implementação</a></li>
 </ul>
 </li>
+<li><a href="#_k_means">11. K-means</a>
+<ul class="sectlevel2">
+<li><a href="#_objetivo_10">11.1. Objetivo</a></li>
+<li><a href="#_implementação_11">11.2. Implementação</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -794,7 +800,7 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 <div class="sect2">
 <h3 id="_objetivo_8">9.1. Objetivo</h3>
 <div class="paragraph">
-<p>O objetivo dessa prática é mostrar a utilização do filtro homomórfico para corrigir iluminação em uma cena. Será utilizada a imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/filtro-homomorfico/re6.jpg">re6.png</a> que é a imagem de um cenário do jogo Resident Evil 6, disponível <a href="http://fast1.onesite.com/capcom-unity.com/user/mikeeb13/large/dc7c1dd414d94e894608ab3cf378aa92.jpg?v=202200">aqui</a></p>
+<p>O objetivo dessa prática é mostrar a utilização do filtro homomórfico para corrigir iluminação em uma cena. Será utilizada a imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/filtro-homomorfico/re6.jpg">re6.png</a> que é a imagem de um cenário do jogo Resident Evil 6, disponível <a href="http://fast1.onesite.com/capcom-unity.com/user/mikeeb13/large/dc7c1dd414d94e894608ab3cf378aa92.jpg?v=202200">aqui</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -809,7 +815,7 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 <p>Infelizmente, não é possível tomar a transformada de fourier das duas componentes separadamente, pois elas estão se multiplicando. Por isso é necessário aplicar o logaritmo em ambo os lados da equação para depois tomar a transformada de fourier. O próximo passo é aplicar o filtro homomórfico definido pela equação:</p>
 </div>
 <div class="paragraph">
-<p>\$H(u, v) = (\gamma_H - \gamma_L)(1 - exp(-c( D^2(u,v)/D_0^2 ) ) + \gamma_L\$</p>
+<p>\$H(u, v) = (\gamma_H - \gamma_L)(1 - e^(-c( D^{2}(u,v)/D_0^2 ) ) + \gamma_L\$</p>
 </div>
 <div class="paragraph">
 <p>Onde D(u, v) é a distancia do ponto F(u, v) até a origem e \(\gamma_L\), \(\gamma_H\) e c são parametros do filtro. O filtro atenua as frequências mais baixas e preserva as mais altas, de maneira que a iluminância fique melhor distribuída. Podemos ver o resultado da utilização do filtro nas imagens abaixo:</p>
@@ -876,10 +882,49 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_k_means">11. K-means</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_objetivo_10">11.1. Objetivo</h3>
+<div class="paragraph">
+<p>O objetivo dessa prática é mostrar a utilização do algoritmo k-means para reduzir o número de cores em uma imagem. Nessa prática sera utilizada a imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/k-means/ragnar.jpeg">ragnar.jpeg</a>. A imagem está disponível <a href="https://ew.com/article/2015/02/12/ragnar-puts-fear-gods-english-this-exclusive-vikings-season-3-clip/">aqui</a>. Créditos da imagem: Jonathan Hession/History Channel</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implementação_11">11.2. Implementação</h3>
+<div class="paragraph">
+<p>A implementação desse programa foi bem simples. Após ler a imagem, é necessário transformá-la para o formato Nx3, onde é N é o número de colunas multiplicado pelo número de linhas. Assim, há uma linha para cada pixel e cada coluna representa a contribuição de cada cor RGB. Após isso, basta passar essa matriz para o algoritmo k-means.
+O algoritmo k-means é um tipo de aprendizado não-supervisionado que busca separar pontos em grupos (ou clusters) de maneira a minimizar a distância entre cada ponto e o seu centro. O k-means funciona da seguinte maneira: Inicialmente, sorteia-se os centros (o número de centros é um parâmetro de entrada do k-means). Depois calcula-se a distância de cada ponto para cada centro, e rotula-se esses pontos de acordo com o centro mais próximo. Após isso, recalcula-se todos os centros como sendo a média de todos os pontos atribuídos a esse centro. Repete-se então esse procedimento até que um critério de parada seja atingido. O critério de parada pode ser o número de iterações ou a diferença media entre um centro e outro.</p>
+</div>
+<div class="paragraph">
+<p>Devido ao caráter iterativo do k-means, o algoritmo pode fornecer respostas diferentes para cada vez que é executado. Isso acontece por que dependendo da posição inicial dos centros, a resposta do algoritmo pode cair em diferentes mínimos locais. Para ilustrar esse efeito, foi executado o algoritmo k-means 10 vezes para a imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/k-means/ragnar.jpeg">ragnar.jpeg</a> e criado um gif mostrando as diferentes respostas obtidas. O gif é mostrado abaixo:</p>
+</div>
+<div id="img-ragnar" class="imageblock">
+<div class="content">
+<img src="images/pontilhismo-rapha.png" alt="Imagem com técnica pontilhista">
+</div>
+<div class="title">Figure 24. Imagem com técnica pontilhista</div>
+</div>
+<div class="paragraph">
+<p>Para a imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/pontilhismo/imagem-vic.png">imagem-vic.png</a> o resultado é mostrado abaixo.</p>
+</div>
+<div id="img-ragnar-gif" class="imageblock">
+<div class="content">
+<img src="images/ragnar.gif" alt="Gif das respostas do k-means">
+</div>
+<div class="title">Figure 25. Gif das respostas do k-means</div>
+</div>
+<div class="paragraph">
+<p>O código fonte para essa prática está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/k-means">aqui</a>.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-21 03:43:19 -03
+Last updated 2018-10-21 04:06:34 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">

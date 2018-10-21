@@ -182,7 +182,7 @@ image::images/final.png[Imagem rotulada]
 == Filtro homomórfico
 
 === Objetivo
-O objetivo dessa prática é mostrar a utilização do filtro homomórfico para corrigir iluminação em uma cena. Será utilizada a imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/filtro-homomorfico/re6.jpg[re6.png] que é a imagem de um cenário do jogo Resident Evil 6, disponível link:http://fast1.onesite.com/capcom-unity.com/user/mikeeb13/large/dc7c1dd414d94e894608ab3cf378aa92.jpg?v=202200[aqui]
+O objetivo dessa prática é mostrar a utilização do filtro homomórfico para corrigir iluminação em uma cena. Será utilizada a imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/filtro-homomorfico/re6.jpg[re6.png] que é a imagem de um cenário do jogo Resident Evil 6, disponível link:http://fast1.onesite.com/capcom-unity.com/user/mikeeb13/large/dc7c1dd414d94e894608ab3cf378aa92.jpg?v=202200[aqui].
 
 === Implementação
 
@@ -192,7 +192,7 @@ asciimath:[f(x, y) = i(x, y)*r(x, y)]
 
 Infelizmente, não é possível tomar a transformada de fourier das duas componentes separadamente, pois elas estão se multiplicando. Por isso é necessário aplicar o logaritmo em ambo os lados da equação para depois tomar a transformada de fourier. O próximo passo é aplicar o filtro homomórfico definido pela equação:
 
-asciimath:[H(u, v) = (\gamma_H - \gamma_L)(1 - exp(-c( D^2(u,v)/D_0^2 ) ) + \gamma_L]
+asciimath:[H(u, v) = (\gamma_H - \gamma_L)(1 - e^(-c( D^{2}(u,v)/D_0^2 ) ) + \gamma_L]
 
 Onde D(u, v) é a distancia do ponto F(u, v) até a origem e stem:[\gamma_L], stem:[\gamma_H] e c são parametros do filtro. O filtro atenua as frequências mais baixas e preserva as mais altas, de maneira que a iluminância fique melhor distribuída. Podemos ver o resultado da utilização do filtro nas imagens abaixo:
 
@@ -235,6 +235,29 @@ image::images/pontilhismo-vic.png[Imagem com técnica pontilhista]
 O código fonte para essa prática está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtro-homomorfico[aqui].
 
 
+== K-means
+
+=== Objetivo
+O objetivo dessa prática é mostrar a utilização do algoritmo k-means para reduzir o número de cores em uma imagem. Nessa prática sera utilizada a imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/k-means/ragnar.jpeg[ragnar.jpeg]. A imagem está disponível link:https://ew.com/article/2015/02/12/ragnar-puts-fear-gods-english-this-exclusive-vikings-season-3-clip/[aqui]. Créditos da imagem: Jonathan Hession/History Channel
+
+=== Implementação
+
+A implementação desse programa foi bem simples. Após ler a imagem, é necessário transformá-la para o formato Nx3, onde é N é o número de colunas multiplicado pelo número de linhas. Assim, há uma linha para cada pixel e cada coluna representa a contribuição de cada cor RGB. Após isso, basta passar essa matriz para o algoritmo k-means. 																																																																																																																																																																																																																																																																																																																																																																															
+O algoritmo k-means é um tipo de aprendizado não-supervisionado que busca separar pontos em grupos (ou clusters) de maneira a minimizar a distância entre cada ponto e o seu centro. O k-means funciona da seguinte maneira: Inicialmente, sorteia-se os centros (o número de centros é um parâmetro de entrada do k-means). Depois calcula-se a distância de cada ponto para cada centro, e rotula-se esses pontos de acordo com o centro mais próximo. Após isso, recalcula-se todos os centros como sendo a média de todos os pontos atribuídos a esse centro. Repete-se então esse procedimento até que um critério de parada seja atingido. O critério de parada pode ser o número de iterações ou a diferença media entre um centro e outro. 
+
+Devido ao caráter iterativo do k-means, o algoritmo pode fornecer respostas diferentes para cada vez que é executado. Isso acontece por que dependendo da posição inicial dos centros, a resposta do algoritmo pode cair em diferentes mínimos locais. Para ilustrar esse efeito, foi executado o algoritmo k-means 10 vezes para a imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/k-means/ragnar.jpeg[ragnar.jpeg] e criado um gif mostrando as diferentes respostas obtidas. O gif é mostrado abaixo:
+
+[#img-ragnar]
+.Imagem com técnica pontilhista
+image::images/pontilhismo-rapha.png[Imagem com técnica pontilhista]
+
+Para a imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/pontilhismo/imagem-vic.png[imagem-vic.png] o resultado é mostrado abaixo.
+
+[#img-ragnar-gif]
+.Gif das respostas do k-means 
+image::images/ragnar.gif[Gif das respostas do k-means]
+
+O código fonte para essa prática está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/k-means[aqui].
 
 
 
