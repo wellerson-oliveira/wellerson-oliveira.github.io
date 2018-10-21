@@ -192,7 +192,7 @@ asciimath:[f(x, y) = i(x, y)*r(x, y)]
 
 Infelizmente, não é possível tomar a transformada de fourier das duas componentes separadamente, pois elas estão se multiplicando. Por isso é necessário aplicar o logaritmo em ambo os lados da equação para depois tomar a transformada de fourier. O próximo passo é aplicar o filtro homomórfico definido pela equação:
 
-asciimath:[H(u, v) = (\gamma_H - \gamma_L)(1 - e{-c * ( \frac{D(u,v) ^ 2}{D_0^2} ) } ) + \gamma_L]
+asciimath:[H(u, v) = (\gamma_H - \gamma_L)(1 - e^{-c * ( \frac{D(u,v) ^ 2}{D_0^2} ) } ) + \gamma_L]
 
 Onde D(u, v) é a distancia do ponto F(u, v) até a origem e stem:[\gamma_L], stem:[\gamma_H] e c são parametros do filtro. O filtro atenua as frequências mais baixas e preserva as mais altas, de maneira que a iluminância fique melhor distribuída. Podemos ver o resultado da utilização do filtro nas imagens abaixo:
 

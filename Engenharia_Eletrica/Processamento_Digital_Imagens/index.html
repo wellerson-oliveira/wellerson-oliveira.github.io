@@ -815,7 +815,7 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 <p>Infelizmente, não é possível tomar a transformada de fourier das duas componentes separadamente, pois elas estão se multiplicando. Por isso é necessário aplicar o logaritmo em ambo os lados da equação para depois tomar a transformada de fourier. O próximo passo é aplicar o filtro homomórfico definido pela equação:</p>
 </div>
 <div class="paragraph">
-<p>\$H(u, v) = (\gamma_H - \gamma_L)(1 - e{-c * ( \frac{D(u,v) ^ 2}{D_0^2} ) } ) + \gamma_L\$</p>
+<p>\$H(u, v) = (\gamma_H - \gamma_L)(1 - e^{-c * ( \frac{D(u,v) ^ 2}{D_0^2} ) } ) + \gamma_L\$</p>
 </div>
 <div class="paragraph">
 <p>Onde D(u, v) é a distancia do ponto F(u, v) até a origem e \(\gamma_L\), \(\gamma_H\) e c são parametros do filtro. O filtro atenua as frequências mais baixas e preserva as mais altas, de maneira que a iluminância fique melhor distribuída. Podemos ver o resultado da utilização do filtro nas imagens abaixo:</p>
@@ -915,7 +915,7 @@ O algoritmo k-means é um tipo de aprendizado não-supervisionado que busca sepa
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-21 04:16:54 -03
+Last updated 2018-10-21 04:19:01 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">
