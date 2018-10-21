@@ -481,6 +481,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_implementação_9">9.2. Implementação</a></li>
 </ul>
 </li>
+<li><a href="#_pontilhismo">10. Pontilhismo</a>
+<ul class="sectlevel2">
+<li><a href="#_objetivo_9">10.1. Objetivo</a></li>
+<li><a href="#_implementação_10">10.2. Implementação</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -826,10 +832,54 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_pontilhismo">10. Pontilhismo</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_objetivo_9">10.1. Objetivo</h3>
+<div class="paragraph">
+<p>O objetivo dessa prática é criar uma imagem usando a técnica de pontilhismo (desenhos feitos apenas com pontos) a partir de uma imagem e depois utilizar o algoritmo de Canny para detectar bordas nessa imagem e melhorar os detalhes da imagem. Para essa prática serão utilizadas como exemplo duas imagens: <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/pontilhismo/imagem-rapha.png">imagem-rapha.png</a> e <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/pontilhismo/imagem-vic.png">imagem-vic.png</a>. Lembrando que as duas imagens foram autorizadas pelas respectivas donas, Raphaela e Victória.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implementação_10">10.2. Implementação</h3>
+<div class="paragraph">
+<p>A implementação desse programa se deu em três etapas. Na primeira, foi criada uma imagem "amostrada" da imagem original, utilizando um passo de 5 pixels (isto é, a cada 5 pixels preserva-se um da imagem original, os outros são setados como tom de cinza branco). A etapa dois foi a criação dos círculos para o efeito de pontilhismo. Assim, percorrendo a imagem amostrada, para cada pixel que não fosse branco (isto é, pixels da imagem original) o algoritmo desenha um círculo da cor daquele pixel em uma outra imagem. Para dar o efeito menos artifical, sorteia-se um número aleatorio entre 0 e 3 para deslocar o centro do círculo desenhado. O resultado dessa operação é mostrado na figura abaixo:</p>
+</div>
+<div id="img-pontilhismo-rapha-meio" class="imageblock">
+<div class="content">
+<img src="images/pontilhismo-rapha-meio.png" alt="Imagem com técnica pontilhista sem retoques">
+</div>
+<div class="title">Figure 21. Imagem com técnica pontilhista sem retoques</div>
+</div>
+<div class="paragraph">
+<p>A terceira e última etapa é aplicar o algoritmo de Canny na imagem processada para encontrar as bordas entre círculos e preencher essas bordas com círculos menores, cujas cores são as cores da imagem inicial. A imagem final é mostrada abaixo:</p>
+</div>
+<div id="img-pontilhismo-rapha" class="imageblock">
+<div class="content">
+<img src="images/pontilhismo-rapha.png" alt="Imagem com técnica pontilhista">
+</div>
+<div class="title">Figure 22. Imagem com técnica pontilhista</div>
+</div>
+<div class="paragraph">
+<p>Para a imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/pontilhismo/imagem-vic.png">imagem-vic.png</a> o resultado é mostrado abaixo.</p>
+</div>
+<div id="img-pontilhismo-vic" class="imageblock">
+<div class="content">
+<img src="images/pontilhismo-vic.png" alt="Imagem com técnica pontilhista">
+</div>
+<div class="title">Figure 23. Imagem com técnica pontilhista</div>
+</div>
+<div class="paragraph">
+<p>O código fonte para essa prática está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtro-homomorfico">aqui</a>.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-21 03:17:24 -03
+Last updated 2018-10-21 03:43:19 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">

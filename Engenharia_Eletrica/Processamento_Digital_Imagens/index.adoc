@@ -207,7 +207,32 @@ image::images/re6_realce.jpg[Imagem corrigida]
 Podemos ver na segunda imagem que a iluminação que antes era bem maior no lado esquerdo, devido a fogueira, foi melhor distribuída. O código fonte para essa prática está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtro-homomorfico[aqui].
 
 
+== Pontilhismo
 
+=== Objetivo
+O objetivo dessa prática é criar uma imagem usando a técnica de pontilhismo (desenhos feitos apenas com pontos) a partir de uma imagem e depois utilizar o algoritmo de Canny para detectar bordas nessa imagem e melhorar os detalhes da imagem. Para essa prática serão utilizadas como exemplo duas imagens: link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/pontilhismo/imagem-rapha.png[imagem-rapha.png] e link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/pontilhismo/imagem-vic.png[imagem-vic.png]. Lembrando que as duas imagens foram autorizadas pelas respectivas donas, Raphaela e Victória.
+
+=== Implementação
+
+A implementação desse programa se deu em três etapas. Na primeira, foi criada uma imagem "amostrada" da imagem original, utilizando um passo de 5 pixels (isto é, a cada 5 pixels preserva-se um da imagem original, os outros são setados como tom de cinza branco). A etapa dois foi a criação dos círculos para o efeito de pontilhismo. Assim, percorrendo a imagem amostrada, para cada pixel que não fosse branco (isto é, pixels da imagem original) o algoritmo desenha um círculo da cor daquele pixel em uma outra imagem. Para dar o efeito menos artifical, sorteia-se um número aleatorio entre 0 e 3 para deslocar o centro do círculo desenhado. O resultado dessa operação é mostrado na figura abaixo:
+
+[#img-pontilhismo-rapha-meio]
+.Imagem com técnica pontilhista sem retoques
+image::images/pontilhismo-rapha-meio.png[Imagem com técnica pontilhista sem retoques]
+
+A terceira e última etapa é aplicar o algoritmo de Canny na imagem processada para encontrar as bordas entre círculos e preencher essas bordas com círculos menores, cujas cores são as cores da imagem inicial. A imagem final é mostrada abaixo:
+
+[#img-pontilhismo-rapha]
+.Imagem com técnica pontilhista
+image::images/pontilhismo-rapha.png[Imagem com técnica pontilhista]
+
+Para a imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/pontilhismo/imagem-vic.png[imagem-vic.png] o resultado é mostrado abaixo.
+
+[#img-pontilhismo-vic]
+.Imagem com técnica pontilhista
+image::images/pontilhismo-vic.png[Imagem com técnica pontilhista]
+
+O código fonte para essa prática está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtro-homomorfico[aqui].
 
 
 
