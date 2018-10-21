@@ -198,11 +198,11 @@ Onde D(u, v) é a distancia do ponto F(u, v) até a origem e stem:[\gamma_L], st
 
 [#img-re6]
 .Imagem original
-image::images/re6.png[Imagem Original]
+image::images/re6.jpg[Imagem Original]
 
 [#img-re6-filtrada]
 .Imagem com iluminação corrigida
-image::images/laplaciano.png[Imagem corrigida]
+image::images/re6_realce.jpg[Imagem corrigida]
 
 Podemos ver na segunda imagem que a iluminação que antes era bem maior no lado esquerdo, devido a fogueira, foi melhor distribuída. O código fonte para essa prática está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtro-homomorfico[aqui].
 
