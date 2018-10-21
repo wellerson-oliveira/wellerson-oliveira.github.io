@@ -475,6 +475,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_implementação_8">8.2. Implementação</a></li>
 </ul>
 </li>
+<li><a href="#_filtro_homomórfico">9. Filtro homomórfico</a>
+<ul class="sectlevel2">
+<li><a href="#_objetivo_8">9.1. Objetivo</a></li>
+<li><a href="#_implementação_9">9.2. Implementação</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -776,10 +782,54 @@ Para plotagem dos histogramas, utilizou-se a biblioteca <strong>matplotlib</stro
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_filtro_homomórfico">9. Filtro homomórfico</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_objetivo_8">9.1. Objetivo</h3>
+<div class="paragraph">
+<p>O objetivo dessa prática é mostrar a utilização do filtro homomórfico para corrigir iluminação em uma cena. Será utilizada a imagem <a href="https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/filtro-homomorfico/re6.jpg">re6.png</a> que é a imagem de um cenário do jogo Resident Evil 6, disponível <a href="http://fast1.onesite.com/capcom-unity.com/user/mikeeb13/large/dc7c1dd414d94e894608ab3cf378aa92.jpg?v=202200">aqui</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implementação_9">9.2. Implementação</h3>
+<div class="paragraph">
+<p>Uma maneira alternativa de representar uma imagem é através das suas componentes de iluminância e reflectância, onde a iluminância é representada pelas frequências baixas da imagem e a reflectância pelas altas. Assim:</p>
+</div>
+<div class="paragraph">
+<p>\$f(x, y) = i(x, y)*r(x, y)\$</p>
+</div>
+<div class="paragraph">
+<p>Infelizmente, não é possível tomar a transformada de fourier das duas componentes separadamente, pois elas estão se multiplicando. Por isso é necessário aplicar o logaritmo em ambo os lados da equação para depois tomar a transformada de fourier. O próximo passo é aplicar o filtro homomórfico definido pela equação:</p>
+</div>
+<div class="paragraph">
+<p>\$H(u, v) = (\gamma_H - \gamma_L)(1 - exp(-c( D^2(u,v)/D_0^2 ) ) + \gamma_L\$</p>
+</div>
+<div class="paragraph">
+<p>Onde D(u, v) é a distancia do ponto F(u, v) até a origem e \(\gamma_L\), \(\gamma_H\) e c são parametros do filtro. O filtro atenua as frequências mais baixas e preserva as mais altas, de maneira que a iluminância fique melhor distribuída. Podemos ver o resultado da utilização do filtro nas imagens abaixo:</p>
+</div>
+<div id="img-re6" class="imageblock">
+<div class="content">
+<img src="images/re6.png" alt="Imagem Original">
+</div>
+<div class="title">Figure 19. Imagem original</div>
+</div>
+<div id="img-re6-filtrada" class="imageblock">
+<div class="content">
+<img src="images/laplaciano.png" alt="Imagem corrigida">
+</div>
+<div class="title">Figure 20. Imagem com iluminação corrigida</div>
+</div>
+<div class="paragraph">
+<p>Podemos ver na segunda imagem que a iluminação que antes era bem maior no lado esquerdo, devido a fogueira, foi melhor distribuída. O código fonte para essa prática está disponível <a href="https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtro-homomorfico">aqui</a>.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-11 20:13:58 -03
+Last updated 2018-10-21 03:12:14 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">

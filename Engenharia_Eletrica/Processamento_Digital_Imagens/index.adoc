@@ -179,10 +179,32 @@ image::images/laplaciano_gauss.png[Imagem rotulada]
 image::images/final.png[Imagem rotulada]
 
 
+== Filtro homomórfico
 
+=== Objetivo
+O objetivo dessa prática é mostrar a utilização do filtro homomórfico para corrigir iluminação em uma cena. Será utilizada a imagem link:https://github.com/wellerson-oliveira/Projetos-PDI/blob/master/filtro-homomorfico/re6.jpg[re6.png] que é a imagem de um cenário do jogo Resident Evil 6, disponível link:http://fast1.onesite.com/capcom-unity.com/user/mikeeb13/large/dc7c1dd414d94e894608ab3cf378aa92.jpg?v=202200[aqui]
 
+=== Implementação
 
+Uma maneira alternativa de representar uma imagem é através das suas componentes de iluminância e reflectância, onde a iluminância é representada pelas frequências baixas da imagem e a reflectância pelas altas. Assim:
 
+asciimath:[f(x, y) = i(x, y)*r(x, y)]
+
+Infelizmente, não é possível tomar a transformada de fourier das duas componentes separadamente, pois elas estão se multiplicando. Por isso é necessário aplicar o logaritmo em ambo os lados da equação para depois tomar a transformada de fourier. O próximo passo é aplicar o filtro homomórfico definido pela equação:
+
+asciimath:[H(u, v) = (\gamma_H - \gamma_L)(1 - exp(-c( D^2(u,v)/D_0^2 ) ) + \gamma_L]
+
+Onde D(u, v) é a distancia do ponto F(u, v) até a origem e stem:[\gamma_L], stem:[\gamma_H] e c são parametros do filtro. O filtro atenua as frequências mais baixas e preserva as mais altas, de maneira que a iluminância fique melhor distribuída. Podemos ver o resultado da utilização do filtro nas imagens abaixo:
+
+[#img-re6]
+.Imagem original
+image::images/re6.png[Imagem Original]
+
+[#img-re6-filtrada]
+.Imagem com iluminação corrigida
+image::images/laplaciano.png[Imagem corrigida]
+
+Podemos ver na segunda imagem que a iluminação que antes era bem maior no lado esquerdo, devido a fogueira, foi melhor distribuída. O código fonte para essa prática está disponível link:https://github.com/wellerson-oliveira/Projetos-PDI/tree/master/filtro-homomorfico[aqui].
 
 
 
