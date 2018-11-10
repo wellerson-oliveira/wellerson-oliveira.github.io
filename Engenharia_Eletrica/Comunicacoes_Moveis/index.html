@@ -527,10 +527,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_simulação_2">2.2. Simulação</h3>
 <div class="paragraph">
-<p>O PDP de um canal é uma forma de analisar como o multipercurso afeta o sinal recebido. Ele modela como a potencia dos varios multipercursos chega ao receptor. O efeito do PDP pode ser visto na frequência, onde podemos definir um importante parâmetro na caracterização de canal: A banda de coerência.</p>
+<p>O PDP de um canal é uma forma de analisar como o multipercurso afeta o sinal recebido. Ele modela como a potencia dos varios multipercursos chega ao receptor. O efeito do PDP pode ser visto na frequência, onde podemos definir um importante parâmetro na caracterização de canal: A banda de coerência. A banda de coerência é definida como o o intervalo de frequências onde o canal não muda (desvanecimento plano) e, portanto, seu efeito é modelado apenas como uma atenuação do sinal. Ao se tentar transmitir um sinal com banda maior que a banda de coerência do canal, o desvanecimento torna-se seletivo em frequência e recuperar o sinal na saída torna-se um tarefa bem mais complexa.</p>
 </div>
 <div class="paragraph">
-<p>Para essa simulação, fizemos a comparação de dois PDP&#8217;s: Um com delay-spread de 25ns e outro com 100ns. O delay-spread é uma medida de quão severo é o PDP do canal analisado, de maneira que quanto maior o delay-spread, maior é a energia que as cópias do sinal que chegam atrasadas têm e, portanto, tornam o canal mais severo. A Figura 4 mostra o PDP para o canal com delay-spread de 25ns.</p>
+<p>Para essa simulação, fizemos a comparação de dois PDP&#8217;s: Um com delay-spread de 25ns e outro com 100ns. O delay-spread é uma medida de quão severo é o PDP do canal analisado, de maneira que quanto maior o delay-spread, maior é a energia que as cópias do sinal que chegam atrasadas têm e, portanto, tornam o canal mais severo. A Figura 4 mostra o PDP para o canal com delay-spread de 25ns e a Figura 5 mostra a PDP para um canal com delay-spread 100ns.</p>
 </div>
 <div id="img-pdp25" class="imageblock">
 <div class="content">
@@ -538,13 +538,34 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="title">Figure 4. Perfil atraso-potencia de um canal com delay spread de 25ns</div>
 </div>
+<div id="img-pdp100" class="imageblock">
+<div class="content">
+<img src="images/pdp_100ns.jpg" alt="Perfil atraso-potencia de um canal com delay spread de 100ns">
+</div>
+<div class="title">Figure 5. Perfil atraso-potencia de um canal com delay spread de 100ns</div>
+</div>
+<div class="paragraph">
+<p>Ao comparar as Figuras 4 e 5 é possível ver que, com 100ns de delay-spread a energia das amostras que chegam após a primeira ainda é bastante elevada. Para mostrar o efeito causado pelo PDP as Figuras 6 e 7 mostram a respostas em frequência do canal com 25ns e 100ns, respectivamente. Pode-se ver que a resposta do canal com 25ns é mais suave e, portanto tem uma banda de coerência maior.</p>
+</div>
+<div id="img-bc25" class="imageblock">
+<div class="content">
+<img src="images/freq_25ns.jpg" alt="Banda de coerência de um canal com delay spread de 25ns">
+</div>
+<div class="title">Figure 6. Banda de coerência de um canal com delay spread de 25ns</div>
+</div>
+<div id="img-bc100" class="imageblock">
+<div class="content">
+<img src="images/freq_100ns.jpg" alt="Banda de coerência de um canal com delay spread de 100ns">
+</div>
+<div class="title">Figure 7. Banda de coerência de um canal com delay spread de 100ns</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-10 11:46:14 -03
+Last updated 2018-11-10 12:01:29 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">

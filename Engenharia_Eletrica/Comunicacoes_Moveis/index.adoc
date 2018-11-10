@@ -52,21 +52,29 @@ image::images/tabela_outage_shad.jpg[Taxas de outage para o sistema apenas com p
 O objetivo dessa prática é analisar o perfil atraso-potencia (PDP) do modelo WiFi indoor definido pelo IEEE 802.11b task Group. Será simulado o canal e calculado o PDP para comparação com o modelo teórico. A partir do PDP calculado será verificado também a banda de coerência do canal e, para fins de comparação verificaremos se o canal analisado é seletivo ou plano em frequência para dois sistemas: AMPS (30kHz de banda) e GSM (200kHz de banda). 
 
 === Simulação
-O PDP de um canal é uma forma de analisar como o multipercurso afeta o sinal recebido. Ele modela como a potencia dos varios multipercursos chega ao receptor. O efeito do PDP pode ser visto na frequência, onde podemos definir um importante parâmetro na caracterização de canal: A banda de coerência.
+O PDP de um canal é uma forma de analisar como o multipercurso afeta o sinal recebido. Ele modela como a potencia dos varios multipercursos chega ao receptor. O efeito do PDP pode ser visto na frequência, onde podemos definir um importante parâmetro na caracterização de canal: A banda de coerência. A banda de coerência é definida como o o intervalo de frequências onde o canal não muda (desvanecimento plano) e, portanto, seu efeito é modelado apenas como uma atenuação do sinal. Ao se tentar transmitir um sinal com banda maior que a banda de coerência do canal, o desvanecimento torna-se seletivo em frequência e recuperar o sinal na saída torna-se um tarefa bem mais complexa.
 
-Para essa simulação, fizemos a comparação de dois PDP's: Um com delay-spread de 25ns e outro com 100ns. O delay-spread é uma medida de quão severo é o PDP do canal analisado, de maneira que quanto maior o delay-spread, maior é a energia que as cópias do sinal que chegam atrasadas têm e, portanto, tornam o canal mais severo. A Figura 4 mostra o PDP para o canal com delay-spread de 25ns.
+Para essa simulação, fizemos a comparação de dois PDP's: Um com delay-spread de 25ns e outro com 100ns. O delay-spread é uma medida de quão severo é o PDP do canal analisado, de maneira que quanto maior o delay-spread, maior é a energia que as cópias do sinal que chegam atrasadas têm e, portanto, tornam o canal mais severo. A Figura 4 mostra o PDP para o canal com delay-spread de 25ns e a Figura 5 mostra a PDP para um canal com delay-spread 100ns.
 
 [#img-pdp25]
 .Perfil atraso-potencia de um canal com delay spread de 25ns
 image::images/pdp_25ns.jpg[Perfil atraso-potencia de um canal com delay spread de 25ns]
 
+[#img-pdp100]
+.Perfil atraso-potencia de um canal com delay spread de 100ns
+image::images/pdp_100ns.jpg[Perfil atraso-potencia de um canal com delay spread de 100ns]
 
+Ao comparar as Figuras 4 e 5 é possível ver que, com 100ns de delay-spread a energia das amostras que chegam após a primeira ainda é bastante elevada. Para mostrar o efeito causado pelo PDP as Figuras 6 e 7 mostram a respostas em frequência do canal com 25ns e 100ns, respectivamente. Pode-se ver que a resposta do canal com 25ns é mais suave e, portanto tem uma banda de coerência maior.
 
+[#img-bc25]
+.Banda de coerência de um canal com delay spread de 25ns
+image::images/freq_25ns.jpg[Banda de coerência de um canal com delay spread de 25ns]
 
+[#img-bc100]
+.Banda de coerência de um canal com delay spread de 100ns
+image::images/freq_100ns.jpg[Banda de coerência de um canal com delay spread de 100ns]
 
-
-
-
+	
 
 
 
