@@ -433,6 +433,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_simulação">1.2. Simulação</a></li>
 </ul>
 </li>
+<li><a href="#_perfil_atraso_potencia_do_wifi">2. Perfil Atraso-Potencia do Wifi</a>
+<ul class="sectlevel2">
+<li><a href="#_introdução_2">2.1. Introdução</a></li>
+<li><a href="#_simulação_2">2.2. Simulação</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -509,10 +515,36 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_perfil_atraso_potencia_do_wifi">2. Perfil Atraso-Potencia do Wifi</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introdução_2">2.1. Introdução</h3>
+<div class="paragraph">
+<p>O objetivo dessa prática é analisar o perfil atraso-potencia (PDP) do modelo WiFi indoor definido pelo IEEE 802.11b task Group. Será simulado o canal e calculado o PDP para comparação com o modelo teórico. A partir do PDP calculado será verificado também a banda de coerência do canal e, para fins de comparação verificaremos se o canal analisado é seletivo ou plano em frequência para dois sistemas: AMPS (30kHz de banda) e GSM (200kHz de banda).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_simulação_2">2.2. Simulação</h3>
+<div class="paragraph">
+<p>O PDP de um canal é uma forma de analisar como o multipercurso afeta o sinal recebido. Ele modela como a potencia dos varios multipercursos chega ao receptor. O efeito do PDP pode ser visto na frequência, onde podemos definir um importante parâmetro na caracterização de canal: A banda de coerência.</p>
+</div>
+<div class="paragraph">
+<p>Para essa simulação, fizemos a comparação de dois PDP&#8217;s: Um com delay-spread de 25ns e outro com 100ns. O delay-spread é uma medida de quão severo é o PDP do canal analisado, de maneira que quanto maior o delay-spread, maior é a energia que as cópias do sinal que chegam atrasadas têm e, portanto, tornam o canal mais severo. A Figura 4 mostra o PDP para o canal com delay-spread de 25ns.</p>
+</div>
+<div id="img-pdp25" class="imageblock">
+<div class="content">
+<img src="images/pdp_25ns.jpg" alt="Perfil atraso-potencia de um canal com delay spread de 25ns">
+</div>
+<div class="title">Figure 4. Perfil atraso-potencia de um canal com delay spread de 25ns</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-16 23:44:44 -03
+Last updated 2018-11-10 11:46:14 -03
 </div>
 </div>
 <script type="text/x-mathjax-config">

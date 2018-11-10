@@ -20,7 +20,7 @@ Esse site é uma mistura de blog, currículo e passatempo. Aqui você encontrar�
 
 Na vida profissional, um programador que decidiu não ser apenas um programador. Graduando no último período de Engenharia Elétrica, formado como técnico em informática pelo IFRN em 2014 e alguns cursos na Udemy e EDX. Entusiasta de análise de dados, começando a se aventurar nas áreas de Machine Learning, faz as vezes de Analista de RPA e desenvolvedor nas horas (não) vagas. 
 
-Na vida pessoal, um amante do futebol e da ciência. Aquele que reclama da falta de tempo para dormir na semana, mas acorda sábado 8 da manhã pra assistir o inglesão. Seus principais hobbies são Netflix, livros e video-games. Pensando seriamente em criar uma sessão 'blog' para essa página. 
+Na vida pessoal, um amante do futebol e da ciência. Aquele que reclama da falta de tempo para dormir na semana, mas acorda sábado 8 da manhã pra assistir o inglesão. Seus principais hobbies são Netflix, livros e video-games.
 
 == link:\Engenharia_Eletrica\index.html[Projetos Acadêmicos]
 Ao longo do meu curso de Engenharia Elétrica na UFRN, em várias disciplinas eu tive que criar alguns projetos interessantes. Essa seção é dedicada a esses projetos. Como a natureza do curso de Engenharia Elétrica é bem abrangente, por consequência haveria uma variedade de tipos de projetos aqui. Infelizmente, devido ao acidente com meu pc antigo, só me restaram os projetos a partir do sétimo período. 

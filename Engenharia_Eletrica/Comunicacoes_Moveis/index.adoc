@@ -46,7 +46,19 @@ Na Figura abaixo é mostrado numericamente o efeito do shadowing no sistema com 
 .Taxas de outage para o sistema apenas com perda de percurso para diferentes raios
 image::images/tabela_outage_shad.jpg[Taxas de outage para o sistema apenas com perda de percurso para diferentes raios]
 
+== Perfil Atraso-Potencia do Wifi
 
+=== Introdução
+O objetivo dessa prática é analisar o perfil atraso-potencia (PDP) do modelo WiFi indoor definido pelo IEEE 802.11b task Group. Será simulado o canal e calculado o PDP para comparação com o modelo teórico. A partir do PDP calculado será verificado também a banda de coerência do canal e, para fins de comparação verificaremos se o canal analisado é seletivo ou plano em frequência para dois sistemas: AMPS (30kHz de banda) e GSM (200kHz de banda). 
+
+=== Simulação
+O PDP de um canal é uma forma de analisar como o multipercurso afeta o sinal recebido. Ele modela como a potencia dos varios multipercursos chega ao receptor. O efeito do PDP pode ser visto na frequência, onde podemos definir um importante parâmetro na caracterização de canal: A banda de coerência.
+
+Para essa simulação, fizemos a comparação de dois PDP's: Um com delay-spread de 25ns e outro com 100ns. O delay-spread é uma medida de quão severo é o PDP do canal analisado, de maneira que quanto maior o delay-spread, maior é a energia que as cópias do sinal que chegam atrasadas têm e, portanto, tornam o canal mais severo. A Figura 4 mostra o PDP para o canal com delay-spread de 25ns.
+
+[#img-pdp25]
+.Perfil atraso-potencia de um canal com delay spread de 25ns
+image::images/pdp_25ns.jpg[Perfil atraso-potencia de um canal com delay spread de 25ns]
 
 
 
