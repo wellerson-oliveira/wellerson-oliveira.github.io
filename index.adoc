@@ -13,7 +13,7 @@ icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "ce
 [.text-center]
 Hi! I'm Wellerson and this is my personal page and portfolio. I work as Data and RPA leader in a big retail company. My work is very simple: Sometimes I take care of robots and sometimes I solve data analysis problem. 
 
-==============================
+____________________________________________________________________________________________________
 
 [.text-center]
 === Project one
