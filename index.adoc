@@ -13,10 +13,10 @@ icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "ce
 [.text-center]
 Hi! I'm Wellerson and this is my personal page and portfolio. I work as Data and RPA leader in a big retail company. My work is very simple: Sometimes I take care of robots and sometimes I solve data analysis problem. 
 
-[.text-center]
-== Project one
+[.text-left]
+== Los Angeles Traffic Collisions Exploratory Analysis using R datatable and ggplot2 
 
-This is the description of the project one. Read More
+In this article I'll show how to do some exploratory analysis using the R package **datatable**. We are going to use the Kaggle dataset link:https://www.kaggle.com/cityofLA/los-angeles-traffic-collision-data[Los Angeles Traffic Collision Data]. I'll show how to extract date features from your dataset and how to aggregate information based in one or more variables. Finally, I'll show how to do some basic plots using the amazing R package **ggplot2** and how to costumize some features in these plots. link:/Projetos/LA_traffic_collision/index.html[Read More].
 
 [.text-center]
 == Project Two

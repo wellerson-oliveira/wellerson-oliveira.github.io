@@ -1,0 +1,18 @@
+:stylesheet: clean.css
+
+:icons: font
+
+Los Angeles Traffic Collisions Exploratory Analysis using R datatable and ggplot2 · Wellerson Oliveira
+==============================
+
+image::images/presentation_image.png[presentation, 250, 250, align = "center"]
+
+[.text-center]
+icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "center"] | icon:twitter[link="https://twitter.com/_WellersonVO", align = "center"] | icon:linkedin[link="https://www.linkedin.com/in/wellerson-oliveira-aa121410a/", align = "center"] | icon:google-plus[link="https://plus.google.com/u/0/115562689876020120903", align = "center"]
+
+[.text-center]
+_In this article I'll show how to do some exploratory analysis using the R package **datatable**. We are going to use the Kaggle dataset link:https://www.kaggle.com/cityofLA/los-angeles-traffic-collision-data[Los Angeles Traffic Collision Data]. I'll show how to extract date features from your dataset and how to aggregate information based in one or more variables. Finally, I'll show how to do some basic plots using the amazing R package **ggplot2** and how to costumize some features in these plots_ 
+
+
+
+
