@@ -1,15 +1,11 @@
 :stylesheet: clean.css
 
-:toc: left
-:toc-title:  
-:toclevels: 1
-
 :icons: font
 
 image::images/presentation_image.png[presentation, 150, 150, align = "center"]
 
-icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "center"] | icon:twitter[link="https://twitter.com/_WellersonVO", align = "center"] | 
-icon:linkedin[link="https://www.linkedin.com/in/wellerson-oliveira-aa121410a/", align = "center"] | icon:google-plus[link="https://plus.google.com/u/0/115562689876020120903", align = "center"]
+[.text-center]
+icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "center"] | icon:twitter[link="https://twitter.com/_WellersonVO", align = "center"] | icon:linkedin[link="https://www.linkedin.com/in/wellerson-oliveira-aa121410a/", align = "center"] | icon:google-plus[link="https://plus.google.com/u/0/115562689876020120903", align = "center"]
 
 == Sobre o autor
 
