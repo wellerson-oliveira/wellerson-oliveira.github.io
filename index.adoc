@@ -9,21 +9,14 @@
 = Página Pessoal de Wellerson
 Autor: Wellerson 
 
+[#img-presentation]
+image::images/presentation_image.png
+
 icon:github[size=1.5x, link="https://github.com/wellerson-oliveira"] | icon:twitter[link="https://twitter.com/_WellersonVO"] | 
 icon:linkedin[link="https://www.linkedin.com/in/wellerson-oliveira-aa121410a/"] | icon:google-plus[link="https://plus.google.com/u/0/115562689876020120903"]
-
-== Apresentação
-
-Esse site é uma mistura de blog, currículo e passatempo. Aqui você encontrará todos os projetos que eu achar interessante colocar. Projetos pessoais e acadêmicos são os principais. No menu à esquerda, há uma sessão de Projetos Acadêmicos, uma sessão mais séria onde colocarei os projetos da minha graduação e outras futuras formações que estão por vir. Depois, uma sessão de Projetos Pessoais, onde estarão os projetos que fiz fora de sala de aula. No futuro, quem sabe outras sessões apareçam. Acima, há um link para minha página no github onde estarão todos os códigos-fonte (quando houver) dos meus projetos. Você pode baixá-los sem nenhum problema. Aproveite.
 
 == Sobre o autor
 
 Na vida profissional, um programador que decidiu não ser apenas um programador. Graduando no último período de Engenharia Elétrica, formado como técnico em informática pelo IFRN em 2014 e alguns cursos na Udemy e EDX. Entusiasta de análise de dados, começando a se aventurar nas áreas de Machine Learning, faz as vezes de Analista de RPA e desenvolvedor nas horas (não) vagas. 
 
 Na vida pessoal, um amante do futebol e da ciência. Aquele que reclama da falta de tempo para dormir na semana, mas acorda sábado 8 da manhã pra assistir o inglesão. Seus principais hobbies são Netflix, livros e video-games.
-
-== link:\Engenharia_Eletrica\index.html[Projetos Acadêmicos]
-Ao longo do meu curso de Engenharia Elétrica na UFRN, em várias disciplinas eu tive que criar alguns projetos interessantes. Essa seção é dedicada a esses projetos. Como a natureza do curso de Engenharia Elétrica é bem abrangente, por consequência haveria uma variedade de tipos de projetos aqui. Infelizmente, devido ao acidente com meu pc antigo, só me restaram os projetos a partir do sétimo período. 
-
-== Projetos Pessoais
-Seção dedicada aos projetos pessoais e meus hobbies. Aqui você vai encontrar desafios do kaggle, projetos com arduíno e talvez alguns projetos envolvendo futebol. A seção ainda está em construção devido a minha falta de tempo.
