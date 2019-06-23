@@ -2,10 +2,9 @@
 
 :icons: font
 
-Los Angeles Traffic Collisions Exploratory Analysis using R datatable and ggplot2 · Wellerson Oliveira
-==============================
+= Los Angeles Traffic Collisions Exploratory Analysis using R datatable and ggplot2 · Wellerson Oliveira
 
-image::images/presentation_image.png[presentation, 250, 250, align = "center"]
+image::/../../images/presentation_image.png[presentation, 250, 250, align = "center"]
 
 [.text-center]
 icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "center"] | icon:twitter[link="https://twitter.com/_WellersonVO", align = "center"] | icon:linkedin[link="https://www.linkedin.com/in/wellerson-oliveira-aa121410a/", align = "center"] | icon:google-plus[link="https://plus.google.com/u/0/115562689876020120903", align = "center"]
