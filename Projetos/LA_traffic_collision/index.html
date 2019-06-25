@@ -75,13 +75,13 @@ div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,
 a{color:#2156a5;text-decoration:underline;line-height:inherit}
 a:hover,a:focus{color:#1d4b8f}
 a img{border:none}
-p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility;color:#6A6060}
 p aside{font-size:.875em;line-height:1.35;font-style:italic}
-h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#0a1cb4;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:800;font-style:normal;color:#3C3434;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
 h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
 h1{font-size:2.125em}
-h2{font-size:1.125em}
-h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h2{font-size:1.500em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.500em}
 h4,h5{font-size:1.125em}
 h6{font-size:1em}
 hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
@@ -109,9 +109,9 @@ blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
 blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
 @media only screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
 h1{font-size:2.75em}
-h2{font-size:2.3125em}
+h2{font-size:1.125em}
 h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
-h4{font-size:1.4375em}}
+h4{font-size:1.125em}}
 table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
 table thead,table tfoot{background:#f7f8f7;font-weight:bold}
 table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
@@ -433,6 +433,113 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="paragraph text-center">
 <p><em>In this article I&#8217;ll show how to do some exploratory analysis using the R package <strong>datatable</strong>. We are going to use the Kaggle dataset <a href="https://www.kaggle.com/cityofLA/los-angeles-traffic-collision-data">Los Angeles Traffic Collision Data</a>. I&#8217;ll show how to extract date features from your dataset and how to aggregate information based in one or more variables. Finally, I&#8217;ll show how to do some basic plots using the amazing R package <strong>ggplot2</strong> and how to costumize some features in these plots</em></p>
+</div>
+<hr>
+<div class="paragraph text-left">
+<p>Let&#8217;s begin importing the packages that we are going to use: <strong>datatable</strong> and <strong>ggplot2</strong>. Then let&#8217;s read the data using the <strong>fread</strong> function provided from the <strong>datatable</strong> package. Since the file is already in a regular csv format, it&#8217;s not necessary to use any other argument.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% importing packages
+   import(data.table)
+   import(ggplot2)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% readind data
+   dt &lt;- fread(input = "traffic_collision_data.csv")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, let&#8217;s do some cleaning on the dataset. In the kaggle link provided on the top of this article there are the columns description. First, we are going to remove some columns we don&#8217;t need. Second, let&#8217;s remove some garbage from the 'Victim Sex' column to keep just the records with F (for females) and M (for males). Finally, let&#8217;s replace empty spaces in the columns names for the character "_".</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% data cleaning
+  dt &lt;- dt[, c(1:6, 11:15)]
+  names(dt) &lt;- gsub(" ", "_", names(dt))
+  dt &lt;- dt[Victim_Sex == "M"| Victim_Sex == "F", ]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s take a look on the resulting dataset. Using the function <strong>head</strong> we can see the firts six records of the data.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  head(dt)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">   DR_Number           Date_Reported           Date_Occurred Time_Occurred Area_ID
+1: 191216137 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000           330      12
+2: 191011095 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000          1425      10
+3: 190411077 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000          1200       4
+4: 190511313 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000           850       5
+5: 191814225 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000           435      18
+6: 191313246 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000          2000      13
+     Area_Name Victim_Age Victim_Sex Victim_Descent Premise_Code Premise_Description
+1: 77th Street         39          F              B          101              STREET
+2: West Valley         30          M              W          108         PARKING LOT
+3:  Hollenbeck         69          M              H          101              STREET
+4:      Harbor         39          F              H          101              STREET
+5:   Southeast         60          M              H          101              STREET
+6:      Newton         NA          M              H          101              STREET</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we can work on the dataset features. We can see the time information are in the 'Time_Ocurred' column. So let&#8217;s transform the 'Date_Reported' and 'Date_Occurred' columns in dates. To do this we can get only the first 10 characters of each column and then transform the result in date variables.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"> %% creating date variables
+   dt[, Date_Reported := as.Date(substr(Date_Reported, 1, 10))]
+   dt[, Date_Occurred := as.Date(substr(Date_Occurred, 1, 10))]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Based on the variable 'Date_Occurred' we can create some other useful time variables as: Day, day of the week, month and year. We can aggregate the information on the dataset using these variables to identify how the number of accidents are distributed. We are going to construct visualizations for that later in this article. For now, let&#8217;s create these variables. Then, let&#8217;s use the variable 'Time_Occured&#8217;to get the hour of the day that the accidents occur. For that, we need to divide the value of 'Time_Occurred' by 100 and round the result. Let&#8217;s ignore the minutes for now.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - day
+  dt[, Day     := format(Date_Occurred, "%d")]
+  # - month
+  dt[, Month   := format(Date_Occurred, "%m")]
+  #- year
+  dt[, Year    := format(Date_Occurred, "%Y")]
+  # - weekday
+  dt[, Weekday := format(Date_Occurred, "%A")]
+  # - hour
+  dt[, Hour := round(Time_Occurred/100, 0)]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s go plot some results. We are going to use the <strong>ggplot2</strong> package for that. The <strong>ggplot2</strong> package is nice because it have a easy syntax. Basically you start defining how the variables are going to be represented on the graph and later you just have to add all the features you want. Starting simple, let&#8217;s see how the accidents are distributed through the age of the people who suffered. Since we are interested in seeing a distribution, let&#8217;s use a histogram. First, let&#8217;s define the axis. For a histogram, we just need to define the x-axis.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - creating age plot
+  p1 &lt;- ggplot(data = dt, aes(x = Victim_Age))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The next step is to define how the data will be showed. Let&#8217;s use the <strong>geom_histogram</strong> as our geometry to plot data.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - creating age plot
+  p1 &lt;- p1 + geom_histogram()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can see the result below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/age_histogram.png" alt="presentation" width="450" height="300">
+</div>
 </div>
 </div>
 </body>

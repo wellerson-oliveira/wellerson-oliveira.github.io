@@ -12,6 +12,95 @@ icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "ce
 [.text-center]
 _In this article I'll show how to do some exploratory analysis using the R package **datatable**. We are going to use the Kaggle dataset link:https://www.kaggle.com/cityofLA/los-angeles-traffic-collision-data[Los Angeles Traffic Collision Data]. I'll show how to extract date features from your dataset and how to aggregate information based in one or more variables. Finally, I'll show how to do some basic plots using the amazing R package **ggplot2** and how to costumize some features in these plots_ 
 
+---
+
+[.text-left]
+Let's begin importing the packages that we are going to use: **datatable** and **ggplot2**. Then let's read the data using the **fread** function provided from the **datatable** package. Since the file is already in a regular csv format, it's not necessary to use any other argument.
+
+[source, ruby]
+%% importing packages
+   import(data.table)
+   import(ggplot2)
+
+[source, ruby]
+%% readind data
+   dt <- fread(input = "traffic_collision_data.csv")
+
+Now, let's do some cleaning on the dataset. In the kaggle link provided on the top of this article there are the columns description. First, we are going to remove some columns we don't need. Second, let's remove some garbage from the 'Victim Sex' column to keep just the records with F (for females) and M (for males). Finally, let's replace empty spaces in the columns names for the character "_". 
+
+[source, ruby]
+%% data cleaning
+  dt <- dt[, c(1:6, 11:15)]
+  names(dt) <- gsub(" ", "_", names(dt))
+  dt <- dt[Victim_Sex == "M"| Victim_Sex == "F", ]
+
+Let's take a look on the resulting dataset. Using the function **head** we can see the firts six records of the data. 
+
+[source, ruby]
+  head(dt)
+
+[source, ruby]
+   DR_Number           Date_Reported           Date_Occurred Time_Occurred Area_ID
+1: 191216137 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000           330      12
+2: 191011095 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000          1425      10
+3: 190411077 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000          1200       4
+4: 190511313 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000           850       5
+5: 191814225 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000           435      18
+6: 191313246 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000          2000      13
+     Area_Name Victim_Age Victim_Sex Victim_Descent Premise_Code Premise_Description
+1: 77th Street         39          F              B          101              STREET
+2: West Valley         30          M              W          108         PARKING LOT
+3:  Hollenbeck         69          M              H          101              STREET
+4:      Harbor         39          F              H          101              STREET
+5:   Southeast         60          M              H          101              STREET
+6:      Newton         NA          M              H          101              STREET
+
+Now we can work on the dataset features. We can see the time information are in the 'Time_Ocurred' column. So let's transform the 'Date_Reported' and 'Date_Occurred' columns in dates. To do this we can get only the first 10 characters of each column and then transform the result in date variables. 
+
+[source, ruby]
+ %% creating date variables
+   dt[, Date_Reported := as.Date(substr(Date_Reported, 1, 10))]
+   dt[, Date_Occurred := as.Date(substr(Date_Occurred, 1, 10))]
+  
+Based on the variable 'Date_Occurred' we can create some other useful time variables as: Day, day of the week, month and year. We can aggregate the information on the dataset using these variables to identify how the number of accidents are distributed. We are going to construct visualizations for that later in this article. For now, let's create these variables. Then, let's use the variable 'Time_Occured'to get the hour of the day that the accidents occur. For that, we need to divide the value of 'Time_Occurred' by 100 and round the result. Let's ignore the minutes for now.
+
+[source, ruby]
+  # - day
+  dt[, Day     := format(Date_Occurred, "%d")]
+  # - month
+  dt[, Month   := format(Date_Occurred, "%m")]
+  #- year
+  dt[, Year    := format(Date_Occurred, "%Y")]
+  # - weekday
+  dt[, Weekday := format(Date_Occurred, "%A")]
+  # - hour
+  dt[, Hour := round(Time_Occurred/100, 0)]
+
+Let's go plot some results. We are going to use the **ggplot2** package for that. The **ggplot2** package is nice because it have a easy syntax. Basically you start defining how the variables are going to be represented on the graph and later you just have to add all the features you want. Starting simple, let's see how the accidents are distributed through the age of the people who suffered. Since we are interested in seeing a distribution, let's use a histogram. First, let's define the axis. For a histogram, we just need to define the x-axis.
+
+[source, ruby]
+  # - creating age plot
+  p1 <- ggplot(data = dt, aes(x = Victim_Age))
+
+The next step is to define how the data will be showed. Let's use the **geom_histogram** as our geometry to plot data. 
+
+[source, ruby]
+  # - creating age plot
+  p1 <- p1 + geom_histogram()
+
+We can see the result below.
+
+image::images/age_histogram.png[presentation, 450, 300, align = "center"]
+
+
+
+
+
+
+
+
+
+
 
 
 
