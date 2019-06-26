@@ -122,7 +122,7 @@ So, let's try another geometry. We are going to use the **geom_density** for tha
 
 image::images/age_sex_density.png[presentation, 450, 300, align = "center"]
 
-Now we can see both curves in the correct way. It's important to note the **geom_density** show how each variable it's distributed proportionally to the own variable. So, the part of the curve in the interval 20-40 years where the female curve is higher than the male curve doesn't mean that are more accidents with women than men. It's just means the proportion of 20-40 years women that suffer accidents is higher than 20-40 years men.  
+Now we can see both curves in the correct way. It's important to note the **geom_density** show how each variable it's distributed proportionally to the own variable. So, the part of the curve in the interval 20-40 years where the female curve is higher than the male curve doesn't mean that are more accidents with women than men. It's just means the proportion of 20-40 years women that suffer accidents is higher than 20-40 years men proportion.  
 
 
 
