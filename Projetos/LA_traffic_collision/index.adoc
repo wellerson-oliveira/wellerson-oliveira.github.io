@@ -95,6 +95,45 @@ We can see the result below.
 
 image::images/age_histogram.png[presentation, 450, 300, align = "center"]
 
+As we can see, accidents car are more frequently in young people and decreases with the age. Let's improve our visualization using the variable "Victim_Sex" to see how the accidents are distributed between men and women. For that, let's change how the variables going to be represented on the graphic including the "Victim_Sex" variable in the graphic colour.
+
+[source, ruby]
+  # - creating age and sex plot
+  p1 <- ggplot(data = dt, aes(x = Victim_Age, fill = Victim_Sex)) + geom_histogram()
+
+image::images/age_sex_histogram.png[presentation, 450, 300, align = "center"]
+
+Here are the result of the code above. As we can see, the **ggplot** automatically separate the two variables with different colours. Because of the histogram geometry it appears there are more accidents with women than accidents with men. But, if we count the number of accidents by the sex of the victim we see the opposite. Let's use the code below to see the number of accidents segmented by the victim sex.
+
+[source, ruby]
+  # - counting number of accidents by sex
+  dt[, list(N_Accidents = length(DR_Number)), by = "Victim_Sex"]
+
+[source, ruby]
+  Victim_Sex N_Accidents
+  F          180510
+  M          277993	
+
+So, let's try another geometry. We are going to use the **geom_density** for that. The **geom_density** show the data similar to the **geom_histogram** but the curve is showed smoother. For a better visualization let's use the **alpha** parameter to make the curve transparent. Here is the code.
+
+[source, ruby]
+  # - ploting the age and sex density
+   p1 <- ggplot(data = dt, aes(x = Victim_Age, fill = Victim_Sex, colour = Victim_Sex))+ geom_density(alpha = 0.4)
+
+image::images/age_sex_density.png[presentation, 450, 300, align = "center"]
+
+Now we can see both curves in the correct way. It's important to note the **geom_density** show how each variable it's distributed proportionally to the own variable. So, the part of the curve in the interval 20-40 years where the female curve is higher than the male curve doesn't mean that are more accidents with women than men. It's just means the proportion of 20-40 years women that suffer accidents is higher than 20-40 years men.  
+
+
+
+
+
+
+
+
+
+
+
 
 
 

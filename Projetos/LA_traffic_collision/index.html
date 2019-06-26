@@ -544,10 +544,57 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <img src="images/age_histogram.png" alt="presentation" width="450" height="300">
 </div>
 </div>
+<div class="paragraph">
+<p>As we can see, accidents car are more frequently in young people and decreases with the age. Let&#8217;s improve our visualization using the variable "Victim_Sex" to see how the accidents are distributed between men and women. For that, let&#8217;s change how the variables going to be represented on the graphic including the "Victim_Sex" variable in the graphic colour.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - creating age and sex plot
+  p1 &lt;- ggplot(data = dt, aes(x = Victim_Age, fill = Victim_Sex)) + geom_histogram()</code></pre>
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/age_sex_histogram.png" alt="presentation" width="450" height="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Here are the result of the code above. As we can see, the <strong>ggplot</strong> automatically separate the two variables with different colours. Because of the histogram geometry it appears there are more accidents with women than accidents with men. But, if we count the number of accidents by the sex of the victim we see the opposite. Let&#8217;s use the code below to see the number of accidents segmented by the victim sex.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - counting number of accidents by sex
+  dt[, list(N_Accidents = length(DR_Number)), by = "Victim_Sex"]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  Victim_Sex N_Accidents
+  F          180510
+  M          277993</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, let&#8217;s try another geometry. We are going to use the <strong>geom_density</strong> for that. The <strong>geom_density</strong> show the data similar to the <strong>geom_histogram</strong> but the curve is showed smoother. For a better visualization let&#8217;s use the <strong>alpha</strong> parameter to make the curve transparent. Here is the code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - ploting the age and sex density
+   p1 &lt;- ggplot(data = dt, aes(x = Victim_Age, fill = Victim_Sex, colour = Victim_Sex))+ geom_density(alpha = 0.4)</code></pre>
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/age_sex_density.png" alt="presentation" width="450" height="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Now we can see both curves in the correct way. It&#8217;s important to note the <strong>geom_density</strong> show how each variable it&#8217;s distributed proportionally to the own variable. So, the part of the curve in the interval 20-40 years where the female curve is higher than the male curve doesn&#8217;t mean that are more accidents with women than men. It&#8217;s just means the proportion of 20-40 years women that suffer accidents is higher than 20-40 years men.</p>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-24 23:15:31 -03
+Last updated 2019-06-25 23:05:44 -03
 </div>
 </div>
 </body>
