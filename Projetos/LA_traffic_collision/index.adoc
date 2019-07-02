@@ -122,7 +122,60 @@ So, let's try another geometry. We are going to use the **geom_density** for tha
 
 image::images/age_sex_density.png[presentation, 450, 300, align = "center"]
 
-Now we can see both curves in the correct way. It's important to note the **geom_density** show how each variable it's distributed proportionally to the own variable. So, the part of the curve in the interval 20-40 years where the female curve is higher than the male curve doesn't mean that are more accidents with women than men. It's just means the proportion of 20-40 years women that suffer accidents is higher than 20-40 years men proportion.  
+Now we can see both curves in the correct way. It's important to note the **geom_density** show how each variable it's distributed proportionally to the own variable. So, the part of the curve in the interval 20-40 years where the female curve is higher than the male curve doesn't mean that are more accidents with women than men. It's just means the proportion of 20-40 years women that suffer accidents is higher than 20-40 years men proportion.
+
+To finish this first article, let's see how the accidents are distributed by the hour they happened. Let's use a similar syntax to that we already use. Here is the code to aggregate the number of accidents by the hour of the day.
+
+[source, ruby]
+  # - aggregating by hour of the time
+   dt.hour <- dt[, list(Number_Accidents = length(unique(DR_Number))), by = c("Hour")]
+
+And here is the code to plot. Now we are using the geometry **barplot**. This geometry is used to create, obviously, bar plots. In this case we have used the parameter **stat** equals to "identity" to tell the function that we already aggregate the data. The default value to this parameter is "stat_count". 
+
+[source, ruby]
+  # - plotting
+   p2 <- ggplot(data = dt.hour, aes(x = Hour, y = Number_Accidents)) + geom_bar(stat = "identity")
+   p2
+
+Here is how our plot looks like now.
+
+image::images/hour_barplot.png[presentation, 450, 300, align = "center"]
+
+Okay, let's improve our plot. Firts, let's change the axis names. For default, **ggplot2** use the columns names as the axis names. let's use the **xlab** and **ylab** parameters to change that. Now, let's put some colour on our plot. To do that, we are going to use again the **fill** parameter. This time, let's use the **ggplot2** documentation to find a colour to our plot. As we can use hexadecimal to change the colours of our graphics, I often use this link:https://htmlcolorcodes.com[site] to find a colour that I like. For this plot I'm going to choose the colour "#212678". It's a kind of dark blue. Finally, let's put a title to our graphic. I'm going to use "Accidents per hour of day". Here is the complete code.
+
+[source, ruby]
+  # - plotting
+  p2 <- ggplot(data = dt.dow, aes(x = Hour, y = Number_Accidents)) + geom_bar(stat = "identity", fill = "#212678")
+  p2 <- p2 + xlab("Hour of the day") + ylab("Number of Accidents")
+  p2 <- p2 + ggtitle("Accidents per hour of day")
+  p2
+
+And here are the final result. Of course is still a basic plot, but we already use some personalization to do that. I hope you guys enjoyed this article. Until next !
+
+image::images/hour_barplot_complete.png[presentation, 450, 300, align = "center"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

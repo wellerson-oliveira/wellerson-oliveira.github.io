@@ -591,10 +591,52 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Now we can see both curves in the correct way. It&#8217;s important to note the <strong>geom_density</strong> show how each variable it&#8217;s distributed proportionally to the own variable. So, the part of the curve in the interval 20-40 years where the female curve is higher than the male curve doesn&#8217;t mean that are more accidents with women than men. It&#8217;s just means the proportion of 20-40 years women that suffer accidents is higher than 20-40 years men proportion.</p>
 </div>
+<div class="paragraph">
+<p>To finish this first article, let&#8217;s see how the accidents are distributed by the hour they happened. Let&#8217;s use a similar syntax to that we already use. Here is the code to aggregate the number of accidents by the hour of the day.</p>
 </div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2019-06-25 23:08:06 -03
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - aggregating by hour of the time
+   dt.hour &lt;- dt[, list(Number_Accidents = length(unique(DR_Number))), by = c("Hour")]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And here is the code to plot. Now we are using the geometry <strong>barplot</strong>. This geometry is used to create, obviously, bar plots. In this case we have used the parameter <strong>stat</strong> equals to "identity" to tell the function that we already aggregate the data. The default value to this parameter is "stat_count".</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - plotting
+   p2 &lt;- ggplot(data = dt.hour, aes(x = Hour, y = Number_Accidents)) + geom_bar(stat = "identity")
+   p2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is how our plot looks like now.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/hour_barplot.png" alt="presentation" width="450" height="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Okay, let&#8217;s improve our plot. Firts, let&#8217;s change the axis names. For default, <strong>ggplot2</strong> use the columns names as the axis names. let&#8217;s use the <strong>xlab</strong> and <strong>ylab</strong> parameters to change that. Now, let&#8217;s put some colour on our plot. To do that, we are going to use again the <strong>fill</strong> parameter. This time, let&#8217;s use the <strong>ggplot2</strong> documentation to find a colour to our plot. As we can use hexadecimal to change the colours of our graphics, I often use this <a href="https://htmlcolorcodes.com">site</a> to find a colour that I like. For this plot I&#8217;m going to choose the colour "#212678". It&#8217;s a kind of dark blue. Finally, let&#8217;s put a title to our graphic. I&#8217;m going to use "Accidents per hour of day". Here is the complete code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - plotting
+  p2 &lt;- ggplot(data = dt.dow, aes(x = Hour, y = Number_Accidents)) + geom_bar(stat = "identity", fill = "#212678")
+  p2 &lt;- p2 + xlab("Hour of the day") + ylab("Number of Accidents")
+  p2 &lt;- p2 + ggtitle("Accidents per hour of day")
+  p2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And here are the final result. Of course is still a basic plot, but we already use some personalization to do that. I hope you guys enjoyed this article. Until next !</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/hour_barplot_complete.png" alt="presentation" width="450" height="300">
+</div>
 </div>
 </div>
 </body>
