@@ -141,7 +141,7 @@ Here is how our plot looks like now.
 
 image::images/hour_barplot.png[presentation, 450, 300, align = "center"]
 
-Okay, let's improve our plot. Firts, let's change the axis names. For default, **ggplot2** use the columns names as the axis names. let's use the **xlab** and **ylab** parameters to change that. Now, let's put some colour on our plot. To do that, we are going to use again the **fill** parameter. This time, let's use the **ggplot2** documentation to find a colour to our plot. As we can use hexadecimal to change the colours of our graphics, I often use this link:https://htmlcolorcodes.com[site] to find a colour that I like. For this plot I'm going to choose the colour "#212678". It's a kind of dark blue. Finally, let's put a title to our graphic. I'm going to use "Accidents per hour of day". Here is the complete code.
+Okay, let's improve our plot. Firts, let's change the axis names. For default, **ggplot2** use the columns names as the axis names. let's use the **xlab** and **ylab** parameters to change that. Now, let's put some colour on our plot. To do that, we are going to use again the **fill** parameter. As we can use hexadecimal to change the colours of our graphics, I often use this link:https://htmlcolorcodes.com[site] to find a colour that I like. For this plot I'm going to choose the colour "#212678". It's a kind of dark blue. Finally, let's put a title to our graphic. I'm going to use "Accidents per hour of day". Here is the complete code.
 
 [source, ruby]
   # - plotting
