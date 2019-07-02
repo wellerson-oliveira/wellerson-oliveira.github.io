@@ -1,3 +1,10 @@
 Change h2 for h4
 
 Erase the final of the page
+
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Los Angeles Traffic Collisions Exploratory Analysis using R datatable and ggplot2" />
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="In this article I'll show how to do some exploratory analysis using the R packages datatable and ggplot2." />
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="wellerson-oliveira.github.io/Projetos/LA_traffic_collision/images/hour_barplot_complete.png" />
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wellerson-oliveira.github.io/Projetos/LA_traffic_collision/index.html"/>
+
