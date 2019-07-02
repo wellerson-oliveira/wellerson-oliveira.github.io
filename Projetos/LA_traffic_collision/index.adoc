@@ -29,7 +29,7 @@ Let's begin importing the packages that we are going to use: **datatable** and *
 %% readind data
    dt <- fread(input = "traffic_collision_data.csv")
 
-Now, let's do some cleaning on the dataset. In the kaggle link provided on the top of this article there are the columns description. First, we are going to remove some columns we don't need. Second, let's remove some garbage from the 'Victim Sex' column to keep just the records with F (for females) and M (for males). Finally, let's replace empty spaces in the columns names for the character "_". 
+Now, let's do some cleaning on the dataset. In the kaggle link provided on the top of this article there are the columns description. First, we are going to remove some columns we don't need. Second, let's remove some NA values from the 'Victim Sex' column to keep just the records with F (for females) and M (for males). Finally, let's replace empty spaces in the columns names for the character "_". 
 
 [source, ruby]
 %% data cleaning
@@ -58,14 +58,14 @@ Let's take a look on the resulting dataset. Using the function **head** we can s
 5:   Southeast         60          M              H          101              STREET
 6:      Newton         NA          M              H          101              STREET
 
-Now we can work on the dataset features. We can see the time information are in the 'Time_Ocurred' column. So let's transform the 'Date_Reported' and 'Date_Occurred' columns in dates. To do this we can get only the first 10 characters of each column and then transform the result in date variables. 
+Now we can work on the dataset features. So let's transform the 'Date_Reported' and 'Date_Occurred' columns in dates. To do this we can get only the first 10 characters of each column and then transform the result in date variables. 
 
 [source, ruby]
  %% creating date variables
    dt[, Date_Reported := as.Date(substr(Date_Reported, 1, 10))]
    dt[, Date_Occurred := as.Date(substr(Date_Occurred, 1, 10))]
   
-Based on the variable 'Date_Occurred' we can create some other useful time variables as: Day, day of the week, month and year. We can aggregate the information on the dataset using these variables to identify how the number of accidents are distributed. We are going to construct visualizations for that later in this article. For now, let's create these variables. Then, let's use the variable 'Time_Occured'to get the hour of the day that the accidents occur. For that, we need to divide the value of 'Time_Occurred' by 100 and round the result. Let's ignore the minutes for now.
+Based on the variable 'Date_Occurred' we can create some other useful time variables as: Day, day of the week, month and year. We can aggregate the information on the dataset using these variables to identify how the number of accidents are distributed. We are going to construct visualizations for that later in this article. For now, let's create these variables. Then, let's use the variable 'Time_Occured' to get the hour of the day that the accidents occur. For that, we need to divide the value of 'Time_Occurred' by 100 and round the result. Let's ignore the minutes for now.
 
 [source, ruby]
   # - day
@@ -79,7 +79,7 @@ Based on the variable 'Date_Occurred' we can create some other useful time varia
   # - hour
   dt[, Hour := round(Time_Occurred/100, 0)]
 
-Let's go plot some results. We are going to use the **ggplot2** package for that. The **ggplot2** package is nice because it have a easy syntax. Basically you start defining how the variables are going to be represented on the graph and later you just have to add all the features you want. Starting simple, let's see how the accidents are distributed through the age of the people who suffered. Since we are interested in seeing a distribution, let's use a histogram. First, let's define the axis. For a histogram, we just need to define the x-axis.
+Let's go plot some results. We are going to use the **ggplot2** package for that. The **ggplot2** package have a easy syntax. Basically you start defining how the variables are going to be represented on the graph and later you just have to add all the features you want. Starting simple, let's see how the accidents are distributed through the age of the people who suffered. Since we are interested in seeing a distribution, let's use a histogram. First, let's define the axis. For a histogram, we just need to define the x-axis.
 
 [source, ruby]
   # - creating age plot
@@ -141,11 +141,11 @@ Here is how our plot looks like now.
 
 image::images/hour_barplot.png[presentation, 450, 300, align = "center"]
 
-Okay, let's improve our plot. Firts, let's change the axis names. For default, **ggplot2** use the columns names as the axis names. let's use the **xlab** and **ylab** parameters to change that. Now, let's put some colour on our plot. To do that, we are going to use again the **fill** parameter. As we can use hexadecimal to change the colours of our graphics, I often use this link:https://htmlcolorcodes.com[site] to find a colour that I like. For this plot I'm going to choose the colour "#212678". It's a kind of dark blue. Finally, let's put a title to our graphic. I'm going to use "Accidents per hour of day". Here is the complete code.
+Okay, let's improve our plot. Firts, let's change the axis names. For default, **ggplot2** use the columns names as the axis names. let's use the **xlab** and **ylab** parameters to change that. Then, let's put some colour on our plot. To do that, we are going to use again the **fill** parameter. As we can use hexadecimal to change the colours of our graphics, I often use this link:https://htmlcolorcodes.com[site] to find a colour that I like. For this plot I'm going to choose the colour "#212678". It's a kind of dark blue. Finally, let's put a title to our graphic. I'm going to use "Accidents per hour of day". Here is the complete code.
 
 [source, ruby]
   # - plotting
-  p2 <- ggplot(data = dt.dow, aes(x = Hour, y = Number_Accidents)) + geom_bar(stat = "identity", fill = "#212678")
+  p2 <- ggplot(data = dt.hour, aes(x = Hour, y = Number_Accidents)) + geom_bar(stat = "identity", fill = "#212678")
   p2 <- p2 + xlab("Hour of the day") + ylab("Number of Accidents")
   p2 <- p2 + ggtitle("Accidents per hour of day")
   p2

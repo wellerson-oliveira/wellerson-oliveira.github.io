@@ -455,7 +455,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>Now, let&#8217;s do some cleaning on the dataset. In the kaggle link provided on the top of this article there are the columns description. First, we are going to remove some columns we don&#8217;t need. Second, let&#8217;s remove some garbage from the 'Victim Sex' column to keep just the records with F (for females) and M (for males). Finally, let&#8217;s replace empty spaces in the columns names for the character "_".</p>
+<p>Now, let&#8217;s do some cleaning on the dataset. In the kaggle link provided on the top of this article there are the columns description. First, we are going to remove some columns we don&#8217;t need. Second, let&#8217;s remove some NA values from the 'Victim Sex' column to keep just the records with F (for females) and M (for males). Finally, let&#8217;s replace empty spaces in the columns names for the character "_".</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -492,7 +492,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>Now we can work on the dataset features. We can see the time information are in the 'Time_Ocurred' column. So let&#8217;s transform the 'Date_Reported' and 'Date_Occurred' columns in dates. To do this we can get only the first 10 characters of each column and then transform the result in date variables.</p>
+<p>Now we can work on the dataset features. So let&#8217;s transform the 'Date_Reported' and 'Date_Occurred' columns in dates. To do this we can get only the first 10 characters of each column and then transform the result in date variables.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -502,7 +502,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>Based on the variable 'Date_Occurred' we can create some other useful time variables as: Day, day of the week, month and year. We can aggregate the information on the dataset using these variables to identify how the number of accidents are distributed. We are going to construct visualizations for that later in this article. For now, let&#8217;s create these variables. Then, let&#8217;s use the variable 'Time_Occured&#8217;to get the hour of the day that the accidents occur. For that, we need to divide the value of 'Time_Occurred' by 100 and round the result. Let&#8217;s ignore the minutes for now.</p>
+<p>Based on the variable 'Date_Occurred' we can create some other useful time variables as: Day, day of the week, month and year. We can aggregate the information on the dataset using these variables to identify how the number of accidents are distributed. We are going to construct visualizations for that later in this article. For now, let&#8217;s create these variables. Then, let&#8217;s use the variable 'Time_Occured' to get the hour of the day that the accidents occur. For that, we need to divide the value of 'Time_Occurred' by 100 and round the result. Let&#8217;s ignore the minutes for now.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -519,7 +519,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s go plot some results. We are going to use the <strong>ggplot2</strong> package for that. The <strong>ggplot2</strong> package is nice because it have a easy syntax. Basically you start defining how the variables are going to be represented on the graph and later you just have to add all the features you want. Starting simple, let&#8217;s see how the accidents are distributed through the age of the people who suffered. Since we are interested in seeing a distribution, let&#8217;s use a histogram. First, let&#8217;s define the axis. For a histogram, we just need to define the x-axis.</p>
+<p>Let&#8217;s go plot some results. We are going to use the <strong>ggplot2</strong> package for that. The <strong>ggplot2</strong> package have a easy syntax. Basically you start defining how the variables are going to be represented on the graph and later you just have to add all the features you want. Starting simple, let&#8217;s see how the accidents are distributed through the age of the people who suffered. Since we are interested in seeing a distribution, let&#8217;s use a histogram. First, let&#8217;s define the axis. For a histogram, we just need to define the x-axis.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -619,12 +619,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>Okay, let&#8217;s improve our plot. Firts, let&#8217;s change the axis names. For default, <strong>ggplot2</strong> use the columns names as the axis names. let&#8217;s use the <strong>xlab</strong> and <strong>ylab</strong> parameters to change that. Now, let&#8217;s put some colour on our plot. To do that, we are going to use again the <strong>fill</strong> parameter. As we can use hexadecimal to change the colours of our graphics, I often use this <a href="https://htmlcolorcodes.com">site</a> to find a colour that I like. For this plot I&#8217;m going to choose the colour "#212678". It&#8217;s a kind of dark blue. Finally, let&#8217;s put a title to our graphic. I&#8217;m going to use "Accidents per hour of day". Here is the complete code.</p>
+<p>Okay, let&#8217;s improve our plot. Firts, let&#8217;s change the axis names. For default, <strong>ggplot2</strong> use the columns names as the axis names. let&#8217;s use the <strong>xlab</strong> and <strong>ylab</strong> parameters to change that. Then, let&#8217;s put some colour on our plot. To do that, we are going to use again the <strong>fill</strong> parameter. As we can use hexadecimal to change the colours of our graphics, I often use this <a href="https://htmlcolorcodes.com">site</a> to find a colour that I like. For this plot I&#8217;m going to choose the colour "#212678". It&#8217;s a kind of dark blue. Finally, let&#8217;s put a title to our graphic. I&#8217;m going to use "Accidents per hour of day". Here is the complete code.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - plotting
-  p2 &lt;- ggplot(data = dt.dow, aes(x = Hour, y = Number_Accidents)) + geom_bar(stat = "identity", fill = "#212678")
+  p2 &lt;- ggplot(data = dt.hour, aes(x = Hour, y = Number_Accidents)) + geom_bar(stat = "identity", fill = "#212678")
   p2 &lt;- p2 + xlab("Hour of the day") + ylab("Number of Accidents")
   p2 &lt;- p2 + ggtitle("Accidents per hour of day")
   p2</code></pre>
@@ -637,6 +637,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="images/hour_barplot_complete.png" alt="presentation" width="450" height="300">
 </div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2019-07-01 21:50:17 -03
 </div>
 </div>
 </body>
