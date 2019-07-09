@@ -24,5 +24,5 @@ In this article I'll show how to do some exploratory analysis using the R packag
 [.text-left]
 == Guide to FIFA 19 carrer mode using R
 
-If you are a FIFA 19 player as me, you'll like this article. Here we are going to use the kaggle dataset link:https://www.kaggle.com/karangadiya/fifa19[FIFA 19 complete player dataset] to find low cost best players for your career mode. To do this, we are going to use the players of each team to find the best teams. Then we are going to find the mainly attributes for players of each position and use that to find the low cost (or free) best players.
+If you are a FIFA 19 player as me, you'll like this article. Here we are going to use the kaggle dataset link:https://www.kaggle.com/karangadiya/fifa19[FIFA 19 complete player dataset] to find low cost best players for your career mode. To do this, we are going to use the players of each team to find the best teams. Then we are going to find the mainly attributes for players of each position and use that to find the low cost (or free) best players. link:/Projetos/FIFA_19_Attributes/index.html[Read More].
 
