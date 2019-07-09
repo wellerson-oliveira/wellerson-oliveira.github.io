@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
-<title>Los Angeles Traffic Collisions Exploratory Analysis using R datatable and ggplot2 · Wellerson Oliveira</title>
+<title>Guide to FIFA 19 carrer mode using R · Wellerson Oliveira</title>
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
 /* Remove comment around @import statement below when using as a custom stylesheet */
@@ -418,17 +418,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
 
 <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
-<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Los Angeles Traffic Collisions Exploratory Analysis using R datatable and ggplot2" />
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Guide to FIFA 19 carrer mode using R" />
 <meta prefix="og: http://ogp.me/ns#" property="og:description" content="In this article I'll show how to do some exploratory analysis using the R packages datatable and ggplot2." />
-<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wellerson-oliveira.github.io/Projetos/LA_traffic_collision/images/thumbnail_2.png" />
-<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wellerson-oliveira.github.io/Projetos/LA_traffic_collision/index.html"/>
-
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wellerson-oliveira.github.io/Projetos/FIFA_19_Attributes/images/thumbnail.png" />
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wellerson-oliveira.github.io/Projetos/FIFA_19_Attributes/index.html"/>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>Los Angeles Traffic Collisions Exploratory Analysis using R datatable and ggplot2 · Wellerson Oliveira</h1>
+<h1>Guide to FIFA 19 carrer mode using R · Wellerson Oliveira</h1>
 </div>
 <div id="content">
 <div class="imageblock" style="text-align: center">
@@ -443,10 +442,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong><a href="/../../index.html">Home Page</a></strong></p>
 </div>
 <div class="paragraph text-center">
-<p><em>In this article I&#8217;ll show how to do some exploratory analysis using the R package <strong>datatable</strong>. We are going to use the Kaggle dataset <a href="https://www.kaggle.com/cityofLA/los-angeles-traffic-collision-data">Los Angeles Traffic Collision Data</a>. I&#8217;ll show how to extract date features from your dataset and how to aggregate information based in one or more variables. Finally, I&#8217;ll show how to do some basic plots using the R package <strong>ggplot2</strong> and how to costumize some features in these plots</em></p>
+<p><em>If you are a FIFA 19 player as me, you&#8217;ll like this article. Here we are going to use the kaggle dataset <a href="https://www.kaggle.com/karangadiya/fifa19">FIFA 19 complete player dataset</a> to find low cost best players for your career mode. To do this, we are going to use the players of each team to find the best teams. Then we are going to find the mainly attributes for players of each position and use that to find the low cost (or free) best players.</em></p>
 </div>
 <hr>
-<div class="paragraph text-left">
+<div class="paragraph">
 <p>Let&#8217;s begin importing the packages that we are going to use: <strong>datatable</strong> and <strong>ggplot2</strong>. Then let&#8217;s read the data using the <strong>fread</strong> function provided from the <strong>datatable</strong> package. Since the file is already in a regular csv format, it&#8217;s not necessary to use any other argument.</p>
 </div>
 <div class="listingblock">
@@ -459,192 +458,145 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ruby" data-lang="ruby">%% readind data
-   dt &lt;- fread(input = "traffic_collision_data.csv")</code></pre>
+   dt &lt;- fread(input = "data.csv")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Now, let&#8217;s do some cleaning on the dataset. In the kaggle link provided on the top of this article there are the columns description. First, we are going to remove some columns we don&#8217;t need. Second, let&#8217;s remove some NA values from the 'Victim Sex' column to keep just the records with F (for females) and M (for males). Finally, let&#8217;s replace empty spaces in the columns names for the character "_".</p>
+<p>Let&#8217;s start doing some data cleaning.First, let&#8217;s remove some columns that are not important for our analysis.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% data cleaning
-  dt &lt;- dt[, c(1:6, 11:15)]
-  names(dt) &lt;- gsub(" ", "_", names(dt))
-  dt &lt;- dt[Victim_Sex == "M"| Victim_Sex == "F", ]</code></pre>
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% - removing some columns
+  dt &lt;- dt[, !c("V1", "Photo", "Flag", "Club Logo", "Special", "Body Type", "Real Face", "Jersey Number", "Joined")]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s take a look on the resulting dataset. Using the function <strong>head</strong> we can see the firts six records of the data.</p>
+<p>Then, let&#8217;s deal with the money columns: Value and Wage. Using the <strong>head</strong> function, we can see there are some symbols on these columns. There&#8217;s the current symbol '€' and the letters 'M' and 'K' indicating the magnitude of the number.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">  head(dt)</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">   DR_Number           Date_Reported           Date_Occurred Time_Occurred Area_ID
-1: 191216137 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000           330      12
-2: 191011095 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000          1425      10
-3: 190411077 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000          1200       4
-4: 190511313 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000           850       5
-5: 191814225 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000           435      18
-6: 191313246 2019-06-15T00:00:00.000 2019-06-15T00:00:00.000          2000      13
-     Area_Name Victim_Age Victim_Sex Victim_Descent Premise_Code Premise_Description
-1: 77th Street         39          F              B          101              STREET
-2: West Valley         30          M              W          108         PARKING LOT
-3:  Hollenbeck         69          M              H          101              STREET
-4:      Harbor         39          F              H          101              STREET
-5:   Southeast         60          M              H          101              STREET
-6:      Newton         NA          M              H          101              STREET</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now we can work on the dataset features. So let&#8217;s transform the 'Date_Reported' and 'Date_Occurred' columns in dates. To do this we can get only the first 10 characters of each column and then transform the result in date variables.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby"> %% creating date variables
-   dt[, Date_Reported := as.Date(substr(Date_Reported, 1, 10))]
-   dt[, Date_Occurred := as.Date(substr(Date_Occurred, 1, 10))]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Based on the variable 'Date_Occurred' we can create some other useful time variables as: Day, day of the week, month and year. We can aggregate the information on the dataset using these variables to identify how the number of accidents are distributed. We are going to construct visualizations for that later in this article. For now, let&#8217;s create these variables. Then, let&#8217;s use the variable 'Time_Occured' to get the hour of the day that the accidents occur. For that, we need to divide the value of 'Time_Occurred' by 100 and round the result. Let&#8217;s ignore the minutes for now.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - day
-  dt[, Day     := format(Date_Occurred, "%d")]
-  # - month
-  dt[, Month   := format(Date_Occurred, "%m")]
-  #- year
-  dt[, Year    := format(Date_Occurred, "%Y")]
-  # - weekday
-  dt[, Weekday := format(Date_Occurred, "%A")]
-  # - hour
-  dt[, Hour := round(Time_Occurred/100, 0)]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s go plot some results. We are going to use the <strong>ggplot2</strong> package for that. The <strong>ggplot2</strong> package have a easy syntax. Basically you start defining how the variables are going to be represented on the graph and later you just have to add all the features you want. Starting simple, let&#8217;s see how the accidents are distributed through the age of the people who suffered. Since we are interested in seeing a distribution, let&#8217;s use a histogram. First, let&#8217;s define the axis. For a histogram, we just need to define the x-axis.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - creating age plot
-  p1 &lt;- ggplot(data = dt, aes(x = Victim_Age))</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The next step is to define how the data will be showed. Let&#8217;s use the <strong>geom_histogram</strong> as our geometry to plot data.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - creating age plot
-  p1 &lt;- p1 + geom_histogram()</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>We can see the result below.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/age_histogram.png" alt="presentation" width="450" height="300">
-</div>
-</div>
-<div class="paragraph">
-<p>As we can see, accidents car are more frequently in young people and decreases with the age. Let&#8217;s improve our visualization using the variable "Victim_Sex" to see how the accidents are distributed between men and women. For that, let&#8217;s change how the variables going to be represented on the graphic including the "Victim_Sex" variable in the graphic colour.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - creating age and sex plot
-  p1 &lt;- ggplot(data = dt, aes(x = Victim_Age, fill = Victim_Sex)) + geom_histogram()</code></pre>
-</div>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/age_sex_histogram.png" alt="presentation" width="450" height="300">
-</div>
-</div>
-<div class="paragraph">
-<p>Here are the result of the code above. As we can see, the <strong>ggplot</strong> automatically separate the two variables with different colours. Because of the histogram geometry it appears there are more accidents with women than accidents with men. But, if we count the number of accidents by the sex of the victim we see the opposite. Let&#8217;s use the code below to see the number of accidents segmented by the victim sex.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - counting number of accidents by sex
-  dt[, list(N_Accidents = length(DR_Number)), by = "Victim_Sex"]</code></pre>
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">   head(dt[, c("Value", "Wage")])</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">  Victim_Sex N_Accidents
-  F          180510
-  M          277993</code></pre>
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">     Value  Wage
+1: €110.5M €565K
+2:    €77M €405K
+3: €118.5M €290K
+4:    €72M €260K
+5:   €102M €355K
+6:    €93M €340K</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So, let&#8217;s try another geometry. We are going to use the <strong>geom_density</strong> for that. The <strong>geom_density</strong> show the data similar to the <strong>geom_histogram</strong> but the curve is showed smoother. For a better visualization let&#8217;s use the <strong>alpha</strong> parameter to make the curve transparent. Here is the code.</p>
+<p>Let&#8217;s correct these columns to create numeric columns. We are going to use the <strong>gsub</strong> function to replace the '€' symbol for nothing in both columns.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - ploting the age and sex density
-   p1 &lt;- ggplot(data = dt, aes(x = Victim_Age, fill = Victim_Sex, colour = Victim_Sex))+ geom_density(alpha = 0.4)</code></pre>
-</div>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/age_sex_density.png" alt="presentation" width="450" height="300">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% - adjusting money columns
+  # - replacing current symbol
+  dt[, Value := gsub("€", "", Value)]
+  dt[, Wage  := gsub("€", "", Wage )]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Now we can see both curves in the correct way. It&#8217;s important to note the <strong>geom_density</strong> show how each variable it&#8217;s distributed proportionally to the own variable. So, the part of the curve in the interval 20-40 years where the female curve is higher than the male curve doesn&#8217;t mean that are more accidents with women than men. It&#8217;s just means the proportion of 20-40 years women that suffer accidents is higher than 20-40 years men proportion.</p>
-</div>
-<div class="paragraph">
-<p>To finish this first article, let&#8217;s see how the accidents are distributed by the hour they happened. Let&#8217;s use a similar syntax to that we already use. Here is the code to aggregate the number of accidents by the hour of the day.</p>
+<p>To do the magnitude transformation we are going to use de <strong>mapply</strong> function. The <strong>mapply</strong> is a function that receive another function, pass one or more vectors as a parameter to that function and return another list with results. First, let&#8217;s define our function.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - aggregating by hour of the time
-   dt.hour &lt;- dt[, list(Number_Accidents = length(unique(DR_Number))), by = c("Hour")]</code></pre>
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% - function to transform money columns
+  x &lt;- function(Value){
+    if (grepl("M", Value)){
+      real_value &lt;- as.numeric(gsub("M", "", Value))*1000000
+    } else if (grepl("K", Value)){
+      real_value &lt;- as.numeric(gsub("K", "", Value))*1000
+    } else {
+      real_value &lt;- as.numeric(Value)
+    }
+    return(real_value)
+  }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>And here is the code to plot. Now we are using the geometry <strong>barplot</strong>. This geometry is used to create, obviously, bar plots. In this case we have used the parameter <strong>stat</strong> equals to "identity" to tell the function that we already aggregate the data. The default value to this parameter is "stat_count".</p>
+<p>Now, let&#8217;s use <strong>mapply</strong> passing first the Value column and after the Wage column as parameters. Then, we use the result of each <strong>mapply</strong> to create new columns in the dataset.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - plotting
-   p2 &lt;- ggplot(data = dt.hour, aes(x = Hour, y = Number_Accidents)) + geom_bar(stat = "identity")
-   p2</code></pre>
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% - using mapply
+  real_values &lt;- mapply(x, dt[, Value])
+  real_wage   &lt;- mapply(x, dt[, Wage ])
+%% - creating new columns
+  dt &lt;- cbind(dt, real_values)
+  dt &lt;- cbind(dt, real_wage)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Here is how our plot looks like now.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/hour_barplot.png" alt="presentation" width="450" height="300">
-</div>
-</div>
-<div class="paragraph">
-<p>Okay, let&#8217;s improve our plot. Firts, let&#8217;s change the axis names. For default, <strong>ggplot2</strong> use the columns names as the axis names. let&#8217;s use the <strong>xlab</strong> and <strong>ylab</strong> parameters to change that. Then, let&#8217;s put some colour on our plot. To do that, we are going to use again the <strong>fill</strong> parameter. As we can use hexadecimal to change the colours of our graphics, I often use this <a href="https://htmlcolorcodes.com">site</a> to find a colour that I like. For this plot I&#8217;m going to choose the colour "#212678". It&#8217;s a kind of dark blue. Finally, let&#8217;s put a title to our graphic. I&#8217;m going to use "Accidents per hour of day". Here is the complete code.</p>
+<p>Ok, now it&#8217;s time to start the analysis. In FIFA, we have a lot of player positions. Using the <strong>unique</strong> function we can see all of them.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">  # - plotting
-  p2 &lt;- ggplot(data = dt.hour, aes(x = Hour, y = Number_Accidents)) + geom_bar(stat = "identity", fill = "#212678")
-  p2 &lt;- p2 + xlab("Hour of the day") + ylab("Number of Accidents")
-  p2 &lt;- p2 + ggtitle("Accidents per hour of day")
-  p2</code></pre>
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% -
+  unique(dt[, Position])</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"> [1] "RF"  "ST"  "LW"  "GK"  "RCM" "LF"  "RS"  "RCB" "LCM" "CB"  "LDM" "CAM" "CDM" "LS"  "LCB" "RM"  "LAM" "LM"  "LB"  "RDM" "RW"
+[22] "CM"  "RB"  "RAM" "CF"  "RWB" "LWB" ""</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>And here are the final result. Of course is still a basic plot, but we already use some personalization to do that. I hope you guys enjoyed this article. Until next !</p>
+<p>These positions are very specific. To create a better analysis, let&#8217;s aggregate these functions in more general functions:
+- GK: For goalkeepers
+- DEF: To defenders
+- MID-DEF: To defenders midfielders
+- MID-ATA: To attackers midfielders
+- ATA-LAT: To lateral attackers
+- ATA: To central attackers</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="paragraph">
+<p>To do that, we are going to create a new datatable containing the "transformation". Then, we are going to use the <strong>merge</strong> function to join the two datatables and give a general position to each player.</p>
+</div>
+<div class="listingblock">
 <div class="content">
-<img src="images/hour_barplot_complete.png" alt="presentation" width="450" height="300">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% - creating new datatable
+  dt.pos &lt;- data.table("Position" = unique(dt[, Position]))
+  dt.pos[, Gen_Position := ""]</code></pre>
 </div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>dt.pos[Position %in% c("GK"), Gen_Position := "GK"]
+dt.pos[Position %in% c("RB", "CB", "LB", "SW", "RWB", "LWB", "RCB", "LCB"), Gen_Position := "DEF"]
+dt.pos[Position %in% c("CDM", "CM", "RCM", "LCM", "LDM", "RDM"), Gen_Position := "MID-DEF"]
+dt.pos[Position %in% c("LOM", "ROM", "LM", "RM", "LWM", "RWM", "RAM", "LAM", "CAM", "OM"), Gen_Position := "MID-ATA"]
+dt.pos[Position %in% c("RW", "LW", "LF", "RF"), Gen_Position := "ATA-LAT"]
+dt.pos[Position %in% c("ST", "CF", "RS", "LS"), Gen_Position := "ATA"]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% - joining the two datatables
+  dt &lt;- merge(dt, dt.pos, "Position")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we have a dataset containing all the players, values and wages and a general position. Let&#8217;s go the attributes. In FIFA we have 34 attributes that defines how good is each player. The players also have an overall that indicates in one number the player level. Let&#8217;s create a vector containing all attributes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% - attributes
+  att &lt;- c("Crossing", "Finishing", "HeadingAccuracy", "ShortPassing", "Volleys", "Dribbling", "Curve", "FKAccuracy", "LongPassing",         "BallControl", "Acceleration", "SprintSpeed", "Agility", "Reactions", "Balance", "ShotPower", "Jumping", "Stamina", "Strength", "LongShots", "Aggression", "Interceptions", "Positioning","Vision","Penalties","Composure", "Marking", "StandingTackle", "SlidingTackle", "GKDiving", "GKHandling", "GKKicking", "GKPositioning", "GKReflexes")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Of course there are attributes that are very important for some position and less important for others. What we are going to do is find, for each general position, which attributes are more important. To do that, we are going to use the top-10 players of each position to calculate the average of each attribute and find the top five.</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2019-07-08 23:58:53 -03
 </div>
 </div>
 </body>

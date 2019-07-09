@@ -13,7 +13,7 @@ icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "ce
 **link:/../../index.html[Home Page]**
 
 [.text-center]
-_In this article I'll show how to do some exploratory analysis using the R package **datatable**. We are going to use the Kaggle dataset link:https://www.kaggle.com/cityofLA/los-angeles-traffic-collision-data[Los Angeles Traffic Collision Data]. I'll show how to extract date features from your dataset and how to aggregate information based in one or more variables. Finally, I'll show how to do some basic plots using the amazing R package **ggplot2** and how to costumize some features in these plots_ 
+_In this article I'll show how to do some exploratory analysis using the R package **datatable**. We are going to use the Kaggle dataset link:https://www.kaggle.com/cityofLA/los-angeles-traffic-collision-data[Los Angeles Traffic Collision Data]. I'll show how to extract date features from your dataset and how to aggregate information based in one or more variables. Finally, I'll show how to do some basic plots using the R package **ggplot2** and how to costumize some features in these plots_ 
 
 ---
 

@@ -1,0 +1,151 @@
+:stylesheet: clean.css
+
+:icons: font
+
+= Guide to FIFA 19 carrer mode using R · Wellerson Oliveira
+
+image::/../../images/presentation_image.png[presentation, 250, 250, align = "center"]
+
+[.text-center]
+icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "center"] | icon:twitter[link="https://twitter.com/_WellersonVO", align = "center"] | icon:linkedin[link="https://www.linkedin.com/in/wellerson-oliveira-aa121410a/", align = "center"] | icon:google-plus[link="https://plus.google.com/u/0/115562689876020120903", align = "center"]
+
+[.text-center]
+**link:/../../index.html[Home Page]**
+
+[.text-center]
+_If you are a FIFA 19 player as me, you'll like this article. Here we are going to use the kaggle dataset link:https://www.kaggle.com/karangadiya/fifa19[FIFA 19 complete player dataset] to find low cost best players for your career mode. To do this, we are going to use the players of each team to find the best teams. Then we are going to find the mainly attributes for players of each position and use that to find the low cost (or free) best players._ 
+
+---
+
+Let's begin importing the packages that we are going to use: **datatable** and **ggplot2**. Then let's read the data using the **fread** function provided from the **datatable** package. Since the file is already in a regular csv format, it's not necessary to use any other argument.
+
+[source, ruby]
+%% importing packages
+   import(data.table)
+   import(ggplot2)
+
+[source, ruby]
+%% readind data
+   dt <- fread(input = "data.csv")
+
+Let's start doing some data cleaning.First, let's remove some columns that are not important for our analysis. 
+
+[source, ruby]
+%% - removing some columns
+  dt <- dt[, !c("V1", "Photo", "Flag", "Club Logo", "Special", "Body Type", "Real Face", "Jersey Number", "Joined")]
+  
+Then, let's deal with the money columns: Value and Wage. Using the **head** function, we can see there are some symbols on these columns. There's the current symbol '€' and the letters 'M' and 'K' indicating the magnitude of the number. 
+
+[source, ruby]
+   head(dt[, c("Value", "Wage")])
+
+[source, ruby]
+     Value  Wage
+1: €110.5M €565K
+2:    €77M €405K
+3: €118.5M €290K
+4:    €72M €260K
+5:   €102M €355K
+6:    €93M €340K
+
+Let's correct these columns to create numeric columns. We are going to use the **gsub** function to replace the '€' symbol for nothing in both columns. 
+
+[source, ruby]
+%% - adjusting money columns
+  # - replacing current symbol
+  dt[, Value := gsub("€", "", Value)]
+  dt[, Wage  := gsub("€", "", Wage )]
+
+To do the magnitude transformation we are going to use de **mapply** function. The **mapply** is a function that receive another function, pass one or more vectors as a parameter to that function and return another list with results. First, let's define our function.
+  
+[source, ruby]
+%% - function to transform money columns
+  x <- function(Value){
+    if (grepl("M", Value)){
+      real_value <- as.numeric(gsub("M", "", Value))*1000000
+    } else if (grepl("K", Value)){
+      real_value <- as.numeric(gsub("K", "", Value))*1000
+    } else {
+      real_value <- as.numeric(Value)
+    }
+    return(real_value)
+  }
+
+Now, let's use **mapply** passing first the Value column and after the Wage column as parameters. Then, we use the result of each **mapply** to create new columns in the dataset. 
+
+[source, ruby]
+%% - using mapply
+  real_values <- mapply(x, dt[, Value])
+  real_wage   <- mapply(x, dt[, Wage ])
+%% - creating new columns
+  dt <- cbind(dt, real_values)
+  dt <- cbind(dt, real_wage)
+
+Ok, now it's time to start the analysis. In FIFA, we have a lot of player positions. Using the **unique** function we can see all of them. 
+
+[source, ruby]
+%% -   
+  unique(dt[, Position])
+
+[source, ruby]
+ [1] "RF"  "ST"  "LW"  "GK"  "RCM" "LF"  "RS"  "RCB" "LCM" "CB"  "LDM" "CAM" "CDM" "LS"  "LCB" "RM"  "LAM" "LM"  "LB"  "RDM" "RW" 
+[22] "CM"  "RB"  "RAM" "CF"  "RWB" "LWB" ""
+
+These positions are very specific. To create a better analysis, let's aggregate these functions in more general functions: 
+- GK: For goalkeepers
+- DEF: To defenders
+- MID-DEF: To defenders midfielders
+- MID-ATA: To attackers midfielders
+- ATA-LAT: To lateral attackers
+- ATA: To central attackers
+
+To do that, we are going to create a new datatable containing the "transformation". Then, we are going to use the **merge** function to join the two datatables and give a general position to each player. 
+
+[source, ruby]
+%% - creating new datatable
+  dt.pos <- data.table("Position" = unique(dt[, Position]))
+  dt.pos[, Gen_Position := ""]
+  
+  dt.pos[Position %in% c("GK"), Gen_Position := "GK"]
+  dt.pos[Position %in% c("RB", "CB", "LB", "SW", "RWB", "LWB", "RCB", "LCB"), Gen_Position := "DEF"]
+  dt.pos[Position %in% c("CDM", "CM", "RCM", "LCM", "LDM", "RDM"), Gen_Position := "MID-DEF"]
+  dt.pos[Position %in% c("LOM", "ROM", "LM", "RM", "LWM", "RWM", "RAM", "LAM", "CAM", "OM"), Gen_Position := "MID-ATA"]
+  dt.pos[Position %in% c("RW", "LW", "LF", "RF"), Gen_Position := "ATA-LAT"]
+  dt.pos[Position %in% c("ST", "CF", "RS", "LS"), Gen_Position := "ATA"]
+  
+[source, ruby]
+%% - joining the two datatables
+  dt <- merge(dt, dt.pos, "Position")
+
+Now we have a dataset containing all the players, values and wages and a general position. Let's go the attributes. In FIFA we have 34 attributes that defines how good is each player. The players also have an overall that indicates in one number the player level. Let's create a vector containing all attributes. 
+
+[source, ruby]
+%% - attributes
+  att <- c("Crossing", "Finishing", "HeadingAccuracy", "ShortPassing", "Volleys", "Dribbling", "Curve", "FKAccuracy", "LongPassing",         "BallControl", "Acceleration", "SprintSpeed", "Agility", "Reactions", "Balance", "ShotPower", "Jumping", "Stamina", "Strength", "LongShots", "Aggression", "Interceptions", "Positioning","Vision","Penalties","Composure", "Marking", "StandingTackle", "SlidingTackle", "GKDiving", "GKHandling", "GKKicking", "GKPositioning", "GKReflexes")
+
+Of course there are attributes that are very important for some position and less important for others. What we are going to do is find, for each general position, which attributes are more important. To do that, we are going to use the top-10 players of each position to calculate the average of each attribute and find the top five.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
