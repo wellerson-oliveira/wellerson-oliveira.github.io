@@ -2,7 +2,7 @@
 
 :icons: font
 
-= Guide to FIFA 19 carrer mode using R · Wellerson Oliveira
+= Finding the best free players to FIFA 19 career mode using R · Wellerson Oliveira
 
 image::/../../images/presentation_image.png[presentation, 250, 250, align = "center"]
 
@@ -13,7 +13,7 @@ icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "ce
 **link:/../../index.html[Home Page]**
 
 [.text-center]
-_If you are a FIFA 19 player as me, you'll like this article. Here we are going to use the kaggle dataset link:https://www.kaggle.com/karangadiya/fifa19[FIFA 19 complete player dataset] to find low cost best players for your career mode. To do this, we are going to use the players of each team to find the best teams. Then we are going to find the mainly attributes for players of each position and use that to find the low cost (or free) best players._ 
+_If you are a FIFA 19 player as me, you'll like this article. Here we are going to use the kaggle dataset link:https://www.kaggle.com/karangadiya/fifa19[FIFA 19 complete player dataset] to find free cost best players for your career mode. To do this, we are going to find the mainly attributes for each player position and then compare the best players with the players with no club to find the bests._ 
 
 ---
 

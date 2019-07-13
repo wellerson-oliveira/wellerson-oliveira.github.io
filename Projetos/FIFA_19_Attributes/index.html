@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
-<title>Guide to FIFA 19 carrer mode using R · Wellerson Oliveira</title>
+<title>Finding the best free players to FIFA 19 career mode using R · Wellerson Oliveira</title>
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
 /* Remove comment around @import statement below when using as a custom stylesheet */
@@ -427,7 +427,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>Guide to FIFA 19 carrer mode using R · Wellerson Oliveira</h1>
+<h1>Finding the best free players to FIFA 19 career mode using R · Wellerson Oliveira</h1>
 </div>
 <div id="content">
 <div class="imageblock" style="text-align: center">
@@ -442,7 +442,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong><a href="/../../index.html">Home Page</a></strong></p>
 </div>
 <div class="paragraph text-center">
-<p><em>If you are a FIFA 19 player as me, you&#8217;ll like this article. Here we are going to use the kaggle dataset <a href="https://www.kaggle.com/karangadiya/fifa19">FIFA 19 complete player dataset</a> to find low cost best players for your career mode. To do this, we are going to use the players of each team to find the best teams. Then we are going to find the mainly attributes for players of each position and use that to find the low cost (or free) best players.</em></p>
+<p><em>If you are a FIFA 19 player as me, you&#8217;ll like this article. Here we are going to use the kaggle dataset <a href="https://www.kaggle.com/karangadiya/fifa19">FIFA 19 complete player dataset</a> to find free cost best players for your career mode. To do this, we are going to find the mainly attributes for each player position and then compare the best players with the players with no club to find the bests.</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -943,11 +943,6 @@ p_ata &lt;- ggplot(data = dt.ata_plot, aes(x = V2, y = as.numeric(V1), fill = fa
 </div>
 <div class="paragraph">
 <p>Looking to the graphs, we can see all the goalkeepers and defensors with no team are far from the best ones. But in the defensive midfielders the player L. Paredes has similar attributes to the U-25 Average, becoming a great player to contract. Looking to the lateral attackers, the players A. Mitritã and P. Tau looks like good options. Finally, B. Angulo has good attributes comparing with the best U-25 average.</p>
-</div>
-</div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2019-07-13 17:24:41 -03
 </div>
 </div>
 </body>
