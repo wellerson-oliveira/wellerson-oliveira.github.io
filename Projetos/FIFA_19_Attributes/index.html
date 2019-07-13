@@ -418,9 +418,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
 
 <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
-<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Guide to FIFA 19 carrer mode using R" />
-<meta prefix="og: http://ogp.me/ns#" property="og:description" content="In this article I'll show how to do some exploratory analysis using the R packages datatable and ggplot2." />
-<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wellerson-oliveira.github.io/Projetos/FIFA_19_Attributes/images/thumbnail.png" />
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Finding the best free players in FIFA 19" />
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Finding free players in FIFA 19." />
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wellerson-oliveira.github.io/Projetos/FIFA_19_Attributes/images/thumbnail.jpg" />
 <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wellerson-oliveira.github.io/Projetos/FIFA_19_Attributes/index.html"/>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -593,10 +593,361 @@ dt.pos[Position %in% c("ST", "CF", "RS", "LS"), Gen_Position := "ATA"]</pre>
 <div class="paragraph">
 <p>Of course there are attributes that are very important for some position and less important for others. What we are going to do is find, for each general position, which attributes are more important. To do that, we are going to use the top-10 players of each position to calculate the average of each attribute and find the top five.</p>
 </div>
+<div class="paragraph">
+<p>Let&#8217;s use the <strong>setorder</strong> function to order the datable based on the Gen_Position and Overall columns. Then, we are going to use the <strong>.SD</strong> trick of the <strong>datatable</strong> package to retrieve the top ten by position. The <strong>.SD</strong> is a abbreviation of <strong>S</strong>ub<strong>D</strong>atatable, and it represent all the subset of <strong>datatable</strong> defined using the command <strong>by = Gen_Position</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  %% - topten of each new position
+  setorder(dt, Gen_Position, -Overall)
+  dt.topten &lt;- dt[, .SD[c(1:10), c("Name", ..att)], by = Gen_Position]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, we can calculate the average of all the attributes for each Gen_Position.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  %% - mean of the attributes of each position
+  dt.att &lt;- dt.topten[, cbind("Attribute_Name"  = names(.SD[, c(3:35)]),
+                              data.table("Attribute_Value" = colMeans(.SD[, 3:35]))), by = Gen_Position]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finding the top five of attributes of each position.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  %%
+  setorder(dt.att, Gen_Position,-Attribute_Value)
+  dt.att_best &lt;- dt.att[, .SD[c(1:5)], Gen_Position]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s take a look on the results.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">Gen_Position Attribute_Name Attribute_Value
+ 1:          ATA    Positioning            91.4
+ 2:          ATA      Finishing            91.0
+ 3:          ATA      Reactions            89.5
+ 4:          ATA      ShotPower            88.2
+ 5:          ATA      Composure            86.7
+ 6:      ATA-LAT      Dribbling            92.4
+ 7:      ATA-LAT    BallControl            92.3
+ 8:      ATA-LAT        Agility            90.7
+ 9:      ATA-LAT        Balance            89.1
+10:      ATA-LAT         Vision            88.1
+11:          DEF StandingTackle            88.6
+12:          DEF  Interceptions            88.0
+13:          DEF  SlidingTackle            87.4
+14:          DEF        Marking            86.0
+15:          DEF        Jumping            84.3
+16:           GK     GKReflexes            88.9
+17:           GK       GKDiving            87.6
+18:           GK  GKPositioning            86.0
+19:           GK     GKHandling            85.7
+20:           GK      Reactions            84.6
+21:      MID-ATA    BallControl            87.8
+22:      MID-ATA      Reactions            87.5
+23:      MID-ATA    Positioning            87.1
+24:      MID-ATA      Composure            85.7
+25:      MID-ATA      Finishing            85.0
+26:      MID-DEF   ShortPassing            89.1
+27:      MID-DEF    BallControl            87.8
+28:      MID-DEF      Reactions            87.0
+29:      MID-DEF    LongPassing            86.7
+30:      MID-DEF         Vision            86.6</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using this results we can say, for example, that for a lateral attacker is more important the dribble while for a pure attacker positioning and finishing are the most importants.</p>
+</div>
+<div class="paragraph">
+<p>Ok, now lets find some players for your FIFA career. Thinking first about money, let&#8217;s look to the player who doesn&#8217;t have a club and you can sign for free.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  %% - Players without team (Free)
+  dt.noteam &lt;- dt[Club == "", ]
+  dt.noteam &lt;- dt.noteam[Age &lt;= 25, ]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We have now all the player under-25 with no club in FIFA 19. Let&#8217;s find the bests for each position based on the attributes we find. We have to create datatables for each position. Then, we get only the five main attributes for each one and finally we calculate the average of these attributes. Finally we pick the top five based on this average.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  %%GK
+  a &lt;- dt.att_best[Gen_Position == "GK", Attribute_Name]
+  dt.gk &lt;- dt.noteam[Gen_Position == "GK", c("Name", ..a)]
+  dt.gk[, Rate := rowMeans(dt.gk[, c(2:5)])]
+  setorder(dt.gk, -Rate)
+  dt.gk &lt;- dt.gk[c(1:5)]</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% DEF
+a &lt;- dt.att_best[Gen_Position == "DEF", Attribute_Name]
+dt.def &lt;- dt.noteam[Gen_Position == "DEF", c("Name", ..a)]
+dt.def[, Rate := rowMeans(dt.def[, c(2:5)])]
+setorder(dt.def, -Rate)
+dt.def &lt;- dt.def[c(1:5)]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% MID-DEF
+a &lt;- dt.att_best[Gen_Position == "MID-DEF", Attribute_Name]
+dt.mid_def &lt;- dt.noteam[Gen_Position == "MID-DEF", c("Name", ..a)]
+dt.mid_def[, Rate := rowMeans(dt.mid_def[, c(2:5)])]
+setorder(dt.mid_def, -Rate)
+dt.mid_def &lt;- dt.mid_def[c(1:5)]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% MID-ATA
+a &lt;- dt.att_best[Gen_Position == "MID-ATA", Attribute_Name]
+dt.mid_ata &lt;- dt.noteam[Gen_Position == "MID-ATA", c("Name", ..a)]
+dt.mid_ata[, Rate := rowMeans(dt.mid_ata[, c(2:5)])]
+setorder(dt.mid_ata, -Rate)
+dt.mid_ata &lt;- dt.mid_ata[c(1:5)]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% ATA-LAT
+a &lt;- dt.att_best[Gen_Position == "ATA-LAT", Attribute_Name]
+dt.ata_lat &lt;- dt.noteam[Gen_Position == "ATA-LAT", c("Name", ..a)]
+dt.ata_lat[, Rate := rowMeans(dt.ata_lat[, c(2:5)])]
+setorder(dt.ata_lat, -Rate)
+dt.ata_lat &lt;- dt.ata_lat[c(1:5)]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% ATA
+a &lt;- dt.att_best[Gen_Position == "ATA", Attribute_Name]
+dt.ata &lt;- dt.noteam[Gen_Position == "ATA", c("Name", ..a)]
+dt.ata[, Rate := rowMeans(dt.ata[, c(2:5)])]
+setorder(dt.ata, -Rate)
+dt.ata &lt;- dt.ata[c(1:5)]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We have now the top-five Under-25 players with no club in FIFA 19. Let&#8217;s compare all these player with some of the best Under-25 players in the world and see how good are these players. we are going to use the same code, changing the datatable <strong>dt.noteam</strong> to the datatable <strong>dt[Age &#8656; 25, ]</strong> to include all U-25 players. Then, we are going to get the top 20 and compute the average of the same attributes and include the results in the datatable of each position as "U25 Average Player".</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">%% --
+  dt.young &lt;- dt[Age &lt;= 25, ]</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% GK
+a &lt;- dt.att_best[Gen_Position == "GK", Attribute_Name]
+dt.gk_all &lt;- dt.young[Gen_Position == "GK", c("Name", ..a)]
+dt.gk_all[, Rate := rowMeans(dt.gk_all[, c(2:5)])]
+setorder(dt.gk_all, -Rate)
+dt.gk_all &lt;- dt.gk_all[c(1:20)]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>dt.gk_plot &lt;- rbind(dt.gk, t(c(Name = "Best U25 Average", colMeans(dt.gk_all[, c(2:7)]))))</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% DEF
+a &lt;- dt.att_best[Gen_Position == "DEF", Attribute_Name]
+dt.def_all &lt;- dt.young[Gen_Position == "DEF", c("Name", ..a)]
+dt.def_all[, Rate := rowMeans(dt.def_all[, c(2:5)])]
+setorder(dt.def_all, -Rate)
+dt.def_all &lt;- dt.def_all[c(1:20)]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>dt.def_plot &lt;- rbind(dt.def, t(c(Name = "Best U25 Average", colMeans(dt.def_all[, c(2:7)]))))</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% MID-DEF
+a &lt;- dt.att_best[Gen_Position == "MID-DEF", Attribute_Name]
+dt.mid_def_all &lt;- dt.young[Gen_Position == "MID-DEF", c("Name", ..a)]
+dt.mid_def_all[, Rate := rowMeans(dt.mid_def_all[, c(2:5)])]
+setorder(dt.mid_def_all, -Rate)
+dt.mid_def_all &lt;- dt.mid_def_all[c(1:20)]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>dt.mid_def_plot &lt;- rbind(dt.mid_def, t(c(Name = "Best U25 Average", colMeans(dt.mid_def_all[, c(2:7)]))))</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% MID-ATA
+a &lt;- dt.att_best[Gen_Position == "MID-ATA", Attribute_Name]
+dt.mid_ata_all &lt;- dt.young[Gen_Position == "MID-ATA", c("Name", ..a)]
+dt.mid_ata_all[, Rate := rowMeans(dt.mid_ata_all[, c(2:5)])]
+setorder(dt.mid_ata_all, -Rate)
+dt.mid_ata_all &lt;- dt.mid_ata_all[c(1:20)]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>dt.mid_ata_plot &lt;- rbind(dt.mid_ata, t(c(Name = "Best U25 Average", colMeans(dt.mid_ata_all[, c(2:7)]))))</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% ATA-LAT
+a &lt;- dt.att_best[Gen_Position == "ATA-LAT", Attribute_Name]
+dt.ata_lat_all &lt;- dt.young[Gen_Position == "ATA-LAT", c("Name", ..a)]
+dt.ata_lat_all[, Rate := rowMeans(dt.ata_lat_all[, c(2:5)])]
+setorder(dt.ata_lat_all, -Rate)
+dt.ata_lat_all &lt;- dt.ata_lat_all[c(1:20)]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>dt.ata_lat_plot &lt;- rbind(dt.ata_lat, t(c(Name = "Best U25 Average", colMeans(dt.ata_lat_all[, c(2:7)]))))</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% ATA
+a &lt;- dt.att_best[Gen_Position == "ATA", Attribute_Name]
+dt.ata_all &lt;- dt.young[Gen_Position == "ATA", c("Name", ..a)]
+dt.ata_all[, Rate := rowMeans(dt.ata_all[, c(2:5)])]
+setorder(dt.ata_all, -Rate)
+dt.ata_all &lt;- dt.ata_all[c(1:20)]</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>dt.ata_plot &lt;- rbind(dt.ata, t(c(Name = "Best U25 Average", colMeans(dt.ata_all[, c(2:7)]))))</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we have the top five players with no clubs compared with the best ones. Let&#8217;s plot the results and see what we have.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">  %% GK
+  p_gk &lt;- ggplot(data = dt.gk_plot, aes(x = V2, y = as.numeric(V1), fill = factor(Name, levels = rev(unique(dt.gk_plot[, Name]))))) +
+          geom_bar(stat = "identity", position = "dodge") +
+          ggtitle("Goalkeeper Attributes Comparison") +
+          xlab("Attribute") +
+          ylab("Attribute Value") + scale_y_continuous(breaks = seq(0, 100, 10)) +
+          scale_fill_discrete("Player",breaks = rev(unique(dt.gk_plot[, Name]))) +
+          theme(axis.text.x = element_text(angle = 45, hjust = 1))</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% DEF
+p_def &lt;- ggplot(data = dt.def_plot, aes(x = V2, y = as.numeric(V1), fill = factor(Name, levels = rev(unique(dt.def_plot[, Name]))))) +
+         geom_bar(stat = "identity", position = "dodge") +
+         ggtitle("Defensor Attributes Comparison") +
+         xlab("Attribute") +
+         ylab("Attribute Value")  + scale_y_continuous(breaks = seq(0, 100, 10)) +
+         scale_fill_discrete("Player",breaks = rev(unique(dt.def_plot[, Name]))) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># MID DEF
+p_mid_def &lt;- ggplot(data = dt.mid_def_plot, aes(x = V2, y = as.numeric(V1), fill = factor(Name, levels = rev(unique(dt.mid_def_plot[, Name]))))) +
+             geom_bar(stat = "identity", position = "dodge") +
+             ggtitle("Defensive Midfield Attributes Comparison") +
+             xlab("Attribute") +
+             ylab("Attribute Value")+ scale_y_continuous(breaks = seq(0, 100, 10)) +
+             scale_fill_discrete("Player",breaks = rev(unique(dt.mid_def_plot[, Name]))) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% MID ATA
+p_mid_ata &lt;- ggplot(data = dt.mid_ata_plot, aes(x = V2, y = as.numeric(V1), fill = factor(Name, levels = rev(unique(dt.mid_ata_plot[, Name]))))) +
+             geom_bar(stat = "identity", position = "dodge") +
+             ggtitle("Attacker Midfield Attributes Comparison") +
+             xlab("Attribute") +
+             ylab("Attribute Value")+ scale_y_continuous(breaks = seq(0, 100, 10)) +
+             scale_fill_discrete("Player",breaks = rev(unique(dt.mid_ata_plot[, Name]))) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% ATA LAT
+p_ata_lat &lt;- ggplot(data = dt.ata_lat_plot, aes(x = V2, y = as.numeric(V1), fill = factor(Name, levels = rev(unique(dt.ata_lat_plot[, Name])))))+
+             geom_bar(stat = "identity", position = "dodge") +
+             ggtitle("Lateral Attacker Attributes Comparison") +
+             xlab("Attribute") +
+             ylab("Attribute Value")+ scale_y_continuous(breaks = seq(0, 100, 10)) +
+             scale_fill_discrete("Player",breaks = rev(unique(dt.ata_lat_plot[, Name]))) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%% ATA
+p_ata &lt;- ggplot(data = dt.ata_plot, aes(x = V2, y = as.numeric(V1), fill = factor(Name, levels = rev(unique(dt.ata_plot[, Name]))))) +
+         geom_bar(stat = "identity", position = "dodge") +
+         ggtitle("Attacker Attributes Comparison") +
+         xlab("Attribute") +
+         ylab("Attribute Value")+ scale_y_continuous(breaks = seq(0, 100, 10)) +
+         scale_fill_discrete("Player",breaks = rev(unique(dt.ata_plot[, Name]))) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))</pre>
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/barplot_gk.png" alt="gk" width="700" height="500">
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/bar_def.png" alt="def" width="700" height="500">
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/bar_mid_def.png" alt="mid_def" width="700" height="500">
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/bra_mid_ata.png" alt="mid_ata" width="700" height="500">
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/bar_ata_lat.png" alt="ata_lat" width="700" height="500">
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/bar_ata.png" alt="ata" width="700" height="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Looking to the graphs, we can see all the goalkeepers and defensors with no team are far from the best ones. But in the defensive midfielders the player L. Paredes has similar attributes to the U-25 Average, becoming a great player to contract. Looking to the lateral attackers, the players A. Mitritã and P. Tau looks like good options. Finally, B. Angulo has good attributes comparing with the best U-25 average.</p>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-07-08 23:58:53 -03
+Last updated 2019-07-13 17:24:41 -03
 </div>
 </div>
 </body>
