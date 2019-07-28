@@ -1,0 +1,10 @@
+Change h2 for h4
+
+Erase the final of the page
+
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Finding the best free players in FIFA 19" />
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Finding free players in FIFA 19." />
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wellerson-oliveira.github.io/Projetos/FIFA_19_Attributes/images/thumbnail.jpg" />
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wellerson-oliveira.github.io/Projetos/FIFA_19_Attributes/index.html"/>
+
