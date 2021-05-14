@@ -8,7 +8,20 @@ Wellerson Oliveira · Information Card
 image::images/presentation_image.png[presentation, 250, 250, align = "center"]
 
 [.text-center]
-icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "center"] | icon:twitter[size = 1.5x, link="https://twitter.com/_WellersonVO", align = "center"] | icon:linkedin[size = 1.5x, link="https://www.linkedin.com/in/wellerson-oliveira-aa121410a/", align = "center"] | icon:envelope[size = 1.5x, link=""mailto:viana.wellerson@gmail.com"", align = "center"] | icon:medium[size = 1.5x, link="https://viana-wellerson.medium.com/", align = "center"]
+icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "center"] | icon:twitter[size = 1.5x, link="https://twitter.com/_WellersonVO", align = "center"] | icon:linkedin[size = 1.5x, link="https://www.linkedin.com/in/wellerson-oliveira-aa121410a/", align = "center"] | icon:medium[size = 1.5x, link="https://viana-wellerson.medium.com/", align = "center"]
 
 [.text-center]
-_Hi! I'm Wellerson and this is my personal page. You can find all my contacts in the links above. Below, you can find some of my work._
+_I'm Wellerson and this is my personal page. You can find my social networks in the links above. Any other information? See below.
+
+== Personal information
+Name: Wellerson Viana de Oliveira +
+Birth: 08-dec-1995 +
+Address: Av. Dão Silveira, 4404, W104, Natal - RN, Brazil +
+
+== Do you wanna  get in touch?
+Well, then try one of these: +
+- You can e-mail me on: viana.wellerson@gmail.com +
+- You can schedule a meet on: https://calendly.com/viana-wellerson/meet_me
+
+== Extra information?
+Maybe my curriculum can help (link:https://drive.google.com/file/d/1OsRsGk3x0ybD4J0gp_mR8vmAt5R4FgkI/view?usp=sharing/[EN] or link:https://drive.google.com/file/d/1oHJTC1YtT1fs3AQEHJbGfKmONvZeLoGz/view?usp=sharing[PT])
