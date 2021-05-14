@@ -8,13 +8,13 @@ Wellerson Oliveira · Portfolio
 image::images/presentation_image.png[presentation, 250, 250, align = "center"]
 
 [.text-center]
-icon:github[size=1.5x, link="https://github.com/wellerson-oliveira", align = "center"] | icon:twitter[link="https://twitter.com/_WellersonVO", align = "center"] | icon:linkedin[link="https://www.linkedin.com/in/wellerson-oliveira-aa121410a/", align = "center"] | icon:google-plus[link="https://plus.google.com/u/0/115562689876020120903", align = "center"]
+icon:github[size=5x, link="https://github.com/wellerson-oliveira", align = "center"] | icon:twitter[size = 5x, link="https://twitter.com/_WellersonVO", align = "center"] | icon:linkedin[size = 5x, link="https://www.linkedin.com/in/wellerson-oliveira-aa121410a/", align = "center"] | icon:google-plus[size = 5x, link="https://plus.google.com/u/0/115562689876020120903", align = "center"] | icon:medium[size = 5x, link="https://viana-wellerson.medium.com/", align = "center"]
 
 [.text-center]
-_Hi! I'm Wellerson and this is my personal page and portfolio. I work as Data and RPA leader in a big retail company. My work is very simple: Sometimes I take care of robots and sometimes I solve data analysis problem._
+_Hi! I'm Wellerson and this is my personal page. You can find all my contacts in the links above. Below, you can find some of my work._
 
 [.text-center]
-== Latest work
+== Highlights
 
 [.text-left]
 == Los Angeles Traffic Collisions Exploratory Analysis using R datatable and ggplot2 
@@ -22,12 +22,7 @@ _Hi! I'm Wellerson and this is my personal page and portfolio. I work as Data an
 In this article I'll show how to do some exploratory analysis using the R package **datatable**. We are going to use the Kaggle dataset link:https://www.kaggle.com/cityofLA/los-angeles-traffic-collision-data[Los Angeles Traffic Collision Data]. I'll show how to extract date features from your dataset and how to aggregate information based in one or more variables. Finally, I'll show how to do some basic plots using the amazing R package **ggplot2** and how to costumize some features in these plots. link:/Projetos/LA_traffic_collision/index.html[Read More].
 
 [.text-left]
-== Finding the best free players to FIFA 19 career mode using R
+== O discurso anti-vacina e uma versão deturpada da Janela de Overton
 
-If you are a FIFA 19 player as me, you'll like this article. Here we are going to use the kaggle dataset link:https://www.kaggle.com/karangadiya/fifa19[FIFA 19 complete player dataset] to find free cost best players for your career mode. To do this, we are going to find the mainly attributes for each player position and then compare the best players with the players with no club to find the bests. link:/Projetos/FIFA_19_Attributes/index.html[Read More].
-
-[.text-left]
-== Why Premier League is the best league in the world - Part I
-
-If you like football (or soccer) you already have listen Premier League is the best league in the world. But why? Let's try to find out the answer using data. I've decided to divide this analysis in two parts. This is the part one, and we are going to talk about money. Let's see what premier league does differently from the others. The part two is going to be available soon, and will be focused on the matches. link:/Projetos/Premier_League/index.html[Read More].
+Nesse texto eu escrevo sobre o paralelo entre o livro A Janela de Overton e o discurso anti-vacina que aparece no mundo todo. A Janela de Overton, técnica que dá nome ao livro, é um conceito usado para manipulação da opinião pública. link:"https://viana-wellerson.medium.com/o-discurso-anti-vacina-e-uma-vers%C3%A3o-deturpada-da-janela-de-overton-dc95486612e3"[Read More]. (Texto em português)
 
